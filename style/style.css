@@ -1,26 +1,26 @@
 body {
     background-color: #E6E6FA;
 }
-h1{
+
+/*h1 {
   font-family: 'serif';
 }
-h2{
-  font-family: 'serif';
-  front: 14;
-}
-h3{
+*/
+
+h3 {
   text-decoration: underline;
   text-decoration: none;
   color: black;
-  font-size: 18;
-}
-.header {
-    font-family: 'serif', cursive;
 }
 
+/* .header {
+    font-style: italic;
+} */
+
 p {
-    font-family: 'serif', monospace;
+    font-family: monospace;
     color: black;
+    font-size: 18
 }
 
 li {
@@ -63,6 +63,7 @@ li a:hover {
 }
 
 .responsive {
-    max-width: 100%;
-    height: auto;
+  width: 100%;
+  max-width: auto;
+  height: auto;
 }
