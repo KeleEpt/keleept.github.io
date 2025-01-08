@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Открытка для Кати</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .header {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            background-image: url('https://img.freepik.com/free-vector/heart-background-desktop-wallpaper-cute-vector_53876-144637.jpg');
+            background-size: cover;
+            padding: 20px;
+        }
+
+        .reasons {
+            margin-top: 20px;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            font-size: 2em;
+            color: #ff69b4;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            transform: scale(1.1);
+        }
+
+        .compliments {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            color: red;
+            display: none;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f5f5dc;
+            transition: background-color 0.3s ease;
+        }
+
+        .compliments.visible {
+            display: block;
+        }
+
+        .compliments li {
+            font-size: 18pt;
+            text-decoration: underline;
+            margin-bottom: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.3s ease;
+        }
+
+        .compliments li:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Люблю тебя, Катя!</h1>
+        <div class="reasons">
+            <h2 class="toggle-button">Причины, по которым люблю тебя</h2>
+            <ul class="compliments" id="complimentsList">
+                <li>❤️ Ты - моя радость и вдохновение.</li>
+                <li>❤️ Твоя улыбка освещает мой день.</li>
+                <li>❤️ Ты - самый красивый человек на свете.</li>
+                <li>❤️ Ты делаешь мир лучше своим присутствием.</li>
+                <li>❤️ Твои глаза сверкают как звезды на небе.</li>
+                <li>❤️ С тобой всегда весело и интересно.</li>
+                <li>❤️ Ты умеешь поддержать в трудную минуту.</li>
+                <li>❤️ Твоя доброта и забота вдохновляют меня.</li>
+                <li>❤️ Ты - моя муза и источник счастья.</li>
+                <li>❤️ Я обожаю твой смех — он как музыка.</li>
+                <li>❤️ Ты - невероятно умная и талантливая личность.</li>
+                <li>❤️ С тобой я чувствую себя по-настоящему счастливым.</li>
+                <li>❤️ Ты - моя поддержка и опора в жизни.</li>
+                <li>❤️ Ты всегда знаешь, что сказать, чтобы поддержать меня.</li>
+                <li>❤️ Ты - мой лучший друг и спутник жизни.</li>
+                <li>❤️ Твоя энергия заряжает позитивом всех вокруг.</li>
+                <li>❤️ Ты умеешь находить радость в мелочах жизни.</li>
+                <li>❤️ Я ценю твою честность и открытость.</li>
+                <li>❤️ Ты - невероятно красивая как внутри, так и снаружи.</li>
+                <li>❤️ С тобой я могу быть самим собой без страха осуждения.</li>
+                <li>❤️ Ты - моя радость и счастье на каждый день!</li>
+                <li>❤️ Ты делаешь меня лучше каждый день.</li>
+                <li>❤️ Твоя доброта не знает границ.</li>
+                <li>❤️ Ты - свет в моем сердце.</li>
+                <li>❤️ Я обожаю проводить время с тобой.</li>
+                <li>❤️ Твои мечты вдохновляют меня на новые свершения.</li>
+                <li>❤️ Ты - самый удивительный человек, которого я знаю.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.querySelector('.toggle-button');
+            const complimentsList = document.getElementById('complimentsList');
+            const complimentsItems = complimentsList.children;
+
+            toggleButton.addEventListener('click', function() {
+                complimentsList.classList.toggle('visible');
+
+                if (complimentsList.classList.contains('visible')) {
+                    for (let i = 0; i < complimentsItems.length; i++) {
+                        setTimeout(() => {
+                            complimentsItems[i].style.opacity = '1';
+                        }, i * 500);
+                    }
+                } else {
+                    for (let item of complimentsItems) {
+                        item.style.opacity = '0';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
