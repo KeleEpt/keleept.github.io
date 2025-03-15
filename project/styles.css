@@ -1,0 +1,180 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Стили для шапки */
+header {
+    background-image: url('img/rock.png');
+    background-size: cover; /* Растягиваем картинку, чтобы она заполнила весь блок */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Затемнение фона */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* Стили для облаков */
+.cloud {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    transition: transform 0.5s ease-out;
+    z-index: 2;
+}
+
+.cloud-left {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cloud-right {
+    right: 50%;
+    transform: translateX(50%);
+}
+
+/* Стили для текста в шапке */
+header h1 {
+    font-size: 3rem;
+    color: white;
+    z-index: 1;
+    position: relative;
+}
+
+header p {
+    font-size: 1.25rem;
+    color: white;
+    z-index: 1;
+    position: relative;
+}
+
+/* Стили для списков с анимацией */
+.list-container {
+    margin-bottom: 2rem;
+}
+
+.list-title {
+    cursor: pointer;
+    color: #4a6cf7;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.list-title:hover {
+    color: #6e8efb;
+}
+
+.animated-list {
+    list-style-type: none;
+    padding-left: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+.animated-list.show {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.animated-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.animated-list li:last-child {
+    border-bottom: none;
+}
+
+/* Стили для карточек */
+.card {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: #4a6cf7;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #555;
+}
+
+.card-footer {
+    background: transparent;
+    border-top: none;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Стили для кнопок */
+.btn-primary {
+    background-color: #4a6cf7;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6e8efb;
+}
+
+/* Стили для основного контента */
+main {
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Стили для подвала */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: #333;
+    color: white;
+}
