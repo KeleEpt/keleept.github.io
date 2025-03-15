@@ -4,14 +4,14 @@
     box-sizing: border-box;
 }
 
-body {
+.body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
 }
 
-header {
+.header {
     position: relative;
     height: 100vh;
     display: flex;
@@ -19,6 +19,26 @@ header {
     align-items: center;
     background: linear-gradient(135deg, #6e8efb, #4a6cf7);
     overflow: hidden;
+}
+header {
+    background-image: url('rock.png'); /* Путь к картинке */
+    background-size: cover; /* Растягиваем картинку на весь фон */
+    background-position: center; /* Центрируем картинку */
+    background-repeat: no-repeat; /* Запрещаем повторение картинки */
+    position: relative;
+    z-index: 1; /* Убедимся, что текст и другие элементы поверх фона */
+}
+
+/* Затемнение фона для лучшей читаемости текста */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Чёрный слой с прозрачностью 40% */
+    z-index: -1; /* Слой под текстом, но над фоном */
 }
 
 .cloud {
@@ -39,22 +59,22 @@ header {
     transform: translateX(50%); /* Начальное положение справа */
 }
 
-h1 {
+.h1 {
     font-size: 3rem;
     color: white;
     z-index: 1; /* Текст под облаками */
     position: relative; /* Чтобы z-index работал */
 }
 
-main {
+.main {
     padding: 2rem;
 }
 
-section {
+.section {
     margin-bottom: 2rem;
 }
 
-footer {
+.footer {
     text-align: center;
     padding: 1rem;
     background: #333;
@@ -199,4 +219,64 @@ footer {
 
 .btn-primary:hover {
     background-color: #6e8efb;
+}
+/* Стили для карточек */
+.card {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-body {
+    flex: 1; /* Растягиваем тело карточки, чтобы кнопка была внизу */
+}
+
+.card-footer {
+    background: transparent;
+    border-top: none;
+    padding: 1rem;
+    text-align: center; /* Центрируем кнопку */
+}
+
+/* Кнопка "Подробнее" */
+.btn-primary {
+    background-color: #4a6cf7;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #6e8efb;
+}
+
+/* Стили для шапки с фиксированным фоном */
+.header {
+    background-image: url('img/rock.png'); /* Путь к картинке */
+    background-size: cover; /* Растягиваем картинку на весь блок */
+    background-position: center; /* Центрируем картинку */
+    background-repeat: no-repeat; /* Запрещаем повторение картинки */
+    background-attachment: fixed; /* Фиксируем фон */
+    position: relative;
+    height: 100vh; /* Высота шапки на весь экран */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Затемнение фона для лучшей читаемости текста */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4); /* Чёрный слой с прозрачностью 40% */
+    z-index: 0; /* Слой под текстом, но над фоном */
 }
