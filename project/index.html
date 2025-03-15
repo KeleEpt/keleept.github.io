@@ -9,15 +9,25 @@
 </head>
 <body>
     <header id="header" class="position-relative d-flex justify-content-center align-items-center overflow-hidden" style="height: 30vh;">
-        <img src="img/cloud.png" alt="Облако 1" class="cloud cloud-left">
-        <img src="img/cloud.png" alt="Облако 2" class="cloud cloud-right">
-        <div class="text-center text-white z-1 position-relative">
-        
-        <h1 fs-4>Марафоны для тех, кто работает с людьми</h1>
+        <!-- Фон шапки -->
+        <div class="background-image"></div>
 
-        <h4>  <p>Программа позволяет в лёгкой форме получить знания и навыки</p> 
-        <p>по управлению своим настроением, учит правильно реагировать на стрессовые ситуации на работе и в жизни</p></h3>
-        <p> <h7>300 + сотрудников уже ощутили позитивные изменения после прохождения марафона</h7></p>
+        <!-- Облака -->
+        <img src="img/cloud.png" alt="Облако 1" class="cloud cloud-left position-absolute">
+        <img src="img/cloud.png" alt="Облако 2" class="cloud cloud-right position-absolute">
+        
+        <!-- Логотип -->
+        <img src="img/logo.png" alt="Логотип" class="logo position-absolute">
+
+        <!-- Тексты -->
+        <div class="header-text header-text-top-left position-absolute">
+            Иногда каждому из нас нужна перезагрузка
+        </div>
+        <div class="header-text header-text-bottom-left position-absolute">
+            300+ сотрудникам марафон уже помог
+        </div>
+        <div class="header-text header-text-bottom-right position-absolute">
+            Расскажем, как начать понимать себя и заботиться о себе
         </div>
     </header>
 
@@ -165,11 +175,17 @@
     const cloudLeft = document.querySelector('.cloud-left');
     const cloudRight = document.querySelector('.cloud-right');
 
+    // Максимальное значение прокрутки для полного движения облаков
+    const maxScroll = 300; // Можно настроить под ваши нужды
+
+    // Ограничиваем scrollPosition, чтобы анимация не продолжалась бесконечно
+    const progress = Math.min(scrollPosition / maxScroll, 1);
+
     // Двигаем левое облако в центр
-    cloudLeft.style.transform = `translate(${50 + scrollPosition * 0.1}%, ${50 + scrollPosition * 0.1}%)`;
+    cloudLeft.style.transform = `translate(${50 * progress}%, ${50 * progress}%)`;
 
     // Двигаем правое облако в центр
-    cloudRight.style.transform = `translate(${-50 - scrollPosition * 0.1}%, ${-50 - scrollPosition * 0.1}%)`;
+    cloudRight.style.transform = `translate(${-50 * progress}%, ${-50 * progress}%)`;
 });
             function toggleList(listId) {
     const list = document.getElementById(listId);
