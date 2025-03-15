@@ -160,16 +160,17 @@
     </footer>
 
     <script>
-        // JavaScript для анимации облаков
         window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const cloudLeft = document.querySelector('.cloud-left');
-            const cloudRight = document.querySelector('.cloud-right');
+    const scrollPosition = window.scrollY;
+    const cloudLeft = document.querySelector('.cloud-left');
+    const cloudRight = document.querySelector('.cloud-right');
 
-            // Сдвигаем облака в стороны
-            cloudLeft.style.transform = `translateX(${-90 - scrollPosition * 0.8}%)`;
-            cloudRight.style.transform = `translateX(${90 + scrollPosition * 0.8}%)`;
-        });
+    // Двигаем левое облако в центр
+    cloudLeft.style.transform = `translate(${50 + scrollPosition * 0.1}%, ${50 + scrollPosition * 0.1}%)`;
+
+    // Двигаем правое облако в центр
+    cloudRight.style.transform = `translate(${-50 - scrollPosition * 0.1}%, ${-50 - scrollPosition * 0.1}%)`;
+});
             function toggleList(listId) {
     const list = document.getElementById(listId);
     list.classList.toggle("show");

@@ -37,26 +37,47 @@ header::before {
     background: rgba(0, 0, 0, 0.4);
     z-index: 0;
 }
-
 /* Стили для облаков */
 .cloud {
-    position: absolute;
     width: 150px;
     height: auto;
-    transition: transform 0.5s ease-out;
-    z-index: 2;
+    opacity: 0.6;
+    z-index: 1;
+    position: absolute;
+    transition: transform 1s ease-out;
 }
 
+/* Левое облако */
 .cloud-left {
-    left: 50%;
-    transform: translateX(-50%);
+    top: -50px;
+    left: -50px;
+    transform: translate(0, 0);
 }
 
+/* Правое облако */
 .cloud-right {
-    right: 50%;
-    transform: translateX(50%);
+    bottom: -50px;
+    right: -50px;
+    transform: translate(0, 0);
 }
 
+/* Анимация при наведении */
+header:hover .cloud-left {
+    transform: translate(50%, 50%);
+}
+
+header:hover .cloud-right {
+    transform: translate(-50%, -50%);
+}
+
+/* Анимация при наведении */
+header:hover .cloud-left {
+    transform: translate(50%, 50%) translateX(-20%);
+}
+
+header:hover .cloud-right {
+    transform: translate(-50%, -50%) translateX(20%);
+}
 /* Стили для текста в шапке */
 header h1 {
     font-size: 3rem;
