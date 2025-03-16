@@ -12,7 +12,7 @@ body {
     color: #333;
 }
 
-/* Стили для шапки */
+//* Стили для шапки */
 header {
     position: relative;
     height: 30vh;
@@ -72,9 +72,8 @@ header::before {
     transform: translate(50%, 50%);
 }
 
-/* Логотип */
-.logo {
-    width: 400px;
+logo {
+    width: 300px; /* Размер для ПК */
     height: auto;
     z-index: 3; /* Логотип на самом верхнем слое */
     position: absolute;
@@ -83,30 +82,52 @@ header::before {
     transform: translate(-50%, -50%);
 }
 
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .logo {
+        width: 50vw; /* Логотип занимает 50% ширины экрана */
+        max-width: 300px; /* Максимальный размер (как на ПК) */
+    }
+}
+
 /* Стили для текстов */
 .header-text {
     color: white;
-    font-size: 1rem;
     z-index: 2; /* Тексты поверх затемнения, но под логотипом */
     position: absolute;
+    font-size: 2vw; /* Размер пропорционален ширине экрана */
+    font-family: 'Montserrat', sans-serif; /* Подключаем шрифт Montserrat */
+    font-weight: 500; /* Устанавливаем вес Medium (500) */
 }
 
-/* Текст в левой верхней части */
+/* Адаптация для маленьких экранов */
+@media (max-width: 768px) {
+    .header-text {
+        font-size: 1.5vw; /* Уменьшаем шрифт на мобильных устройствах */
+    }
+}
+
+/* Адаптация для больших экранов */
+@media (min-width: 1200px) {
+    .header-text {
+        font-size: 1rem; /* Фиксированный размер на больших экранах */
+    }
+}
+
+/* Позиционирование текстов */
 .header-text-top-left {
-    top: 10px;
-    left: 10px;
+    top: 5%;
+    left: 5%;
 }
 
-/* Текст в левой нижней части */
 .header-text-bottom-left {
-    bottom: 10px;
-    left: 10px;
+    bottom: 5%;
+    left: 5%;
 }
 
-/* Текст в правой нижней части */
 .header-text-bottom-right {
-    bottom: 10px;
-    right: 10px;
+    bottom: 5%;
+    right: 5%;
     text-align: right;
 }
 
