@@ -6,13 +6,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-color: #998a6e !important; /* Принудительно изменяем фон */
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    color: #999999;
 }
 
-//* Стили для шапки */
+/* Остальные стили остаются без изменений */
 header {
     position: relative;
     height: 30vh;
@@ -22,7 +22,6 @@ header {
     overflow: hidden;
 }
 
-/* Фон шапки */
 .background-image {
     position: absolute;
     top: 0;
@@ -36,7 +35,6 @@ header {
     z-index: 0;
 }
 
-/* Затемнение фона */
 header::before {
     content: '';
     position: absolute;
@@ -48,73 +46,65 @@ header::before {
     z-index: 1;
 }
 
-/* Стили для облаков */
 .cloud {
     width: 150px;
     height: auto;
     opacity: 0.6;
-    z-index: 2; /* Облака поверх затемнения */
+    z-index: 2;
     position: absolute;
     transition: transform 0.5s ease-out;
 }
 
-/* Левое облако */
 .cloud-left {
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
 }
 
-/* Правое облако */
 .cloud-right {
     bottom: 0;
     right: 0;
     transform: translate(50%, 50%);
 }
 
-logo {
-    width: 300px; /* Размер для ПК */
+.logo {
+    width: 300px;
     height: auto;
-    z-index: 3; /* Логотип на самом верхнем слое */
+    z-index: 3;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
     .logo {
-        width: 50vw; /* Логотип занимает 50% ширины экрана */
-        max-width: 300px; /* Максимальный размер (как на ПК) */
+        width: 50vw;
+        max-width: 300px;
     }
 }
 
-/* Стили для текстов */
 .header-text {
-    color: white;
-    z-index: 2; /* Тексты поверх затемнения, но под логотипом */
+    color: #999999;
+    z-index: 2;
     position: absolute;
-    font-size: 2vw; /* Размер пропорционален ширине экрана */
-    font-family: 'Montserrat', sans-serif; /* Подключаем шрифт Montserrat */
-    font-weight: 500; /* Устанавливаем вес Medium (500) */
+    font-size: 2vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
 }
 
-/* Адаптация для маленьких экранов */
 @media (max-width: 768px) {
     .header-text {
-        font-size: 1.5vw; /* Уменьшаем шрифт на мобильных устройствах */
+        font-size: 1.5vw;
     }
 }
 
-/* Адаптация для больших экранов */
 @media (min-width: 1200px) {
     .header-text {
-        font-size: 1rem; /* Фиксированный размер на больших экранах */
+        font-size: 1.2rem;
     }
 }
 
-/* Позиционирование текстов */
 .header-text-top-left {
     top: 5%;
     left: 5%;
@@ -131,19 +121,18 @@ logo {
     text-align: right;
 }
 
-/* Стили для блоков с результатами */
 .list-container {
     margin-bottom: 2rem;
-    background-color: #f8f9fa;
+    background-color: #6e4c29;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #999999;
 }
 
-/* Заголовки блоков */
 .list-title {
     cursor: pointer;
-    color: #000;
+    color: #999999;
     font-weight: bold;
     margin-bottom: 1rem;
     transition: color 0.3s ease;
@@ -152,17 +141,15 @@ logo {
 }
 
 .list-title:hover {
-    color: #333;
+    color: #cccccc;
 }
 
-/* Стрелочка */
 .arrow {
     margin-left: 0.5rem;
     font-size: 1.2rem;
-    color: #000;
+    color: #999999;
 }
 
-/* Стили для списков */
 .animated-list {
     list-style-type: none;
     padding-left: 0;
@@ -180,22 +167,21 @@ logo {
 .animated-list li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #eee;
-    color: #000;
+    color: #999999;
 }
 
 .animated-list li:last-child {
     border-bottom: none;
 }
 
-/* Стили для карточек */
 .card {
-    display: flex;
-    flex-direction: column;
+    background-color: #4c2c29;
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+    color: #999999;
 }
 
 .card:hover {
@@ -203,41 +189,19 @@ logo {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.card-body {
-    flex: 1;
-    padding: 1.5rem;
-}
-
-.card-title {
-    color: #4a6cf7;
-    font-weight: bold;
-}
-
-.card-text {
-    color: #555;
-}
-
-.card-footer {
-    background: transparent;
-    border-top: none;
-    padding: 1rem;
-    text-align: center;
-}
-
-/* Стили для кнопок */
 .btn-primary {
-    background-color: #4a6cf7;
+    background-color: #4c2c29;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    color: #999999;
 }
 
 .btn-primary:hover {
-    background-color: #6e8efb;
+    background-color: #5a3a37;
 }
 
-/* Стили для основного контента */
 main {
     padding: 2rem;
 }
@@ -246,10 +210,59 @@ section {
     margin-bottom: 2rem;
 }
 
-/* Стили для подвала */
 footer {
     text-align: center;
     padding: 1rem;
-    background: #333;
-    color: white;
+    background: #4c2c29;
+    color: #999999;
+}
+/* Стили для карточек с уровнями (Эмоционально-личностный, Телесные практики, Коммуникативные навыки) */
+.key-levels .card {
+    background-color: #6e4c29; /* Новый цвет фона для карточек */
+    color: #999999; /* Цвет текста */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.key-levels .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Стили для карточек с программами (Выдыхай, Чувствуй, Венеры) */
+.programs .card {
+    background-color: #6e4c29; /* Новый цвет фона для карточек */
+    color: #999999; /* Цвет текста */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.programs .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+/* Стили для текста в блоке с описанием программы марафона */
+.marathon-description .lead {
+    color: #f3efec; /* Новый цвет текста (белый) */
+    font-size: 1.2rem; /* Размер текста */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 2rem; /* Отступ снизу */
+}
+
+/* Стили для заголовка "3 ключевых уровня работы" */
+.key-levels h2 {
+    color: #f3efec; /* Новый цвет текста (белый) */
+    font-size: 2rem; /* Размер текста */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 2rem; /* Отступ снизу */
+}
+
+/* Стили для заголовка "Три блока с основными программами" */
+.programs h2 {
+    color: #f3efec; /* Новый цвет текста (белый) */
+    font-size: 2rem; /* Размер текста */
+    text-align: center; /* Выравнивание по центру */
+    margin-bottom: 2rem; /* Отступ снизу */
 }
