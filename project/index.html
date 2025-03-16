@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Марафоны для тех, кто работает с людьми</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Подключаем шрифт Montserrat Medium -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header id="header" class="position-relative d-flex justify-content-center align-items-center overflow-hidden" style="height: 30vh;">
@@ -34,173 +34,188 @@
     </header>
 
     <main class="container py-5">
-    <div class="row">
-        <!-- Блок "Результат для компании" (слева) -->
-        <div class="col-md-6">
-            <div class="list-container">
-                <h3 class="list-title" onclick="toggleList('company-list')">
-                    Результат для компании <span class="arrow">↓</span>
-                </h3>
-                <ul id="company-list" class="animated-list">
-                    <li>Создание уникального клиентского опыта</li>
-                    <li>Повышение удовлетворённости клиентов – рост CSI на 10% после проведения марафона</li>
-                    <li>Повышение удовлетворённости сотрудников - рост ENPS на 5% после проведения марафона</li>
-                    <li>Сокращение оттока сотрудников - снижение затрат на найм и обучение</li>
-                    <li>Простые техники и удобный формат - позволяют помогать сотрудникам без отрыва от работы</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Блок "Результат для сотрудника" (справа) -->
-        <div class="col-md-6">
-            <div class="list-container">
-                <h3 class="list-title" onclick="toggleList('employee-list')">
-                    Результат для сотрудника <span class="arrow">↓</span>
-                </h3>
-                <ul id="employee-list" class="animated-list">
-                    <li>Научиться отслеживать своё эмоциональное состояние «здесь и сейчас»</li>
-                    <li>Не позволять негативу пагубно влиять на своё самочувствие</li>
-                    <li>Помочь своему разуму и телу «перезагрузиться»</li>
-                    <li>Не попадать в «замкнутый круг» негатива при общении с клиентом</li>
-                    <li>Поддерживать своё эмоциональное равновесие</li>
-                    <li>Получать удовольствие от работы</li>
-                    <li>Использовать понятные инструменты, которые не займут много времени</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</main>
-        <!-- Блок с описанием программы марафона -->
-<section class="marathon-description my-5">
-    <div class="container">
-        <p class="lead">
-            Программа марафона позволяет научиться поддерживать своё эмоциональное равновесие каждый день. Из предложенных практик, точно найдутся те, которые подойдут каждому сотруднику. Полученные инструменты легко применяемы в работе и в жизни.
-        </p>
-    </div>
-</section>
-
-<!-- Блок с тремя ключевыми уровнями -->
-<section class="key-levels">
-    <div class="container">
-        <h2 class="text-center mb-4">3 ключевых уровня работы во время прохождения программы:</h2>
         <div class="row">
-            <!-- Эмоционально-личностный -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title">Эмоционально-личностный</h3>
-                        <p class="card-text">
-                            Работа над своим внутренним состоянием. Отработка навыка выделять из повседневности позитивные моменты. Развитие умения поддерживать и понимать себя.
-                        </p>
-                    </div>
+            <!-- Блок "Результат для компании" (слева) -->
+            <div class="col-md-6">
+                <div class="list-container">
+                    <h3 class="list-title" onclick="toggleList('company-list')">
+                        Результат для компании <span class="arrow">↓</span>
+                    </h3>
+                    <ul id="company-list" class="animated-list">
+                        <li>Создание уникального клиентского опыта</li>
+                        <li>Повышение удовлетворённости клиентов – рост CSI на 10% после проведения марафона</li>
+                        <li>Повышение удовлетворённости сотрудников - рост ENPS на 5% после проведения марафона</li>
+                        <li>Сокращение оттока сотрудников - снижение затрат на найм и обучение</li>
+                        <li>Простые техники и удобный формат - позволяют помогать сотрудникам без отрыва от работы</li>
+                    </ul>
                 </div>
             </div>
-            <!-- Телесные практики -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title">Телесные практики</h3>
-                        <p class="card-text">
-                            Практические упражнения для снятия стресса и расслабления.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- Коммуникативные навыки -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title">Коммуникативные навыки</h3>
-                        <p class="card-text">
-                            Формирование навыка работы с негативом при общении с клиентами. Умение правильно реагировать на негатив, решать вопрос клиента и не пострадать самому.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Блок с тремя программами -->
-<section class="programs">
-    <div class="container">
-        <h2 class="text-center mb-4">Три блока с основными программами</h2>
-        <div class="row">
-            <!-- Выдыхай -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title">Выдыхай</h3>
-                        <p class="card-text">
-                            Марафон для заботы о себе. Управление своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами.
-                        </p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href="vydihay.html" class="btn btn-primary">Подробнее</a>
-                    </div>
+            <!-- Блок "Результат для сотрудника" (справа) -->
+            <div class="col-md-6">
+                <div class="list-container">
+                    <h3 class="list-title" onclick="toggleList('employee-list')">
+                        Результат для сотрудника <span class="arrow">↓</span>
+                    </h3>
+                    <ul id="employee-list" class="animated-list">
+                        <li>Научиться отслеживать своё эмоциональное состояние «здесь и сейчас»</li>
+                        <li>Не позволять негативу пагубно влиять на своё самочувствие</li>
+                        <li>Помочь своему разуму и телу «перезагрузиться»</li>
+                        <li>Не попадать в «замкнутый круг» негатива при общении с клиентом</li>
+                        <li>Поддерживать своё эмоциональное равновесие</li>
+                        <li>Получать удовольствие от работы</li>
+                        <li>Использовать понятные инструменты, которые не займут много времени</li>
+                    </ul>
                 </div>
             </div>
-            <!-- Чувствуй -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title">Чувствуй</h3>
-                        <p class="card-text">
-                            Марафон для развития умения понимать себя и других. Поддержка своего эмоционального равновесия.
-                        </p>
+        </div>
+    </main>
+
+    <!-- Блок с описанием программы марафона -->
+    <section class="marathon-description my-5">
+        <div class="container">
+            <p class="lead text-center">
+                Программа марафона позволяет научиться поддерживать своё эмоциональное равновесие каждый день. Из предложенных практик, точно найдутся те, которые подойдут каждому сотруднику. Полученные инструменты легко применяемы в работе и в жизни.
+            </p>
+        </div>
+    </section>
+
+    <!-- Блок с тремя ключевыми уровнями -->
+    <section class="key-levels my-5">
+        <div class="container">
+            <h2 class="text-center mb-4">3 ключевых уровня работы во время прохождения программы:</h2>
+            <div class="row">
+                <!-- Эмоционально-личностный -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Эмоционально-личностный</h3>
+                            <p class="card-text">
+                                Работа над своим внутренним состоянием. Отработка навыка выделять из повседневности позитивные моменты. Развитие умения поддерживать и понимать себя.
+                            </p>
                         </div>
-                    <div class="card-footer text-center">
-                        <a href="chustva.html" class="btn btn-primary">Подробнее</a>
                     </div>
                 </div>
-            </div>
-            <!-- Венеры -->
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h3 class="card-title">Венеры</h3>
-                        <p class="card-text">
-                            Марафон внутренней и внешней красоты. Инструменты для поддержки эмоционального состояния и мастер-классы по созданию макияжа, прически и рабочего образа. Подходит для сотрудников, которые работают в очном формате.
-                        </p>
+                <!-- Телесные практики -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Телесные практики</h3>
+                            <p class="card-text">
+                                Практические упражнения для снятия стресса и расслабления.
+                            </p>
                         </div>
-                    <div class="card-footer text-center">
-                        <a href="chustva.html" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+                <!-- Коммуникативные навыки -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Коммуникативные навыки</h3>
+                            <p class="card-text">
+                                Формирование навыка работы с негативом при общении с клиентами. Умение правильно реагировать на негатив, решать вопрос клиента и не пострадать самому.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Блок с тремя программами -->
+    <section class="programs my-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Три блока с основными программами</h2>
+            <div class="row">
+                <!-- Выдыхай -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Выдыхай</h3>
+                            <p class="card-text">
+                                Марафон для заботы о себе. Управление своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами.
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="vydihay.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Чувствуй -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Чувствуй</h3>
+                            <p class="card-text">
+                                Марафон для развития умения понимать себя и других. Поддержка своего эмоционального равновесия.
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="chustva.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Венеры -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Венеры</h3>
+                            <p class="card-text">
+                                Марафон внутренней и внешней красоты. Инструменты для поддержки эмоционального состояния и мастер-классы по созданию макияжа, прически и рабочего образа. Подходит для сотрудников, которые работают в очном формате.
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="chustva.html" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     </main>
     <footer>
         <p>&copy; </p>
     </footer>
 
     <script>
+        // Анимация появления элементов
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            const headerTexts = document.querySelectorAll('.header-text');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => observer.observe(card));
+            headerTexts.forEach(text => observer.observe(text));
+        });
+
+        // Анимация облаков
         window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY;
-    const cloudLeft = document.querySelector('.cloud-left');
-    const cloudRight = document.querySelector('.cloud-right');
+            const scrollPosition = window.scrollY;
+            const cloudLeft = document.querySelector('.cloud-left');
+            const cloudRight = document.querySelector('.cloud-right');
 
-    // Максимальное значение прокрутки для полного движения облаков
-    const maxScroll = 300; // Можно настроить под ваши нужды
+            const maxScroll = 300;
+            const progress = Math.min(scrollPosition / maxScroll, 1);
 
-    // Ограничиваем scrollPosition, чтобы анимация не продолжалась бесконечно
-    const progress = Math.min(scrollPosition / maxScroll, 1);
+            cloudLeft.style.transform = `translate(${50 * progress}%, ${50 * progress}%)`;
+            cloudRight.style.transform = `translate(${-50 * progress}%, ${-50 * progress}%)`;
+        });
 
-    // Двигаем левое облако в центр
-    cloudLeft.style.transform = `translate(${50 * progress}%, ${50 * progress}%)`;
+        // Переключение списков
+        function toggleList(listId) {
+            const list = document.getElementById(listId);
+            list.classList.toggle("show");
 
-    // Двигаем правое облако в центр
-    cloudRight.style.transform = `translate(${-50 * progress}%, ${-50 * progress}%)`;
-});
-            function toggleList(listId) {
-    const list = document.getElementById(listId);
-    list.classList.toggle("show");
-
-    // Добавляем/убираем фон
-    const listContainer = list.parentElement;
-    listContainer.classList.toggle("active-background");
-}
+            const listContainer = list.parentElement;
+            listContainer.classList.toggle("active-background");
+        }
     </script>
 </body>
+</html>
