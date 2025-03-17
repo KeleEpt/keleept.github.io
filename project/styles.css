@@ -10,7 +10,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500; /* Применяем Montserrat Medium */
     line-height: 1.6;
-    color: #e1dae2;
+    color: #e0bba2;
 }
 
 /* Стили для шапки */
@@ -89,7 +89,7 @@ header::before {
 
 /* Тексты в шапке */
 .header-text {
-    color: #e1dae2;
+    color: #e0bba2;
     z-index: 2;
     position: absolute;
     font-size: 2vw;
@@ -129,7 +129,7 @@ header::before {
 .list-container {
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 2rem;
-    background-color: #e1dae2;
+    background-color: #e0bba2;
     padding: 1rem;
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -227,7 +227,7 @@ footer {
 /* Стили для карточек с уровнями (Эмоционально-личностный, Телесные практики, Коммуникативные навыки) */
 .key-levels .card {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Новый цвет фона для карточек */
+    background-color: #e0bba2; /* Новый цвет фона для карточек */
     color: #999999; /* Цвет текста */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -248,7 +248,7 @@ footer {
 /* Стили для карточек с программами (Выдыхай, Чувствуй, Венеры) */
 .programs .card {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Новый цвет фона для карточек */
+    background-color: #e0bba2; /* Новый цвет фона для карточек */
     color: #999999; /* Цвет текста */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -311,7 +311,7 @@ footer {
 /* Стили для блока с отзывами */
 .reviews {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Цвет фона блока */
+    background-color: #e0bba2; /* Цвет фона блока */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -356,7 +356,7 @@ footer {
 /* Стили для блока "Автор марафона" */
 .author {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Цвет фона блока */
+    background-color: #e0bba2; /* Цвет фона блока */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -365,13 +365,13 @@ footer {
 .author h2 {
     font-family: 'Montserrat', sans-serif;
     color: #f3efec; /* Цвет заголовка */
-    font-size: 2rem;
+    font-size: 20px;
     text-align: center;
     margin-bottom: 2rem;
 }
 
 .author-photo img {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     border: 4px solid #f3efec; /* Рамка вокруг фото */
 }
@@ -383,18 +383,22 @@ footer {
 
 .author-name {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.75rem;
+    font-size: 1rem;
     margin-bottom: 1.5rem;
 }
 
 .author-details {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
     list-style-type: none;
     padding-left: 0;
 }
 
 .author-details li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 0.75rem;
-    font-size: 1rem;
     line-height: 1.6;
 }
 
@@ -428,7 +432,7 @@ footer {
 }
 
 .results-list li, .marathon-list li {
-    background-color: #e1dae2;
+    background-color: #e0bba2;
     color: #f3efec;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -494,7 +498,7 @@ footer {
 /* Стили для кнопки "На главную" */
 .btn-back {
     display: inline-block;
-    background-color: #e1dae2;
+    background-color: #e0bba2;
     color: #f3efec;
     padding: 0.5rem 1rem;
     border-radius: 25px;
