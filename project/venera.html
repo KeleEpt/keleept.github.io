@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Венеры</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Стили для страницы "Венеры" */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white; /* Белый фон */
+            overflow: hidden; /* Убираем скролл */
+        }
+
+        .construction-message {
+            position: absolute;
+            top: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            color: black; /* Черный текст */
+            z-index: 2; /* Над гифкой */
+        }
+
+        .cat-gif {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Растягиваем гифку на весь экран */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Под текстом */
+        }
+    </style>
+</head>
+<body>
+    <!-- Сообщение "Работаем над страницей" -->
+    <div class="construction-message">
+        Работаем над страницей
+    </div>
+
+    <!-- Гифка котика -->
+    <img src="img/cat.gif" alt="Котик работает" class="cat-gif">
+</body>
+</html>

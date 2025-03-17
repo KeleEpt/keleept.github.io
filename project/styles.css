@@ -510,3 +510,204 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+/* Стили для футера */
+/* Стили для футера по умолчанию */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #713f2b; /* Новый цвет фона футера */
+    color: #f3efec; /* Цвет текста футера */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* Разделяет элементы по краям */
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.qr-code img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Стили для кнопки Telegram */
+/* Стили для кнопки Telegram на всех страницах */
+.btn-telegram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #28a0d9; /* Цвет фона */
+    color: #ffffff; /* Цвет текста */
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    border: 2px solid #1c7fb3; /* Обводка кнопки */
+}
+
+.btn-telegram:hover {
+    background-color: #1c7fb3; /* Цвет фона при наведении */
+    border-color: #28a0d9; /* Цвет обводки при наведении */
+    transform: translateY(-3px);
+}
+
+.telegram-logo {
+    width: 24px;
+    height: 24px;
+}
+
+/* Стили для кнопки Telegram на странице "Чувствуй" */
+.feel-page .btn-telegram {
+    background-color: #28a0d9; /* Цвет фона */
+    color: #ffffff; /* Цвет текста */
+    border: 2px solid #1c7fb3; /* Обводка кнопки */
+}
+
+.feel-page .btn-telegram:hover {
+    background-color: #1c7fb3; /* Цвет фона при наведении */
+    border-color: #28a0d9; /* Цвет обводки при наведении */
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Элементы в столбик на мобильных */
+        align-items: center;
+    }
+
+    .qr-code img {
+        max-width: 120px;
+    }
+
+    .btn-telegram {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Общие стили для страницы "Чувствуй" */
+body.feel-page {
+    background-color: #415526 !important; /* Новый цвет фона */
+    color: #f3efec; /* Цвет текста для контраста */
+}
+
+/* Шапка для страницы "Чувствуй" */
+.feel-page header {
+    background-color: #415526; /* Цвет фона шапки */
+}
+
+.feel-page .background-image {
+    background-image: url('img/forrest.png'); /* Фон для страницы "Чувствуй" */
+}
+
+/* Стили для списков и текста */
+.feel-page .animated-list-v li {
+    background-color: #5a3a37; /* Цвет фона элементов списка */
+    color: #f3efec; /* Цвет текста */
+}
+
+.feel-page .text-emphasis {
+    color: #f3efec; /* Цвет текста с акцентом */
+}
+
+/* Кнопки */
+.feel-page .btn-primary {
+    background-color: #bec8df !important; /* Цвет кнопок */
+    color: #415526 !important; /* Цвет текста кнопок */
+}
+
+.feel-page .btn-primary:hover {
+    background-color: #a58a6e !important; /* Цвет кнопок при наведении */
+}
+
+/* Футер для страницы "Чувствуй" */
+/* Стили для футера страницы "Чувствуй" */
+.feel-page footer {
+    background-color: #713f2b; /* Новый цвет фона футера */
+    color: #f3efec; /* Цвет текста футера */
+}
+
+.feel-page .btn-telegram {
+    background-color: #28a0d9; /* Цвет кнопки Telegram */
+    color: #ffffff; /* Цвет текста кнопки Telegram */
+}
+
+.feel-page .btn-telegram:hover {
+    background-color: #1c7fb3; /* Цвет кнопки Telegram при наведении */
+}
+/* Стили для карточек с отзывами */
+.review-card {
+    background-color: #957a62; /* Цвет фона карточки */
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Шапка отзыва (фото + имя) */
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.review-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Круглая рамка */
+    object-fit: cover;
+    margin-right: 1rem;
+    border: 2px solid #f3efec; /* Обводка фото */
+}
+
+.review-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #f3efec; /* Цвет текста */
+}
+
+/* Текст отзыва */
+.review-text {
+    font-size: 0.95rem;
+    color: #f3efec; /* Цвет текста */
+    line-height: 1.6;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .review-card {
+        padding: 1rem;
+    }
+
+    .review-photo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .review-name {
+        font-size: 1rem;
+    }
+
+    .review-text {
+        font-size: 0.9rem;
+    }
+}
