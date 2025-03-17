@@ -6,11 +6,11 @@
 }
 
 body {
-    background-color: #998a6e !important; /* Принудительно изменяем фон */
+    background-color: #feefe8 !important; /* Принудительно изменяем фон */
     font-family: 'Montserrat', sans-serif;
     font-weight: 500; /* Применяем Montserrat Medium */
     line-height: 1.6;
-    color: #999999;
+    color: #e1dae2;
 }
 
 /* Стили для шапки */
@@ -89,7 +89,7 @@ header::before {
 
 /* Тексты в шапке */
 .header-text {
-    color: #999999;
+    color: #e1dae2;
     z-index: 2;
     position: absolute;
     font-size: 2vw;
@@ -132,12 +132,12 @@ header::before {
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #999999;
+    color: #e1dae2;
 }
 
 .list-title {
     cursor: pointer;
-    color: #999999;
+    color: #e1dae2;
     font-weight: bold;
     margin-bottom: 1rem;
     display: flex;
@@ -147,7 +147,7 @@ header::before {
 .arrow {
     margin-left: 0.5rem;
     font-size: 1.2rem;
-    color: #999999;
+    color: #e1dae2;
 }
 
 .animated-list {
@@ -160,7 +160,7 @@ header::before {
 .animated-list li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #eee;
-    color: #999999;
+    color: #e1dae2;
 }
 
 .animated-list li:last-child {
@@ -256,7 +256,7 @@ footer {
 
 /* Стили для текста в блоке с описанием программы марафона */
 .marathon-description .lead {
-    color: #f3efec; /* Новый цвет текста (белый) */
+    color: #849aa7; /* Новый цвет текста (белый) */
     font-size: 1.2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -264,7 +264,7 @@ footer {
 
 /* Стили для заголовка "3 ключевых уровня работы" */
 .key-levels h2 {
-    color: #f3efec; /* Новый цвет текста (белый) */
+    color: #849aa7; /* Новый цвет текста (белый) */
     font-size: 2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -272,7 +272,7 @@ footer {
 
 /* Стили для заголовка "Три блока с основными программами" */
 .programs h2 {
-    color: #f3efec; /* Новый цвет текста (белый) */
+    color: #849aa7; /* Новый цвет текста (белый) */
     font-size: 2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
