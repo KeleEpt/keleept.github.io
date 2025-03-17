@@ -153,7 +153,7 @@ header::before {
 .animated-list {
     list-style-type: none;
     padding-left: 0;
-    max-height: 290px; /* Убираем скрытие списков */
+    max-height: 400px; /* Убираем скрытие списков */
     opacity: 1; /* Убираем скрытие списков */
 }
 
