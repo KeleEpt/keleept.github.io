@@ -176,72 +176,48 @@
     </section>
 
     <!-- Блок с отзывами -->
-    <!-- Блок с отзывами -->
     <section class="reviews my-5">
         <div class="container">
             <h2 class="text-center mb-4">Отзывы</h2>
-            <!-- Контейнер для Swiper -->
-            <div class="swiper">
-                <!-- Обертка для слайдов -->
-                <div class="swiper-wrapper">
-                    <!-- Слайды с отзывами -->
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 1" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 2" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 3" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 4" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 5" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 6" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 7" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 8" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 9" class="img-fluid">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="review-image">
-                            <img src="img/otziiv.jpg" alt="Отзыв 10" class="img-fluid">
-                        </div>
-                    </div>
+            <!-- Контейнер для отзывов -->
+            <div class="review-grid">
+                <!-- Отзывы -->
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 1" class="review-image">
                 </div>
-                <!-- Кнопки навигации -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 2" class="review-image">
+                </div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 3" class="review-image">
+                </div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 4" class="review-image">
+                </div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 5" class="review-image">
+                </div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 6" class="review-image">
+                </div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 7" class="review-image">
+                </div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 8" class="review-image">
+                </div>
+                <div class="review-item">
+                    <img src="img/otziiv.jpg" alt="Отзыв 9" class="review-image">
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Модальное окно для увеличенного изображения -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
 
     <!-- Блок "Автор марафона" -->
     <section class="author my-5">
@@ -276,48 +252,27 @@
         <p>&copy; </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Инициализация Swiper
-        const swiper = new Swiper('.swiper', {
-            slidesPerView: 3, // Показывать 3 слайда одновременно
-            spaceBetween: 20, // Расстояние между слайдами
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                // Адаптация для мобильных устройств
-                320: {
-                    slidesPerView: 1,
-                },
-                768: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
-        });
-
-        // Эффект увеличения при клике
+        // Открытие модального окна с увеличенным изображением
         document.querySelectorAll('.review-image').forEach(image => {
             image.addEventListener('click', () => {
-                // Убираем увеличение у всех изображений
-                document.querySelectorAll('.review-image').forEach(img => {
-                    img.classList.remove('zoomed');
-                });
-                // Увеличиваем текущее изображение
-                image.classList.toggle('zoomed');
+                const modal = document.getElementById('modal');
+                const modalImg = document.getElementById('modal-img');
+                modal.style.display = 'block';
+                modalImg.src = image.src;
             });
         });
 
-        // Закрытие увеличенного изображения при клике вне его
-        document.addEventListener('click', (event) => {
-            if (!event.target.closest('.review-image')) {
-                document.querySelectorAll('.review-image').forEach(img => {
-                    img.classList.remove('zoomed');
-                });
+        // Закрытие модального окна
+        document.querySelector('.close').addEventListener('click', () => {
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        // Закрытие модального окна при клике вне изображения
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
             }
         });
     </script>
