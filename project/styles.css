@@ -186,7 +186,7 @@ header::before {
 
 /* Стили для кнопок */
 .btn-primary {
-    background-color: #92745a !important; /* Цвет фона */
+    background-color: #bec8df !important; /* Цвет фона */
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
@@ -358,7 +358,7 @@ footer {
 }
 
 .author-info {
-    color: #f3efec; /* Цвет текста */
+    color: #e1dae2; /* Цвет текста */
 }
 
 .author-name {
