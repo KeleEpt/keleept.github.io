@@ -16,7 +16,7 @@ body {
 /* Стили для шапки */
 header {
     position: relative;
-    height: 40vh; /* Изменено на 40% от высоты страницы */
+    height: 40%; /* 40% от высоты страницы */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,12 +133,13 @@ header::before {
     padding: 1rem;
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #999999;
+    color: #f3efec;
+
 }
 
 .list-title {
     cursor: pointer;
-    color: #999999;
+    color: #f3efec;
     font-weight: bold;
     margin-bottom: 1rem;
     display: flex;
@@ -148,7 +149,7 @@ header::before {
 .arrow {
     margin-left: 0.5rem;
     font-size: 1.2rem;
-    color: #999999;
+    color: #f3efec;
 }
 
 .animated-list {
@@ -161,7 +162,7 @@ header::before {
 .animated-list li {
     padding: 0.5rem 0;
     border-bottom: 1px solid #eee;
-    color: #999999;
+    color: #f3efec;
 }
 
 .animated-list li:last-child {
@@ -177,7 +178,7 @@ header::before {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
-    color: #999999;
+    color: #f3efec;
     margin-bottom: 1.5rem; /* Отступ между карточками */
 }
 
@@ -220,14 +221,14 @@ footer {
     text-align: center;
     padding: 1rem;
     background: #4c2c29;
-    color: #999999;
+    color: #f3efec;
 }
 
 /* Стили для карточек с уровнями (Эмоционально-личностный, Телесные практики, Коммуникативные навыки) */
 .key-levels .card {
     font-family: 'Montserrat', sans-serif;
     background-color: #e0bba2; /* Новый цвет фона для карточек */
-    color: #999999; /* Цвет текста */
+    color: #f3efec; /* Цвет текста */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -248,7 +249,7 @@ footer {
 .programs .card {
     font-family: 'Montserrat', sans-serif;
     background-color: #e0bba2; /* Новый цвет фона для карточек */
-    color: #999999; /* Цвет текста */
+    color: #f3efec; /* Цвет текста */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -268,7 +269,7 @@ footer {
 /* Стили для текста в блоке с описанием программы марафона */
 .marathon-description .lead {
     font-family: 'Montserrat', sans-serif;
-    color: #849aa7; /* Новый цвет текста (белый) */
+    color: #834f4b; /* Новый цвет текста (белый) */
     font-size: 1.2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -277,7 +278,7 @@ footer {
 /* Стили для заголовка "3 ключевых уровня работы" */
 .key-levels h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #849aa7; /* Новый цвет текста (белый) */
+    color: #834f4b; /* Новый цвет текста (белый) */
     font-size: 2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -286,7 +287,7 @@ footer {
 /* Стили для заголовка "Три блока с основными программами" */
 .programs h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #849aa7; /* Новый цвет текста (белый) */
+    color: #834f4b; /* Новый цвет текста (белый) */
     font-size: 2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -377,7 +378,7 @@ footer {
 
 .author-info {
     font-family: 'Montserrat', sans-serif;
-    color: #999999; /* Цвет текста */
+    color: #f3efec; /* Цвет текста */
 }
 
 .author-name {
