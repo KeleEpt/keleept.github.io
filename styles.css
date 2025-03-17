@@ -6,10 +6,11 @@
 }
 
 body {
-    background-color: #998a6e !important; /* Принудительно изменяем фон */
+    background-color: #feefe8 !important; /* Принудительно изменяем фон */
     font-family: 'Montserrat', sans-serif;
+    font-weight: 500; /* Применяем Montserrat Medium */
     line-height: 1.6;
-    color: #999999;
+    color: #e1dae2;
 }
 
 /* Стили для шапки */
@@ -88,7 +89,7 @@ header::before {
 
 /* Тексты в шапке */
 .header-text {
-    color: #999999;
+    color: #e1dae2;
     z-index: 2;
     position: absolute;
     font-size: 2vw;
@@ -126,12 +127,14 @@ header::before {
 
 /* Стили для блоков с результатами */
 .list-container {
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 2rem;
-    background-color: #6e4c29;
+    background-color: #e1dae2;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     color: #999999;
+
 }
 
 .list-title {
@@ -139,13 +142,8 @@ header::before {
     color: #999999;
     font-weight: bold;
     margin-bottom: 1rem;
-    transition: color 0.3s ease;
     display: flex;
     align-items: center;
-}
-
-.list-title:hover {
-    color: #cccccc;
 }
 
 .arrow {
@@ -157,15 +155,8 @@ header::before {
 .animated-list {
     list-style-type: none;
     padding-left: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out, opacity 0.3s ease-out;
-    opacity: 0;
-}
-
-.animated-list.show {
-    max-height: 500px;
-    opacity: 1;
+    max-height: 500px; /* Убираем скрытие списков */
+    opacity: 1; /* Убираем скрытие списков */
 }
 
 .animated-list li {
@@ -180,6 +171,7 @@ header::before {
 
 /* Стили для карточек */
 .card {
+    font-family: 'Montserrat', sans-serif;
     background-color: #4c2c29;
     border: none;
     border-radius: 10px;
@@ -191,22 +183,29 @@ header::before {
 }
 
 .card:hover {
+    font-family: 'Montserrat', sans-serif;
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Стили для кнопок */
 .btn-primary {
-    background-color: #4c2c29;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #bec8df !important; /* Цвет фона */
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    color: #999999;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    color: #f3efec !important; /* Цвет текста */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #5a3a37;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #a58a6e !important; /* Цвет при наведении */
+    transform: translateY(-3px);
 }
 
 /* Стили для основного контента */
@@ -227,7 +226,8 @@ footer {
 
 /* Стили для карточек с уровнями (Эмоционально-личностный, Телесные практики, Коммуникативные навыки) */
 .key-levels .card {
-    background-color: #6e4c29; /* Новый цвет фона для карточек */
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e1dae2; /* Новый цвет фона для карточек */
     color: #999999; /* Цвет текста */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -235,13 +235,20 @@ footer {
 }
 
 .key-levels .card:hover {
+    font-family: 'Montserrat', sans-serif;
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.key-levels .card-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* Белый цвет для заголовков */
+}
+
 /* Стили для карточек с программами (Выдыхай, Чувствуй, Венеры) */
 .programs .card {
-    background-color: #6e4c29; /* Новый цвет фона для карточек */
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e1dae2; /* Новый цвет фона для карточек */
     color: #999999; /* Цвет текста */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -249,13 +256,20 @@ footer {
 }
 
 .programs .card:hover {
+    font-family: 'Montserrat', sans-serif;
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.programs .card-title {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff; /* Белый цвет для заголовков */
+}
+
 /* Стили для текста в блоке с описанием программы марафона */
 .marathon-description .lead {
-    color: #f3efec; /* Новый цвет текста (белый) */
+    font-family: 'Montserrat', sans-serif;
+    color: #849aa7; /* Новый цвет текста (белый) */
     font-size: 1.2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -263,7 +277,8 @@ footer {
 
 /* Стили для заголовка "3 ключевых уровня работы" */
 .key-levels h2 {
-    color: #f3efec; /* Новый цвет текста (белый) */
+    font-family: 'Montserrat', sans-serif;
+    color: #849aa7; /* Новый цвет текста (белый) */
     font-size: 2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -271,7 +286,8 @@ footer {
 
 /* Стили для заголовка "Три блока с основными программами" */
 .programs h2 {
-    color: #f3efec; /* Новый цвет текста (белый) */
+    font-family: 'Montserrat', sans-serif;
+    color: #849aa7; /* Новый цвет текста (белый) */
     font-size: 2rem; /* Размер текста */
     text-align: center; /* Выравнивание по центру */
     margin-bottom: 2rem; /* Отступ снизу */
@@ -290,4 +306,209 @@ footer {
     .marathon-description .lead {
         font-size: 1rem; /* Уменьшаем размер текста */
     }
+}
+
+/* Стили для блока с отзывами */
+.reviews {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e1dae2; /* Цвет фона блока */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reviews h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #f3efec; /* Цвет заголовка */
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.review-image, .review-gif {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.review-image img, .review-gif img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .reviews {
+        padding: 1rem;
+    }
+
+    .reviews h2 {
+        font-size: 1.5rem;
+    }
+
+    .review-image, .review-gif {
+        margin-bottom: 1.5rem; /* Отступ между изображениями на мобильных устройствах */
+    }
+}
+
+/* Стили для блока "Автор марафона" */
+.author {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e1dae2; /* Цвет фона блока */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.author h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #f3efec; /* Цвет заголовка */
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.author-photo img {
+    max-width: 100%;
+    height: auto;
+    border: 4px solid #f3efec; /* Рамка вокруг фото */
+}
+
+.author-info {
+    font-family: 'Montserrat', sans-serif;
+    color: #999999; /* Цвет текста */
+}
+
+.author-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.author-details {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.author-details li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .author {
+        padding: 1rem;
+    }
+
+    .author h2 {
+        font-size: 1.5rem;
+    }
+
+    .author-photo {
+        margin-bottom: 1.5rem; /* Отступ между фото и текстом на мобильных устройствах */
+    }
+
+    .author-name {
+        font-size: 1.5rem;
+    }
+
+    .author-details li {
+        font-size: 0.9rem;
+    }
+}
+
+/* Стили для страницы "Выдыхай" */
+.results-list, .marathon-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.results-list li, .marathon-list li {
+    background-color: #e1dae2;
+    color: #f3efec;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.results-list li:hover, .marathon-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Карточки */
+.card {
+    background-color: #5a3a37;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #f3efec;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Кнопка "Узнать подробнее" */
+.btn-primary {
+    background-color: #92745a; /* Новый цвет фона кнопок */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    color: #f3efec;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #a58a6e;
+    transform: translateY(-3px);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .results-list li, .marathon-list li {
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Стили для кнопки "На главную" */
+.btn-back {
+    display: inline-block;
+    background-color: #e1dae2;
+    color: #f3efec;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 2rem; /* Отступ снизу */
+}
+
+.btn-back:hover {
+    background-color: #8a6e4c;
+    transform: translateY(-3px);
+}
+
+.btn-back span {
+    margin-right: 0.5rem;
 }
