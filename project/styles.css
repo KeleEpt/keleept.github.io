@@ -308,13 +308,14 @@ footer {
     }
 }
 
-/* Стили для блока с отзывами */
+* Стили для блока с отзывами */
 .reviews {
     font-family: 'Montserrat', sans-serif;
     background-color: #e0bba2; /* Цвет фона блока */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Скрываем выходящие за пределы элементы */
 }
 
 .reviews h2 {
@@ -325,17 +326,56 @@ footer {
     margin-bottom: 2rem;
 }
 
-.review-image, .review-gif {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    overflow: hidden;
+/* Стили для Swiper */
+.swiper {
+    width: 100%;
+    padding: 20px 0;
 }
 
-.review-image img, .review-gif img {
-    width: 100%;
-    height: auto;
+.swiper-slide {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-image {
+    width: 200px;
+    height: 200px;
     border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Эффект увеличения при клике */
+.review-image.zoomed {
+    transform: scale(1.5); /* Увеличение в 1.5 раза */
+    z-index: 10; /* Поднимаем над остальными элементами */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Кнопки навигации Swiper */
+.swiper-button-next, .swiper-button-prev {
+    color: #f3efec; /* Цвет кнопок */
+    background-color: rgba(0, 0, 0, 0.5); /* Фон кнопок */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 20px; /* Размер стрелок */
 }
 
 /* Адаптация для мобильных устройств */
@@ -348,11 +388,11 @@ footer {
         font-size: 1.5rem;
     }
 
-    .review-image, .review-gif {
-        margin-bottom: 1.5rem; /* Отступ между изображениями на мобильных устройствах */
+    .review-image {
+        width: 150px;
+        height: 150px;
     }
 }
-
 /* Стили для блока "Автор марафона" */
 .author {
     font-family: 'Montserrat', sans-serif;
