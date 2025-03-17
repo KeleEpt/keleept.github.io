@@ -188,6 +188,11 @@ header::before {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Убираем обводку у всех кнопок */
+:root {
+    --bs-btn-border-width: 0;
+}
+
 /* Стили для кнопок */
 .btn-primary {
     font-family: 'Montserrat', sans-serif;
@@ -200,12 +205,20 @@ header::before {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    outline: none; /* Убираем обводку при фокусе */
+    border-width: 0 !important; /* Убираем обводку */
 }
 
 .btn-primary:hover {
     font-family: 'Montserrat', sans-serif;
     background-color: #a58a6e !important; /* Цвет при наведении */
     transform: translateY(-3px);
+}
+
+/* Убираем обводку при фокусе */
+.btn-primary:focus {
+    box-shadow: none !important; /* Убираем тень при фокусе */
+    outline: none !important; /* Убираем стандартную обводку */
 }
 
 /* Стили для основного контента */
@@ -476,94 +489,3 @@ footer {
     }
 }
 
-/* Стили для страницы "Выдыхай" */
-.results-list, .marathon-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.results-list li, .marathon-list li {
-    background-color: #e0bba2;
-    color: #f3efec;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.results-list li:hover, .marathon-list li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Карточки */
-.card {
-    background-color: #5a3a37;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #f3efec;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.card-body {
-    padding: 1.5rem;
-}
-
-/* Кнопка "Узнать подробнее" */
-.btn-primary {
-    background-color: #92745a; /* Новый цвет фона кнопок */
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    color: #f3efec;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #a58a6e;
-    transform: translateY(-3px);
-}
-
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-    .results-list li, .marathon-list li {
-        font-size: 0.9rem;
-    }
-
-    .btn-primary {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
-    }
-}
-
-/* Стили для кнопки "На главную" */
-.btn-back {
-    display: inline-block;
-    background-color: #e0bba2;
-    color: #f3efec;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-bottom: 2rem; /* Отступ снизу */
-}
-
-.btn-back:hover {
-    background-color: #8a6e4c;
-    transform: translateY(-3px);
-}
-
-.btn-back span {
-    margin-right: 0.5rem;
-}
