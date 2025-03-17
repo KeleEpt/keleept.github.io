@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выдыхай</title>
-    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Подключаем шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
         <!-- Список результатов -->
         <section class="results my-5">
             <h2 class="text-center mb-4">В результате ваши сотрудники научатся:</h2>
-            <ul class="animated-list">
+            <ul class="animated-list-v">
                 <li>Находить клиентоориентированное решение в сложных конфликтных ситуациях</li>
                 <li>Правильно реагировать на негатив</li>
                 <li>Отслеживать своё эмоциональное состояние «здесь и сейчас»</li>
@@ -58,7 +58,7 @@
         <!-- Формат марафона -->
         <section class="marathon-format my-5">
             <h2 class="text-center mb-4">Формат марафона</h2>
-            <ul class="animated-list">
+            <ul class="animated-list-v">
                 <li>20+ практических кейсов работы со сложными клиентами, основанные на практическом эффективном опыте работы с сотрудниками сервиса</li>
                 <li>Индивидуально проработанные кейсы для вашей компании</li>
                 <li>40+ практик для управления собственным состоянием от практикующего психолога</li>
@@ -86,7 +86,7 @@
     <script>
         // Анимация появления элементов
         document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.animated-list li');
+            const cards = document.querySelectorAll('.animated-list-v li');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
