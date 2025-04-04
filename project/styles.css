@@ -366,14 +366,11 @@ footer {
     border-radius: 10px;
     padding: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
     width: 100%;
-}
-
-.review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    min-height: 350px; /* Фиксированная минимальная высота */
 }
 
 /* Шапка отзыва (фото + имя) */
@@ -403,6 +400,30 @@ footer {
     font-size: 0.95rem;
     color: #f3efec;
     line-height: 1.6;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 250px;
+    padding-right: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Стиль полосы прокрутки */
+.review-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.review-text::-webkit-scrollbar-track {
+    background: #e0bba2;
+    border-radius: 10px;
+}
+
+.review-text::-webkit-scrollbar-thumb {
+    background: #4c2c29;
+    border-radius: 10px;
+}
+
+.review-text::-webkit-scrollbar-thumb:hover {
+    background: #713f2b;
 }
 
 /* Модальное окно */
@@ -508,6 +529,10 @@ footer {
     .swiper-button-prev {
         display: none;
     }
+
+    .review-card {
+        min-height: 300px; /* Меньшая высота на мобильных */
+    }
 }
 
 /* Стили для футера */
@@ -565,27 +590,4 @@ footer {
 .telegram-logo {
     width: 24px;
     height: 24px;
-}
-
-/* Анимации для списков */
-.animated-list-v {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.animated-list-v li {
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.5rem;
-    background-color: #e0bba2;
-    color: #f3efec;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.animated-list-v li.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
