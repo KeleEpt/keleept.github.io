@@ -524,39 +524,70 @@ footer {
 
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
-    .card {
-        margin-bottom: 2rem;
+    /* Общие стили для мобильных */
+    body {
+        font-size: 14px;
     }
 
+    /* Шапка */
+    header {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+
+    .header-content {
+        padding: 10px;
+    }
+
+    .header-main-text h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .header-main-text .subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Горизонтальные блоки в шапке */
+    .info-blocks-container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 15px;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .info-block {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+        min-width: 0;
+        max-width: none;
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Карточки */
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    /* Заголовки */
     .key-levels h2, 
     .programs h2,
     .reviews h2,
     .author h2 {
-        font-size: 1.5rem;
-    }
-
-    .marathon-description .lead {
-        font-size: 1rem;
-    }
-
-    .author {
-        padding: 1rem;
-    }
-
-    .author-photo {
+        font-size: 1.6rem;
         margin-bottom: 1.5rem;
     }
 
-    .author-name {
-        font-size: 1.5rem;
-    }
-
-    .author-details li {
-        font-size: 0.9rem;
-    }
-
+    /* Отзывы */
     .reviewSwiper {
-        padding: 20px 10px;
+        padding: 10px;
     }
 
     .swiper-button-next,
@@ -565,27 +596,96 @@ footer {
     }
 
     .review-card {
-        min-height: 300px;
+        min-height: 350px;
     }
 
-    .info-blocks-container {
-        flex-direction: column;
-        align-items: center;
+    /* Автор */
+    .author {
+        padding: 1.5rem;
     }
 
-    .info-block {
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 10px;
+    .author-photo {
+        margin-bottom: 1rem;
+    }
+
+    .author-name {
+        font-size: 1.3rem;
+    }
+
+    .author-details li {
+        font-size: 0.85rem;
+    }
+
+    /* Облака */
+    .cloud {
+        width: 100px;
     }
 }
 
 @media (max-width: 576px) {
     .header-main-text h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     .header-main-text .subtitle {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+    }
+
+    .info-blocks-container {
+        gap: 8px;
+    }
+
+    .info-block {
+        flex: 0 0 90%;
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Карточки программ */
+    .programs .row,
+    .key-levels .row {
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        margin-left: -15px;
+        margin-right: -15px;
+        padding-bottom: 15px;
+    }
+
+    .programs .col-md-4,
+    .key-levels .col-md-4 {
+        flex: 0 0 85%;
+        max-width: 85%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Уменьшаем отступы */
+    main {
+        padding: 1.5rem;
+    }
+
+    section {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Анимации для горизонтальной прокрутки на мобильных */
+@keyframes scrollHint {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .info-blocks-container::after {
+        content: '→';
+        position: absolute;
+        right: 15px;
+        bottom: 0;
+        color: rgba(255,255,255,0.7);
+        font-size: 1.5rem;
+        animation: scrollHint 1.5s infinite;
+        pointer-events: none;
     }
 }
