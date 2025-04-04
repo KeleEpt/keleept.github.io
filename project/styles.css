@@ -524,56 +524,58 @@ footer {
 
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
-    /* Общие стили для мобильных */
+    /* Общие настройки */
     body {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     /* Шапка */
     header {
         height: auto;
-        min-height: 100vh;
-        padding: 20px 0;
+        min-height: 80vh;
+        padding: 30px 0;
     }
 
     .header-content {
-        padding: 10px;
+        padding: 15px;
     }
 
     .header-main-text h1 {
         font-size: 1.8rem;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
     }
 
     .header-main-text .subtitle {
         font-size: 1rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        line-height: 1.4;
     }
 
-    /* Горизонтальные блоки в шапке */
+    /* Блоки в шапке - красивое горизонтальное расположение */
     .info-blocks-container {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 15px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 10px;
-        justify-content: flex-start;
+        width: 100%;
+        padding: 0 5px;
     }
 
     .info-block {
-        flex: 0 0 85%;
-        scroll-snap-align: start;
-        min-width: 0;
+        min-width: auto;
         max-width: none;
         padding: 12px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        backdrop-filter: blur(3px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80px;
     }
 
     /* Карточки */
     .card {
-        margin-bottom: 1rem;
+        margin-bottom: 1.2rem;
     }
 
     /* Заголовки */
@@ -581,22 +583,31 @@ footer {
     .programs h2,
     .reviews h2,
     .author h2 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
         margin-bottom: 1.5rem;
+    }
+
+    /* Программы и уровни - сетка 2 колонки */
+    .programs .row,
+    .key-levels .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .programs .col-md-4,
+    .key-levels .col-md-4 {
+        width: 100%;
+        padding: 0;
     }
 
     /* Отзывы */
     .reviewSwiper {
-        padding: 10px;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none;
+        padding: 10px 15px;
     }
 
     .review-card {
-        min-height: 350px;
+        min-height: 380px;
     }
 
     /* Автор */
@@ -605,24 +616,37 @@ footer {
     }
 
     .author-photo {
-        margin-bottom: 1rem;
+        margin-bottom: 1.2rem;
     }
 
     .author-name {
         font-size: 1.3rem;
+        margin-bottom: 1rem;
     }
 
     .author-details li {
         font-size: 0.85rem;
+        line-height: 1.5;
     }
 
     /* Облака */
     .cloud {
         width: 100px;
     }
+
+    /* Футер */
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .qr-code img {
+        max-width: 120px;
+    }
 }
 
 @media (max-width: 576px) {
+    /* Еще более компактные стили */
     .header-main-text h1 {
         font-size: 1.6rem;
     }
@@ -632,60 +656,26 @@ footer {
     }
 
     .info-blocks-container {
+        grid-template-columns: 1fr;
         gap: 8px;
     }
 
     .info-block {
-        flex: 0 0 90%;
-        padding: 10px;
-        font-size: 0.8rem;
+        min-height: 70px;
+        font-size: 0.85rem;
     }
 
-    /* Карточки программ */
     .programs .row,
     .key-levels .row {
-        display: flex;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        margin-left: -15px;
-        margin-right: -15px;
-        padding-bottom: 15px;
-    }
-
-    .programs .col-md-4,
-    .key-levels .col-md-4 {
-        flex: 0 0 85%;
-        max-width: 85%;
-        padding-left: 15px;
-        padding-right: 15px;
+        grid-template-columns: 1fr;
     }
 
     /* Уменьшаем отступы */
     main {
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
 
     section {
-        margin-bottom: 1.5rem;
-    }
-}
-
-/* Анимации для горизонтальной прокрутки на мобильных */
-@keyframes scrollHint {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(10px); }
-    100% { transform: translateX(0); }
-}
-
-@media (max-width: 768px) {
-    .info-blocks-container::after {
-        content: '→';
-        position: absolute;
-        right: 15px;
-        bottom: 0;
-        color: rgba(255,255,255,0.7);
-        font-size: 1.5rem;
-        animation: scrollHint 1.5s infinite;
-        pointer-events: none;
+        margin-bottom: 1.2rem;
     }
 }
