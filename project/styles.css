@@ -90,10 +90,10 @@ header::before {
     background-color: transparent;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     height: 100%;
     transition: all 0.3s ease;
-    border: 1px solid #e3dfde;
+    border: 0px solid #e3dfde;
 }
 
 .result-block.active {

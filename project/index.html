@@ -414,33 +414,32 @@
 
     <script>
     function toggleResult(type) {
-        const content = document.getElementById(`${type}-content`);
-        const icon = document.getElementById(`${type}-icon`);
-        const block = content.parentElement;
-        
-        // Закрываем все блоки кроме текущего
-        document.querySelectorAll('.result-content').forEach(el => {
-            if (el.id !== `${type}-content`) {
-                el.style.maxHeight = null;
-                el.previousElementSibling.querySelector('.toggle-icon').classList.remove('fa-chevron-up');
-                el.previousElementSibling.querySelector('.toggle-icon').classList.add('fa-chevron-down');
-                el.parentElement.classList.remove('active');
-            }
-        });
-        
-        // Переключаем текущий блок
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-            icon.classList.remove('fa-chevron-up');
-            icon.classList.add('fa-chevron-down');
-            block.classList.remove('active');
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            icon.classList.remove('fa-chevron-down');
-            icon.classList.add('fa-chevron-up');
-            block.classList.add('active');
-        }
+    const content = document.getElementById(`${type}-content`);
+    const icon = document.getElementById(`${type}-icon`);
+    const block = content.parentElement;
+    
+    // Переключаем текущий блок
+    if (content.style.maxHeight) {
+        // Закрываем блок
+        content.style.maxHeight = null;
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+        block.classList.remove('active');
+    } else {
+        // Открываем блок
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+        block.classList.add('active');
     }
+}
+
+// Инициализация - все блоки закрыты по умолчанию
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.result-content').forEach(el => {
+        el.style.maxHeight = null;
+    });
+});
 </script>
 </body>
 </html>
