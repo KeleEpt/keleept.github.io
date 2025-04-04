@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Марафоны для тех, кто работает с людьми</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Подключаем Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header id="header" class="position-relative d-flex justify-content-center align-items-center overflow-hidden" style="height: 50vh;">
+        <!-- Фон шапки -->
         <div class="background-image"></div>
+
+        <!-- Облака -->
         <img src="img/cloud.png" alt="Облако 1" class="cloud cloud-left position-absolute">
         <img src="img/cloud.png" alt="Облако 2" class="cloud cloud-right position-absolute">
-        <img src="img/logo.png" alt="Логотип" class="logo position-absolute">
         
+        <!-- Логотип -->
+        <img src="img/logo.png" alt="Логотип" class="logo position-absolute">
+
+        <!-- Тексты -->
         <div class="header-text header-text-top-left position-absolute">
             Иногда каждому из нас нужна перезагрузка
         </div>
@@ -29,9 +37,12 @@
 
     <main class="container py-5">
         <div class="row">
+            <!-- Блок "Результат для компании" (слева) -->
             <div class="col-md-6">
                 <div class="list-container">
-                    <h3 class="card-title">Результат для компании</h3>
+                    <h3 class="card-title">
+                        Результат для компании
+                    </h3>
                     <ul id="company-list" class="animated-list">
                         <li>Создание уникального клиентского опыта</li>
                         <li>Повышение удовлетворённости клиентов – рост CSI на 10% после проведения марафона</li>
@@ -41,9 +52,13 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Блок "Результат для сотрудника" (справа) -->
             <div class="col-md-6">
                 <div class="list-container">
-                    <h3 class="card-title">Результат для сотрудника</h3>
+                    <h3 class="card-title">
+                        Результат для сотрудника 
+                    </h3>
                     <ul id="employee-list" class="animated-list">
                         <li>Научиться отслеживать своё эмоциональное состояние «здесь и сейчас»</li>
                         <li>Не позволять негативу пагубно влиять на своё самочувствие</li>
@@ -58,6 +73,7 @@
         </div>
     </main>
 
+    <!-- Блок с описанием программы марафона -->
     <section class="marathon-description my-5">
         <div class="container">
             <p class="lead text-center">
@@ -66,10 +82,12 @@
         </div>
     </section>
 
+    <!-- Блок с тремя ключевыми уровнями -->
     <section class="key-levels my-5">
         <div class="container">
             <h2 class="text-center mb-4">3 ключевых уровня работы во время прохождения программы:</h2>
             <div class="row">
+                <!-- Эмоционально-личностный -->
                 <div class="col-md-4 d-flex">
                     <div class="card">
                         <div class="card-body">
@@ -80,6 +98,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Телесные практики -->
                 <div class="col-md-4 d-flex">
                     <div class="card">
                         <div class="card-body">
@@ -90,6 +109,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Коммуникативные навыки -->
                 <div class="col-md-4 d-flex">
                     <div class="card">
                         <div class="card-body">
@@ -104,10 +124,12 @@
         </div>
     </section>
 
+    <!-- Блок с тремя программами -->
     <section class="programs my-5">
         <div class="container">
             <h2 class="text-center mb-4">Три блока с основными программами</h2>
             <div class="row">
+                <!-- Выдыхай -->
                 <div class="col-md-4 d-flex">
                     <div class="card">
                         <div class="card-body">
@@ -121,6 +143,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Чувствуй -->
                 <div class="col-md-4 d-flex">
                     <div class="card">
                         <div class="card-body">
@@ -134,6 +157,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Венеры -->
                 <div class="col-md-4 d-flex">
                     <div class="card">
                         <div class="card-body">
@@ -143,7 +167,7 @@
                             </p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="venera.html" class="btn btn-primary">Подробнее</a>
+                            <a href="venera.html " class="btn btn-primary">Подробнее</a>
                         </div>
                     </div>
                 </div>
@@ -151,114 +175,151 @@
         </div>
     </section>
 
+    <!-- Блок с отзывами -->
     <section class="reviews my-5">
         <div class="container">
             <h2 class="text-center mb-4">Отзывы</h2>
             <div class="swiper reviewSwiper">
                 <div class="swiper-wrapper">
+                    <!-- Отзыв 1 -->
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="review-header">
                                 <img src="img/ot1.jpg" alt="Фото пользователя" class="review-photo">
                                 <span class="review-name">Виктория Денисова</span>
                             </div>
-                            <div class="review-text-container">
-                                <div class="review-text">
-                                    <p>Спасибо вам и вашему обучению. Это очень было очень круто. Чувствовалось ваше тепло и энергетика. Это обучение многому научило меня ♥</p>
-                                </div>
+                            <div class="review-text">
+                                <p>Спасибо вам и вашему обучению. Это очень было очень круто. Чувствовалось ваше тепло и энергетика. Это обучение многому научило меня ♥</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Отзыв 2 -->
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="review-header">
                                 <img src="img/ot2.jpg" alt="Фото пользователя" class="review-photo">
                                 <span class="review-name">Лиана</span>
                             </div>
-                            <div class="review-text-container">
-                                <div class="review-text">
-                                    <p>Спасибо большое всем за такой классный марафон!)))</p>
-                                    <p>я получала классные эмоции и полезные моменты</p>
-                                    <p>а еще, я хотела бы сказать, как здорово, что благодаря этому марафону, я уже хотя бы заочно знаю своих коллег из других городов</p>
-                                    <p>Практику благодарностей буду обязательно продолжать, она действительно классная! и я вижу от нее результаты)))</p>
-                                </div>
+                            <div class="review-text">
+                                <p>Спасибо большое всем за такой классный марафон!)))</p>
+                                <p>я получала классные эмоции и полезные моменты</p>
+                                <p>а еще, я хотела бы сказать, как здорово, что благодаря этому марафону, я уже хотя бы заочно знаю своих коллег из других городов</p>
+                                <p>Практику благодарностей буду обязательно продолжать, она действительно классная! и  я вижу от нее результаты)))</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Отзыв 3 -->
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="review-header">
                                 <img src="img/ot3.jpg" alt="Фото пользователя" class="review-photo">
                                 <span class="review-name">Lidiya Kazanskaya</span>
                             </div>
-                            <div class="review-text-container">
-                                <div class="review-text">
-                                    <p>Аня, спасибо тебе! Ты нас многому научила, вдохновила и зарядила энергией Коллеги, спасибо вам за вашу вовлеченность и желание учиться новому и быть лучше</p>
-                                    <p>Было очень интересно.</p>
-                                </div>
+                            <div class="review-text">
+                                <p>Аня, спасибо тебе! Ты нас многому научила, вдохновила и зарядила энергией Коллеги, спасибо вам за вашу вовлеченность и желание учиться новому и быть лучше </p>
+                                <p>Было очень интересно.</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Отзыв 4 -->
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="review-header">
                                 <img src="img/ot4.jpg" alt="Фото пользователя" class="review-photo">
                                 <span class="review-name">Dec</span>
                             </div>
-                            <div class="review-text-container">
-                                <div class="review-text">
-                                    <p>Огромная благодарность за такой чудесный Марафон</p>
-                                    <p>За те неизмеримые силы, которые были вложены в то, чтобы мы смогли отвлечься от сложных рабочих ситуаций, посмеяться, поделиться эмоциями, предпочтениями в фильмах и многим другим.</p>
-                                    <p>Спасибо за ту колоссальную энергию, которым вы наполняли нас на протяжении всего времени - это очень большой труд</p>
-                                </div>
+                            <div class="review-text">
+                                <p>Огромная благодарность за такой чудесный Марафон</p>
+                                <p>За те неизмеримые силы, которые
+                                были вложены в то, чтобы мы смогли
+                                отвлечься от сложных рабочих ситуаций,
+                                посмеяться, поделиться эмоциями,
+                                предпочтениями в фильмах и многим
+                                другим.</p>
+                                <p>Спасибо за ту колоссальную энергию,
+                                которым вы наполняли нас на
+                                протяжении всего времени - это очень
+                                большой труд</p>
+                                <p>Полезное…на мой взгляд, здесь все было
+                                настолько наполнено теплом, любовью,
+                                желанием сделать для нас это время
+                                крутым и незабываемым, что даже
+                                задания, которые не несли в себе чего-то
+                                очень весомого, были полезны </p>
+                                <p>Сложность определялась больше рабочая
+                                смена или нет и опять же момент в офисе
+                                ты или нет.</p>
+                                <p>Реагировать на негатив стало проще. </p>
                             </div>
                         </div>
                     </div>
+                    <!-- Отзыв 5 -->
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="review-header">
                                 <img src="img/ot5.jpg" alt="Фото пользователя" class="review-photo">
                                 <span class="review-name">Кэтрин</span>
                             </div>
-                            <div class="review-text-container">
-                                <div class="review-text">
-                                    <p>Спасибо за классный марафон</p>
-                                    <p>Я стала больше замечать положительные моменты</p>
-                                    <p>Бесполезного в марафоне я не заметила.</p>
-                                    <p>Мне было сложно написать комплименты коллегам, так как я не всех знаю и тяжело было выполнять задания в рабочий день</p>
-                                </div>
+                            <div class="review-text">
+                                <p>Спасибо за классный марафон </p>
+                                <p>Я стала больше замечать положительные
+                                моменты</p>
+                                <p>Бесполезного в марафоне я не заметила.</p>
+                                <p>Мне было сложно написать комплименты
+                                коллегам, так как я не всех знаю и тяжело
+                                было выполнять задания в рабочий день</p>
+                                <p>Стала проще реагировать на негатив,
+                                и каждый раз вспоминаю все
+                                рекомендации и они очень помогают</p>
                             </div>
                         </div>
                     </div>
+                    <!-- Отзыв 6 -->
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="review-header">
                                 <img src="img/ot4.jpg" alt="Фото пользователя" class="review-photo">
                                 <span class="review-name">Dec</span>
                             </div>
-                            <div class="review-text-container">
-                                <div class="review-text">
-                                    <p>Забыла добавить: меня, к сожалению, начало Марафона застало не в самый лучший период моей жизни, но зато и на этом опыте могу сказать, что поставленные задания и вообще такая практика помогает в тяжёлые моменты, не только рабочие, но и в целом, переключиться на мысли о хорошем и очень эффективна</p>
-                                </div>
+                            <div class="review-text">
+                                <p>Забыла добавить: меня, к сожалению,
+                                начало Марафона застало не в самый
+                                лучший период моей жизни, но зато
+                                и на этом опыте могу сказать, что
+                                поставленные задания и вообще такая
+                                практика помогает в тяжёлые моменты,
+                                не только рабочие, но и в целом,
+                                переключиться на мысли о хорошем и
+                                очень эффективна</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- Добавляем навигационные элементы -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
     </section>
 
+    <!-- Модальное окно для увеличенного изображения -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <!-- Блок "Автор марафона" -->
     <section class="author my-5">
         <div class="container">
             <h2 class="text-center mb-4">Автор марафона</h2>
             <div class="row align-items-center">
+                <!-- Фото автора -->
                 <div class="col-md-4 d-flex justify-content-center">
                     <div class="author-photo">
                         <img src="img/GubanovaAnna.jpg" alt="Губанова Анна" class="img-fluid rounded-circle">
                     </div>
                 </div>
+                <!-- Текст об авторе -->
                 <div class="col-md-8">
                     <div class="author-info">
                         <h3 class="author-name"><strong>Губанова Анна</strong></h3>
@@ -279,9 +340,11 @@
     <footer>
         <div class="container">
             <div class="footer-content">
+                <!-- QR-код -->
                 <div class="qr-code">
                     <img src="img/ar.png" alt="QR-код на Telegram" class="img-fluid">
                 </div>
+                <!-- Кнопка Telegram -->
                 <div class="telegram-button">
                     <a href="https://t.me/customerexser" class="btn btn-telegram" target="_blank">
                         <img src="img/telegram-logo.png" alt="Telegram Logo" class="telegram-logo">
@@ -292,32 +355,36 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const reviewSwiper = new Swiper('.reviewSwiper', {
-                slidesPerView: 1,
-                spaceBetween: 20,
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 20
-                    },
-                    992: {
-                        slidesPerView: 3,
-                        spaceBetween: 20
-                    }
-                },
-                autoHeight: true
+        // Открытие модального окна с увеличенным изображением
+        document.querySelectorAll('.review-image').forEach(image => {
+            image.addEventListener('click', () => {
+                const modal = document.getElementById('modal');
+                const modalImg = document.getElementById('modal-img');
+                modal.style.display = 'block';
+                modalImg.src = image.src;
             });
+        });
 
+        // Закрытие модального окна
+        document.querySelector('.close').addEventListener('click', () => {
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        // Закрытие модального окна при клике вне изображения
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+    <script>
+        // Анимация появления элементов
+        document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.card');
             const headerTexts = document.querySelectorAll('.header-text');
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -325,8 +392,48 @@
                     }
                 });
             }, { threshold: 0.1 });
+
             cards.forEach(card => observer.observe(card));
             headerTexts.forEach(text => observer.observe(text));
+        });
+
+        // Анимация облаков
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const cloudLeft = document.querySelector('.cloud-left');
+            const cloudRight = document.querySelector('.cloud-right');
+
+            const maxScroll = 300;
+            const progress = Math.min(scrollPosition / maxScroll, 1);
+
+            cloudLeft.style.transform = `translate(${50 * progress}%, ${50 * progress}%)`;
+            cloudRight.style.transform = `translate(${-50 * progress}%, ${-50 * progress}%)`;
+        });
+    </script>
+    
+    <!-- Подключаем Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Инициализация Swiper для отзывов
+        const reviewSwiper = new Swiper('.reviewSwiper', {
+            slidesPerView: 1, // По умолчанию 1 слайд на мобильных
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                // При ширине экрана >= 768px
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                // При ширине экрана >= 992px
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                }
+            }
         });
     </script>
 </body>
