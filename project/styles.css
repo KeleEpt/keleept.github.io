@@ -16,7 +16,7 @@ body {
 /* Стили для шапки */
 header {
     position: relative;
-    height: 50vh;
+    height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -316,7 +316,7 @@ footer {
     }
 }
 
-//* Стили для блока с отзывами (оригинальные для десктопа) */
+/* Стили для блока с отзывами */
 .reviews {
     font-family: 'Montserrat', sans-serif;
     background-color: #e0bba2;
@@ -325,78 +325,13 @@ footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Стили для Swiper контейнера */
 .reviewSwiper {
     padding: 20px 40px;
     position: relative;
 }
 
-.swiper-slide {
-    height: auto;
-    display: flex;
-}
-
-.review-card {
-    background-color: #957a62;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: 500px;
-}
-
-.review-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.review-photo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 1rem;
-    border: 2px solid #f3efec;
-}
-
-.review-name {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #f3efec;
-}
-
-.review-text {
-    font-size: 0.95rem;
-    color: #f3efec;
-    line-height: 1.6;
-    flex-grow: 1;
-    overflow-y: auto;
-    max-height: 350px;
-    padding-right: 10px;
-    margin-bottom: 1rem;
-}
-
-.review-text::-webkit-scrollbar {
-    width: 5px;
-}
-
-.review-text::-webkit-scrollbar-track {
-    background: #e0bba2;
-    border-radius: 10px;
-}
-
-.review-text::-webkit-scrollbar-thumb {
-    background: #4c2c29;
-    border-radius: 10px;
-}
-
-.review-text::-webkit-scrollbar-thumb:hover {
-    background: #713f2b;
-}
-
+/* Стили для навигационных кнопок */
 .swiper-button-next,
 .swiper-button-prev {
     color: #4c2c29 !important;
@@ -419,51 +354,112 @@ footer {
     transform: scale(1.1);
 }
 
-/* Мобильная версия блока отзывов */
-@media (max-width: 768px) {
-    .reviews {
-        padding: 1.5rem;
-        margin: 0 1rem 2rem;
-    }
-    
-    .reviewSwiper {
-        padding: 0 15px 30px;
-    }
-    
-    .swiper-slide {
-        padding: 0 5px;
-    }
-    
-    .review-card {
-        padding: 1rem;
-        min-height: 550px;
-    }
-    
-    .review-photo {
-        width: 40px;
-        height: 40px;
-        margin-right: 0.75rem;
-    }
-    
-    .review-name {
-        font-size: 0.9rem;
-    }
-    
-    .review-text {
-        font-size: 0.85rem;
-        max-height: 180px;
-        padding-right: 5px;
-        margin-bottom: 0.75rem;
-    }
-    
-    .review-text::-webkit-scrollbar {
-        width: 3px;
-    }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-        display: none !important;
-    }
+/* Стили для слайдов */
+.swiper-slide {
+    height: auto;
+    display: flex;
+}
+
+/* Стили для карточек с отзывами */
+.review-card {
+    background-color: #957a62;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px; /* Фиксированная минимальная высота */
+}
+
+/* Шапка отзыва (фото + имя) */
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.review-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+    border: 2px solid #f3efec;
+}
+
+.review-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #f3efec;
+}
+
+/* Текст отзыва */
+.review-text {
+    font-size: 0.95rem;
+    color: #f3efec;
+    line-height: 1.6;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 350px;
+    padding-right: 10px;
+    margin-bottom: 1rem;
+}
+
+/* Стиль полосы прокрутки */
+.review-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.review-text::-webkit-scrollbar-track {
+    background: #e0bba2;
+    border-radius: 10px;
+}
+
+.review-text::-webkit-scrollbar-thumb {
+    background: #4c2c29;
+    border-radius: 10px;
+}
+
+.review-text::-webkit-scrollbar-thumb:hover {
+    background: #713f2b;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ccc;
 }
 
 /* Стили для блока "Автор марафона" */
@@ -523,6 +519,20 @@ footer {
     .author-details li {
         font-size: 0.9rem;
     }
+
+    /* Адаптация карусели для мобильных */
+    .reviewSwiper {
+        padding: 20px 10px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+
+    .review-card {
+        min-height: 300px; /* Меньшая высота на мобильных */
+    }
 }
 
 /* Стили для футера */
@@ -581,3 +591,4 @@ footer {
     width: 24px;
     height: 24px;
 }
+
