@@ -9,10 +9,10 @@
     <!-- Подключаем Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Подключаем шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="header" class="position-relative d-flex flex-column justify-content-center align-items-center overflow-hidden" style="height: 60vh;">
+    <header id="header" class="position-relative d-flex flex-column justify-content-center align-items-center overflow-hidden">
         <!-- Фон шапки -->
         <div class="background-image"></div>
 
@@ -21,21 +21,23 @@
         <img src="img/cloud.png" alt="Облако 2" class="cloud cloud-right position-absolute">
         
         <!-- Основной текст -->
-        <div class="header-main-text position-relative text-center mb-4">
-            <h1>Марафоны для тех,<br>кто работает с людьми</h1>
-            <p class="subtitle mt-3">Программа позволяет в лёгкой форме научиться управлять своим настроением, учит правильно реагировать на стрессовые ситуации и прокачать навыки эмпатии.</p>
-        </div>
+        <div class="header-content position-relative text-center">
+            <div class="header-main-text">
+                <h1>Марафоны для тех,<br>кто работает с людьми</h1>
+                <p class="subtitle">Программа позволяет в лёгкой форме научиться управлять своим настроением, учит правильно реагировать на стрессовые ситуации и прокачать навыки эмпатии.</p>
+            </div>
 
-        <!-- Блоки с текстом -->
-        <div class="info-blocks-container d-flex justify-content-center flex-wrap">
-            <div class="info-block mx-3 my-2">
-                <p>300+ сотрудников уже ощутили позитивные изменения после прохождения марафона</p>
-            </div>
-            <div class="info-block mx-3 my-2">
-                <p>Иногда каждому из нас нужна перезагрузка</p>
-            </div>
-            <div class="info-block mx-3 my-2">
-                <p>Расскажем, как начать понимать себя и заботиться о себе</p>
+            <!-- Блоки с текстом -->
+            <div class="info-blocks-container d-flex flex-nowrap justify-content-center">
+                <div class="info-block">
+                    <p>300+ сотрудников уже ощутили позитивные изменения после прохождения марафона</p>
+                </div>
+                <div class="info-block">
+                    <p>Иногда каждому из нас нужна перезагрузка</p>
+                </div>
+                <div class="info-block">
+                    <p>Расскажем, как начать понимать себя и заботиться о себе</p>
+                </div>
             </div>
         </div>
     </header>
