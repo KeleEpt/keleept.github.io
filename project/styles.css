@@ -522,160 +522,85 @@ footer {
     animation: cloudRight 15s ease-in-out infinite;
 }
 
-/* Адаптация для мобильных устройств */
+/* Глубокая мобильная адаптация (без прокрутки!) */
 @media (max-width: 768px) {
-    /* Общие настройки */
-    body {
-        font-size: 15px;
-    }
+  /* 1. Базовая настройка */
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+  }
 
-    /* Шапка */
-    header {
-        height: auto;
-        min-height: 80vh;
-        padding: 30px 0;
-    }
+  /* 2. Шапка - переработанная */
+  header {
+    height: auto;
+    padding: 20px 0 40px;
+  }
 
-    .header-content {
-        padding: 15px;
-    }
+  .header-content {
+    padding: 0 15px;
+  }
 
-    .header-main-text h1 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        line-height: 1.2;
-    }
+  .header-main-text h1 {
+    font-size: 1.7rem;
+    margin-bottom: 15px;
+  }
 
-    .header-main-text .subtitle {
-        font-size: 1rem;
-        margin-bottom: 2rem;
-        line-height: 1.4;
-    }
+  .header-main-text .subtitle {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
 
-    /* Блоки в шапке - красивое горизонтальное расположение */
-    .info-blocks-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        width: 100%;
-        padding: 0 5px;
-    }
+  /* 3. Блоки в строку (магия!) */
+  .info-blocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
 
-    .info-block {
-        min-width: auto;
-        max-width: none;
-        padding: 12px;
-        font-size: 0.8rem;
-        backdrop-filter: blur(3px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 80px;
-    }
+  .info-block {
+    flex: 1 1 calc(33% - 20px);
+    min-width: 100px;
+    padding: 12px 8px;
+    font-size: 0.75rem;
+    word-break: break-word;
+  }
 
-    /* Карточки */
-    .card {
-        margin-bottom: 1.2rem;
-    }
+  /* 4. Карточки - компактные */
+  .card {
+    margin-bottom: 15px;
+  }
 
-    /* Заголовки */
-    .key-levels h2, 
-    .programs h2,
-    .reviews h2,
-    .author h2 {
-        font-size: 1.7rem;
-        margin-bottom: 1.5rem;
-    }
+  /* 5. Заголовки */
+  h2 {
+    font-size: 1.5rem !important;
+  }
 
-    /* Программы и уровни - сетка 2 колонки */
-    .programs .row,
-    .key-levels .row {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
+  /* 6. Отзывы */
+  .review-card {
+    min-height: 350px;
+  }
 
-    .programs .col-md-4,
-    .key-levels .col-md-4 {
-        width: 100%;
-        padding: 0;
-    }
+  /* 7. Автор */
+  .author {
+    padding: 20px;
+  }
 
-    /* Отзывы */
-    .reviewSwiper {
-        padding: 10px 15px;
-    }
-
-    .review-card {
-        min-height: 380px;
-    }
-
-    /* Автор */
-    .author {
-        padding: 1.5rem;
-    }
-
-    .author-photo {
-        margin-bottom: 1.2rem;
-    }
-
-    .author-name {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-    }
-
-    .author-details li {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-
-    /* Облака */
-    .cloud {
-        width: 100px;
-    }
-
-    /* Футер */
-    .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .qr-code img {
-        max-width: 120px;
-    }
+  /* 8. Облака */
+  .cloud {
+    width: 80px;
+  }
 }
 
-@media (max-width: 576px) {
-    /* Еще более компактные стили */
-    .header-main-text h1 {
-        font-size: 1.6rem;
-    }
+/* Супер-маленькие экраны */
+@media (max-width: 480px) {
+  .info-block {
+    flex: 1 1 calc(50% - 10px);
+    font-size: 0.7rem;
+    padding: 10px 5px;
+  }
 
-    .header-main-text .subtitle {
-        font-size: 0.95rem;
-    }
-
-    .info-blocks-container {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-
-    .info-block {
-        min-height: 70px;
-        font-size: 0.85rem;
-    }
-
-    .programs .row,
-    .key-levels .row {
-        grid-template-columns: 1fr;
-    }
-
-    /* Уменьшаем отступы */
-    main {
-        padding: 1.2rem;
-    }
-
-    section {
-        margin-bottom: 1.2rem;
-    }
+  .header-main-text h1 {
+    font-size: 1.5rem;
+  }
 }
