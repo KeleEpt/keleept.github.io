@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Подключаем шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header id="header" class="position-relative d-flex flex-column justify-content-center align-items-center overflow-hidden">
@@ -42,43 +45,52 @@
         </div>
     </header>
 
-    <main class="container py-5">
-        <div class="row">
-            <!-- Блок "Результат для компании" (слева) -->
+<!-- Блок с результатами (две колонки) -->
+<section class="results-section my-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Результат для компании -->
             <div class="col-md-6">
-                <div class="list-container">
-                    <h3 class="card-title">
-                        Результат для компании
-                    </h3>
-                    <ul id="company-list" class="animated-list">
-                        <li>Создание уникального клиентского опыта</li>
-                        <li>Повышение удовлетворённости клиентов – рост CSI на 10% после проведения марафона</li>
-                        <li>Повышение удовлетворённости сотрудников - рост ENPS на 5% после проведения марафона</li>
-                        <li>Сокращение оттока сотрудников - снижение затрат на найм и обучение</li>
-                        <li>Простые техники и удобный формат - позволяют помогать сотрудникам без отрыва от работы</li>
-                    </ul>
+                <div class="result-block">
+                    <button class="result-toggle" onclick="toggleResult('company')">
+                        <i class="fas fa-building me-2"></i>
+                        <span>Результат для компании</span>
+                        <i class="fas fa-chevron-down toggle-icon" id="company-icon"></i>
+                    </button>
+                    <div class="result-content" id="company-content">
+                        <ul class="result-list">
+                            <li><i class="fas fa-check-circle me-2"></i> Создание уникального клиентского опыта</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Повышение удовлетворённости клиентов, рост CSI на 10%</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Повышение удовлетворённости сотрудников, рост ENPS на 5%</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Сокращение оттока сотрудников, снижение затрат на найм и обучение</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Простые техники и удобный формат позволяют помогать сотрудникам без отрыва от работы</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <!-- Блок "Результат для сотрудника" (справа) -->
+            
+            <!-- Результат для сотрудника -->
             <div class="col-md-6">
-                <div class="list-container">
-                    <h3 class="card-title">
-                        Результат для сотрудника 
-                    </h3>
-                    <ul id="employee-list" class="animated-list">
-                        <li>Научиться отслеживать своё эмоциональное состояние «здесь и сейчас»</li>
-                        <li>Не позволять негативу пагубно влиять на своё самочувствие</li>
-                        <li>Помочь своему разуму и телу «перезагрузиться»</li>
-                        <li>Не попадать в «замкнутый круг» негатива при общении с клиентом</li>
-                        <li>Поддерживать своё эмоциональное равновесие</li>
-                        <li>Получать удовольствие от работы</li>
-                        <li>Использовать понятные инструменты, которые не займут много времени</li>
-                    </ul>
+                <div class="result-block">
+                    <button class="result-toggle" onclick="toggleResult('employee')">
+                        <i class="fas fa-user-tie me-2"></i>
+                        <span>Результат для сотрудника</span>
+                        <i class="fas fa-chevron-down toggle-icon" id="employee-icon"></i>
+                    </button>
+                    <div class="result-content" id="employee-content">
+                        <ul class="result-list">
+                            <li><i class="fas fa-check-circle me-2"></i> Помочь своему разуму и телу «перезагрузиться»</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Не попадать в «замкнутый круг» негатива при общении с клиентом</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Поддерживать своё эмоциональное равновесие</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Получать удовольствие от работы</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Использовать понятные инструменты, которые не займут много времени</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</section>
 
     <!-- Блок с описанием программы марафона -->
     <section class="marathon-description my-5">
@@ -237,25 +249,10 @@
                             </div>
                             <div class="review-text">
                                 <p>Огромная благодарность за такой чудесный Марафон</p>
-                                <p>За те неизмеримые силы, которые
-                                были вложены в то, чтобы мы смогли
-                                отвлечься от сложных рабочих ситуаций,
-                                посмеяться, поделиться эмоциями,
-                                предпочтениями в фильмах и многим
-                                другим.</p>
-                                <p>Спасибо за ту колоссальную энергию,
-                                которым вы наполняли нас на
-                                протяжении всего времени - это очень
-                                большой труд</p>
-                                <p>Полезное…на мой взгляд, здесь все было
-                                настолько наполнено теплом, любовью,
-                                желанием сделать для нас это время
-                                крутым и незабываемым, что даже
-                                задания, которые не несли в себе чего-то
-                                очень весомого, были полезны </p>
-                                <p>Сложность определялась больше рабочая
-                                смена или нет и опять же момент в офисе
-                                ты или нет.</p>
+                                <p>За те неизмеримые силы, которые были вложены в то, чтобы мы смогли отвлечься от сложных рабочих ситуаций, посмеяться, поделиться эмоциями, предпочтениями в фильмах и многим другим.</p>
+                                <p>Спасибо за ту колоссальную энергию, которым вы наполняли нас на протяжении всего времени - это очень большой труд</p>
+                                <p>Полезное…на мой взгляд, здесь все было настолько наполнено теплом, любовью, желанием сделать для нас это время крутым и незабываемым, что даже задания, которые не несли в себе чего-то очень весомого, были полезны </p>
+                                <p>Сложность определялась больше рабочая смена или нет и опять же момент в офисе ты или нет.</p>
                                 <p>Реагировать на негатив стало проще. </p>
                             </div>
                         </div>
@@ -269,15 +266,10 @@
                             </div>
                             <div class="review-text">
                                 <p>Спасибо за классный марафон </p>
-                                <p>Я стала больше замечать положительные
-                                моменты</p>
+                                <p>Я стала больше замечать положительные моменты</p>
                                 <p>Бесполезного в марафоне я не заметила.</p>
-                                <p>Мне было сложно написать комплименты
-                                коллегам, так как я не всех знаю и тяжело
-                                было выполнять задания в рабочий день</p>
-                                <p>Стала проще реагировать на негатив,
-                                и каждый раз вспоминаю все
-                                рекомендации и они очень помогают</p>
+                                <p>Мне было сложно написать комплименты коллегам, так как я не всех знаю и тяжело было выполнять задания в рабочий день</p>
+                                <p>Стала проще реагировать на негатив, и каждый раз вспоминаю все рекомендации и они очень помогают</p>
                             </div>
                         </div>
                     </div>
@@ -289,15 +281,7 @@
                                 <span class="review-name">Dec</span>
                             </div>
                             <div class="review-text">
-                                <p>Забыла добавить: меня, к сожалению,
-                                начало Марафона застало не в самый
-                                лучший период моей жизни, но зато
-                                и на этом опыте могу сказать, что
-                                поставленные задания и вообще такая
-                                практика помогает в тяжёлые моменты,
-                                не только рабочие, но и в целом,
-                                переключиться на мысли о хорошем и
-                                очень эффективна</p>
+                                <p>Забыла добавить: меня, к сожалению, лучший период моей жизни, но зато и на этом опыте могу сказать, что поставленные задания и вообще такая практика помогает в тяжёлые моменты, не только рабочие, но и в целом, переключиться на мысли о хорошем и очень эффективна</p>
                             </div>
                         </div>
                     </div>
@@ -361,7 +345,7 @@
             </div>
         </div>
     </footer>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Открытие модального окна с увеличенным изображением
         document.querySelectorAll('.review-image').forEach(image => {
@@ -427,5 +411,36 @@
             }
         });
     </script>
+
+    <script>
+    function toggleResult(type) {
+        const content = document.getElementById(`${type}-content`);
+        const icon = document.getElementById(`${type}-icon`);
+        const block = content.parentElement;
+        
+        // Закрываем все блоки кроме текущего
+        document.querySelectorAll('.result-content').forEach(el => {
+            if (el.id !== `${type}-content`) {
+                el.style.maxHeight = null;
+                el.previousElementSibling.querySelector('.toggle-icon').classList.remove('fa-chevron-up');
+                el.previousElementSibling.querySelector('.toggle-icon').classList.add('fa-chevron-down');
+                el.parentElement.classList.remove('active');
+            }
+        });
+        
+        // Переключаем текущий блок
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            icon.classList.remove('fa-chevron-up');
+            icon.classList.add('fa-chevron-down');
+            block.classList.remove('active');
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
+            block.classList.add('active');
+        }
+    }
+</script>
 </body>
 </html>
