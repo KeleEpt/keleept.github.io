@@ -522,85 +522,95 @@ footer {
     animation: cloudRight 15s ease-in-out infinite;
 }
 
-/* Глубокая мобильная адаптация (без прокрутки!) */
+/* Мобильная адаптация (без горизонтального скрола!) */
 @media (max-width: 768px) {
-  /* 1. Базовая настройка */
+  /* 1. Общие настройки */
   body {
-    font-size: 15px;
-    line-height: 1.5;
+    font-size: 14px;
   }
 
-  /* 2. Шапка - переработанная */
+  /* 2. Шапка — компактная, но без скрола */
   header {
     height: auto;
-    padding: 20px 0 40px;
+    min-height: 70vh; /* Фиксированная высота, но адаптивная */
+    padding: 20px 0;
   }
 
   .header-content {
     padding: 0 15px;
+    width: 100%;
   }
 
   .header-main-text h1 {
-    font-size: 1.7rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
   }
 
   .header-main-text .subtitle {
-    font-size: 1rem;
-    margin-bottom: 25px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
   }
 
-  /* 3. Блоки в строку (магия!) */
+  /* 3. Блоки в шапке — горизонтальные, но компактные */
   .info-blocks-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
+    justify-content: center;
   }
 
   .info-block {
-    flex: 1 1 calc(33% - 20px);
+    flex: 1 1 calc(33% - 10px); /* 3 блока в ряд */
     min-width: 100px;
-    padding: 12px 8px;
-    font-size: 0.75rem;
-    word-break: break-word;
+    max-width: 150px;
+    padding: 10px;
+    font-size: 0.7rem;
+    backdrop-filter: blur(2px);
+    text-align: center;
+    word-break: normal;
   }
 
-  /* 4. Карточки - компактные */
+  /* 4. Остальные блоки — адаптивные */
   .card {
     margin-bottom: 15px;
   }
 
-  /* 5. Заголовки */
-  h2 {
-    font-size: 1.5rem !important;
+  .programs .col-md-4,
+  .key-levels .col-md-4 {
+    width: 100%;
+    margin-bottom: 15px;
   }
 
-  /* 6. Отзывы */
-  .review-card {
-    min-height: 350px;
+  /* 5. Оптимизация отступов */
+  main {
+    padding: 1rem;
   }
 
-  /* 7. Автор */
-  .author {
-    padding: 20px;
+  section {
+    margin-bottom: 1.5rem;
   }
 
-  /* 8. Облака */
+  /* 6. Облака — меньше */
   .cloud {
-    width: 80px;
+    width: 100px;
   }
 }
 
-/* Супер-маленькие экраны */
+/* Доп. адаптация для очень маленьких экранов */
 @media (max-width: 480px) {
   .info-block {
-    flex: 1 1 calc(50% - 10px);
-    font-size: 0.7rem;
-    padding: 10px 5px;
+    flex: 1 1 calc(50% - 8px); /* 2 блока в ряд */
+    font-size: 0.65rem;
+    padding: 8px 5px;
   }
 
   .header-main-text h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .header-main-text .subtitle {
+    font-size: 0.85rem;
   }
 }
