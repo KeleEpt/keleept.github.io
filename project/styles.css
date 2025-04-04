@@ -6,9 +6,9 @@
 }
 
 body {
-    background-color: #feefe8 !important; /* Принудительно изменяем фон */
+    background-color: #feefe8 !important;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500; /* Применяем Montserrat Medium */
+    font-weight: 500;
     line-height: 1.6;
     color: #e0bba2;
 }
@@ -16,7 +16,7 @@ body {
 /* Стили для шапки */
 header {
     position: relative;
-    height: 40%; /* 40% от высоты страницы */
+    height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,7 +134,6 @@ header::before {
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     color: #f3efec;
-
 }
 
 .list-title {
@@ -155,8 +154,8 @@ header::before {
 .animated-list {
     list-style-type: none;
     padding-left: 0;
-    max-height: 500px; /* Убираем скрытие списков */
-    opacity: 1; /* Убираем скрытие списков */
+    max-height: 500px;
+    opacity: 1;
 }
 
 .animated-list li {
@@ -179,7 +178,7 @@ header::before {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
     color: #f3efec;
-    margin-bottom: 1.5rem; /* Отступ между карточками */
+    margin-bottom: 1.5rem;
 }
 
 .card:hover {
@@ -196,29 +195,28 @@ header::before {
 /* Стили для кнопок */
 .btn-primary {
     font-family: 'Montserrat', sans-serif;
-    background-color: #bec8df !important; /* Цвет фона */
+    background-color: #bec8df !important;
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 25px;
-    color: #f3efec !important; /* Цвет текста */
+    color: #f3efec !important;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    outline: none; /* Убираем обводку при фокусе */
-    border-width: 0 !important; /* Убираем обводку */
+    outline: none;
+    border-width: 0 !important;
 }
 
 .btn-primary:hover {
     font-family: 'Montserrat', sans-serif;
-    background-color: #a58a6e !important; /* Цвет при наведении */
+    background-color: #a58a6e !important;
     transform: translateY(-3px);
 }
 
-/* Убираем обводку при фокусе */
 .btn-primary:focus {
-    box-shadow: none !important; /* Убираем тень при фокусе */
-    outline: none !important; /* Убираем стандартную обводку */
+    box-shadow: none !important;
+    outline: none !important;
 }
 
 /* Стили для основного контента */
@@ -237,11 +235,11 @@ footer {
     color: #f3efec;
 }
 
-/* Стили для карточек с уровнями (Эмоционально-личностный, Телесные практики, Коммуникативные навыки) */
+/* Стили для карточек с уровнями */
 .key-levels .card {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e0bba2; /* Новый цвет фона для карточек */
-    color: #f3efec; /* Цвет текста */
+    background-color: #e0bba2;
+    color: #f3efec;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -255,14 +253,14 @@ footer {
 
 .key-levels .card-title {
     font-family: 'Montserrat', sans-serif;
-    color: #ffffff; /* Белый цвет для заголовков */
+    color: #ffffff;
 }
 
-/* Стили для карточек с программами (Выдыхай, Чувствуй, Венеры) */
+/* Стили для карточек с программами */
 .programs .card {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e0bba2; /* Новый цвет фона для карточек */
-    color: #f3efec; /* Цвет текста */
+    background-color: #e0bba2;
+    color: #f3efec;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -276,97 +274,140 @@ footer {
 
 .programs .card-title {
     font-family: 'Montserrat', sans-serif;
-    color: #ffffff; /* Белый цвет для заголовков */
+    color: #ffffff;
 }
 
 /* Стили для текста в блоке с описанием программы марафона */
 .marathon-description .lead {
     font-family: 'Montserrat', sans-serif;
-    color: #834f4b; /* Новый цвет текста (белый) */
-    font-size: 1.2rem; /* Размер текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 2rem; /* Отступ снизу */
+    color: #834f4b;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-/* Стили для заголовка "3 ключевых уровня работы" */
-.key-levels h2 {
+/* Стили для заголовков разделов */
+.key-levels h2, 
+.programs h2,
+.reviews h2,
+.author h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #834f4b; /* Новый цвет текста (белый) */
-    font-size: 2rem; /* Размер текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 2rem; /* Отступ снизу */
-}
-
-/* Стили для заголовка "Три блока с основными программами" */
-.programs h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #834f4b; /* Новый цвет текста (белый) */
-    font-size: 2rem; /* Размер текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 2rem; /* Отступ снизу */
+    color: #834f4b;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 /* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
     .card {
-        margin-bottom: 2rem; /* Увеличиваем отступ между карточками */
+        margin-bottom: 2rem;
     }
 
-    .key-levels h2, .programs h2 {
-        font-size: 1.5rem; /* Уменьшаем размер заголовков */
+    .key-levels h2, 
+    .programs h2,
+    .reviews h2,
+    .author h2 {
+        font-size: 1.5rem;
     }
 
     .marathon-description .lead {
-        font-size: 1rem; /* Уменьшаем размер текста */
+        font-size: 1rem;
     }
 }
 
 /* Стили для блока с отзывами */
 .reviews {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e0bba2; /* Цвет фона блока */
+    background-color: #e0bba2;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.reviews h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #f3efec; /* Цвет заголовка */
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
+/* Стили для Swiper контейнера */
+.reviewSwiper {
+    padding: 20px 40px;
+    position: relative;
 }
 
-/* Сетка для отзывов */
-.review-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
-    gap: 20px; /* Расстояние между элементами */
+/* Стили для навигационных кнопок */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #4c2c29 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
-/* Стили для каждого отзыва */
-.review-item {
-    overflow: hidden;
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+}
+
+/* Стили для слайдов */
+.swiper-slide {
+    height: auto;
+    display: flex;
+}
+
+/* Стили для карточек с отзывами */
+.review-card {
+    background-color: #957a62;
     border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.review-item:hover {
-    transform: scale(1.05); /* Легкое увеличение при наведении */
-}
-
-.review-image {
-    width: 100%;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+    width: 100%;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Шапка отзыва (фото + имя) */
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.review-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: 10px;
+    margin-right: 1rem;
+    border: 2px solid #f3efec;
+}
+
+.review-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #f3efec;
+}
+
+/* Текст отзыва */
+.review-text {
+    font-size: 0.95rem;
+    color: #f3efec;
+    line-height: 1.6;
 }
 
 /* Модальное окно */
 .modal {
-    display: none; /* Скрыто по умолчанию */
+    display: none;
     position: fixed;
     z-index: 1000;
     padding-top: 60px;
@@ -374,7 +415,7 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Затемнение фона */
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .modal-content {
@@ -400,49 +441,24 @@ footer {
     color: #ccc;
 }
 
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-    .review-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 колонки на мобильных */
-    }
-
-    .modal-content {
-        max-width: 95%;
-        max-height: 70vh;
-    }
-}
-
-@media (max-width: 480px) {
-    .review-grid {
-        grid-template-columns: 1fr; /* 1 колонка на очень маленьких экранах */
-    }
-}
 /* Стили для блока "Автор марафона" */
 .author {
     font-family: 'Montserrat', sans-serif;
-    background-color: #e0bba2; /* Цвет фона блока */
+    background-color: #e0bba2;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.author h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #f3efec; /* Цвет заголовка */
-    font-size: 20px;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
 .author-photo img {
     max-width: 80%;
     height: auto;
-    border: 4px solid #f3efec; /* Рамка вокруг фото */
+    border: 4px solid #f3efec;
 }
 
 .author-info {
     font-family: 'Montserrat', sans-serif;
-    color: #f3efec; /* Цвет текста */
+    color: #f3efec;
 }
 
 .author-name {
@@ -461,7 +477,6 @@ footer {
 .author-details li {
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
-    font-family: 'Montserrat', sans-serif;
     margin-bottom: 0.75rem;
     line-height: 1.6;
 }
@@ -472,12 +487,8 @@ footer {
         padding: 1rem;
     }
 
-    .author h2 {
-        font-size: 1.5rem;
-    }
-
     .author-photo {
-        margin-bottom: 1.5rem; /* Отступ между фото и текстом на мобильных устройствах */
+        margin-bottom: 1.5rem;
     }
 
     .author-name {
@@ -487,8 +498,76 @@ footer {
     .author-details li {
         font-size: 0.9rem;
     }
+
+    /* Адаптация карусели для мобильных */
+    .reviewSwiper {
+        padding: 20px 10px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
 }
 
+/* Стили для футера */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #713f2b;
+    color: #f3efec;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.qr-code img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Стили для кнопки Telegram */
+.btn-telegram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #28a0d9 !important;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    border: 2px solid #1c7fb3;
+}
+
+.btn-telegram:hover {
+    background-color: #1c7fb3 !important;
+    border-color: #28a0d9;
+    transform: translateY(-3px);
+}
+
+.telegram-logo {
+    width: 24px;
+    height: 24px;
+}
+
+/* Анимации для списков */
 .animated-list-v {
     list-style-type: none;
     padding-left: 0;
@@ -509,205 +588,4 @@ footer {
 .animated-list-v li.visible {
     opacity: 1;
     transform: translateY(0);
-}
-/* Стили для футера */
-/* Стили для футера по умолчанию */
-footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: #713f2b; /* Новый цвет фона футера */
-    color: #f3efec; /* Цвет текста футера */
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between; /* Разделяет элементы по краям */
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.qr-code img {
-    max-width: 150px;
-    height: auto;
-    border-radius: 10px;
-}
-
-/* Стили для кнопки Telegram */
-/* Стили для кнопки Telegram на всех страницах */
-.btn-telegram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background-color: #28a0d9; /* Цвет фона */
-    color: #ffffff; /* Цвет текста */
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    text-decoration: none;
-    border: 2px solid #1c7fb3; /* Обводка кнопки */
-}
-
-.btn-telegram:hover {
-    background-color: #1c7fb3; /* Цвет фона при наведении */
-    border-color: #28a0d9; /* Цвет обводки при наведении */
-    transform: translateY(-3px);
-}
-
-.telegram-logo {
-    width: 24px;
-    height: 24px;
-}
-
-/* Стили для кнопки Telegram на странице "Чувствуй" */
-.feel-page .btn-telegram {
-    background-color: #28a0d9; /* Цвет фона */
-    color: #ffffff; /* Цвет текста */
-    border: 2px solid #1c7fb3; /* Обводка кнопки */
-}
-
-.feel-page .btn-telegram:hover {
-    background-color: #1c7fb3; /* Цвет фона при наведении */
-    border-color: #28a0d9; /* Цвет обводки при наведении */
-}
-
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column; /* Элементы в столбик на мобильных */
-        align-items: center;
-    }
-
-    .qr-code img {
-        max-width: 120px;
-    }
-
-    .btn-telegram {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-    }
-}
-
-/* Общие стили для страницы "Чувствуй" */
-body.feel-page {
-    background-color: #415526 !important; /* Новый цвет фона */
-    color: #f3efec; /* Цвет текста для контраста */
-}
-
-/* Шапка для страницы "Чувствуй" */
-.feel-page header {
-    background-color: #415526; /* Цвет фона шапки */
-}
-
-.feel-page .background-image {
-    background-image: url('img/forrest.png'); /* Фон для страницы "Чувствуй" */
-}
-
-/* Стили для списков и текста */
-.feel-page .animated-list-v li {
-    background-color: #5a3a37; /* Цвет фона элементов списка */
-    color: #f3efec; /* Цвет текста */
-}
-
-.feel-page .text-emphasis {
-    color: #f3efec; /* Цвет текста с акцентом */
-}
-
-/* Кнопки */
-.feel-page .btn-primary {
-    background-color: #bec8df !important; /* Цвет кнопок */
-    color: #415526 !important; /* Цвет текста кнопок */
-}
-
-.feel-page .btn-primary:hover {
-    background-color: #a58a6e !important; /* Цвет кнопок при наведении */
-}
-
-/* Футер для страницы "Чувствуй" */
-/* Стили для футера страницы "Чувствуй" */
-.feel-page footer {
-    background-color: #713f2b; /* Новый цвет фона футера */
-    color: #f3efec; /* Цвет текста футера */
-}
-
-.feel-page .btn-telegram {
-    background-color: #28a0d9; /* Цвет кнопки Telegram */
-    color: #ffffff; /* Цвет текста кнопки Telegram */
-}
-
-.feel-page .btn-telegram:hover {
-    background-color: #1c7fb3; /* Цвет кнопки Telegram при наведении */
-}
-/* Стили для карточек с отзывами */
-.review-card {
-    background-color: #957a62; /* Цвет фона карточки */
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-}
-
-.review-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Шапка отзыва (фото + имя) */
-.review-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.review-photo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%; /* Круглая рамка */
-    object-fit: cover;
-    margin-right: 1rem;
-    border: 2px solid #f3efec; /* Обводка фото */
-}
-
-.review-name {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #f3efec; /* Цвет текста */
-}
-
-/* Текст отзыва */
-.review-text {
-    font-size: 0.95rem;
-    color: #f3efec; /* Цвет текста */
-    line-height: 1.6;
-}
-
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-    .review-card {
-        padding: 1rem;
-    }
-
-    .review-photo {
-        width: 40px;
-        height: 40px;
-    }
-
-    .review-name {
-        font-size: 1rem;
-    }
-
-    .review-text {
-        font-size: 0.9rem;
-    }
 }
