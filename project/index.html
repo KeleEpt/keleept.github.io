@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="header" class="position-relative d-flex justify-content-center align-items-center overflow-hidden" style="height: 50vh;">
+    <header id="header" class="position-relative d-flex flex-column justify-content-center align-items-center overflow-hidden" style="height: 60vh;">
         <!-- Фон шапки -->
         <div class="background-image"></div>
 
@@ -20,18 +20,23 @@
         <img src="img/cloud.png" alt="Облако 1" class="cloud cloud-left position-absolute">
         <img src="img/cloud.png" alt="Облако 2" class="cloud cloud-right position-absolute">
         
-        <!-- Логотип -->
-        <img src="img/logo.png" alt="Логотип" class="logo position-absolute">
+        <!-- Основной текст -->
+        <div class="header-main-text position-relative text-center mb-4">
+            <h1>Марафоны для тех,<br>кто работает с людьми</h1>
+            <p class="subtitle mt-3">Программа позволяет в лёгкой форме научиться управлять своим настроением, учит правильно реагировать на стрессовые ситуации и прокачать навыки эмпатии.</p>
+        </div>
 
-        <!-- Тексты -->
-        <div class="header-text header-text-top-left position-absolute">
-            Иногда каждому из нас нужна перезагрузка
-        </div>
-        <div class="header-text header-text-bottom-left position-absolute">
-            <p>300+</p> <p>сотрудникам марафон уже помог</p>
-        </div>
-        <div class="header-text header-text-bottom-right position-absolute">
-            <p>Расскажем, как начать понимать</p> <p> себя и заботиться о себе</p>
+        <!-- Блоки с текстом -->
+        <div class="info-blocks-container d-flex justify-content-center flex-wrap">
+            <div class="info-block mx-3 my-2">
+                <p>300+ сотрудников уже ощутили позитивные изменения после прохождения марафона</p>
+            </div>
+            <div class="info-block mx-3 my-2">
+                <p>Иногда каждому из нас нужна перезагрузка</p>
+            </div>
+            <div class="info-block mx-3 my-2">
+                <p>Расскажем, как начать понимать себя и заботиться о себе</p>
+            </div>
         </div>
     </header>
 
