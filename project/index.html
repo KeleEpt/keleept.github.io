@@ -438,41 +438,26 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
     
     function openLevelModal(title, textLines) {
-        const modal = document.getElementById('levelModal');
-        const modalTitle = document.getElementById('modalLevelTitle');
-        const modalText = document.getElementById('modalLevelText');
-        
-        // Устанавливаем заголовок
-        modalTitle.textContent = title;
-        
-        
-        // Показываем модальное окно
-        modal.style.display = 'flex';
-        
-        // Подготавливаем текст с переносами строк
-        const fullText = Array.isArray(textLines) ? 
-            textLines.map(line => `<p>${line}</p>`).join('') : 
-            `<p>${textLines}</p>`;
-        
-        // Запускаем эффект печати
-        currentText = fullText;
-        currentIndex = 0;
-        modalText.classList.add('typing-effect');
-        
-        typingInterval = setInterval(() => {
-            if (currentIndex < currentText.length) {
-                modalText.innerHTML = currentText.substring(0, currentIndex + 1);
-                currentIndex++;
-                
-                // Прокручиваем текст вниз при появлении новых строк
-                modalText.scrollTop = modalText.scrollHeight;
-            } else {
-                clearInterval(typingInterval);
-                modalText.classList.remove('typing-effect');
-                modalText.style.borderRight = 'none';
-            }
-        }, 40); // Скорость печати
-    }
+    const modal = document.getElementById('levelModal');
+    const modalTitle = document.getElementById('modalLevelTitle');
+    const modalText = document.getElementById('modalLevelText');
+    
+    modalTitle.textContent = title;
+    modalText.innerHTML = textLines.map(line => `<p>${line}</p>`).join('');
+    modal.style.display = 'flex';
+    modalText.scrollTop = 0;
+}
+
+function closeLevelModal() {
+    const modal = document.getElementById('levelModal');
+    const modalText = document.getElementById('modalLevelText');
+    
+    // Скрываем модальное окно
+    modal.style.display = 'none';
+    
+    // Очищаем содержимое
+    modalText.innerHTML = '';
+}
     
     function closeLevelModal() {
         const modal = document.getElementById('levelModal');
