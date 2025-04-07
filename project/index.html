@@ -32,116 +32,50 @@
 
             <!-- Блоки с текстом -->
             <div class="info-blocks-container d-flex flex-nowrap justify-content-center">
-                <div class="info-block">
-                    <p>300+ сотрудников уже ощутили позитивные изменения после прохождения марафона</p>
-                </div>
+                
                 <div class="info-block">
                     <p>Иногда каждому из нас нужна перезагрузка</p>
                 </div>
                 <div class="info-block">
                     <p>Расскажем, как начать понимать себя и заботиться о себе</p>
                 </div>
+                <div class="info-block">
+                    <p>300+ сотрудников уже ощутили позитивные изменения после прохождения марафона</p>
+                </div>
             </div>
         </div>
     </header>
 
-<!-- Блок с результатами (две колонки) -->
-<section class="results-section my-5">
+
+    <!-- Блок с тремя ключевыми уровнями -->
+<section class="key-levels my-5">
     <div class="container">
-        <div class="row g-4">
-            <!-- Результат для компании -->
-            <div class="col-md-6">
-                <div class="result-block">
-                    <button class="result-toggle" onclick="toggleResult('company')">
-                        <i class="fas fa-building me-2"></i>
-                        <span>Результат для компании</span>
-                        <i class="fas fa-chevron-down toggle-icon" id="company-icon"></i>
-                    </button>
-                    <div class="result-content" id="company-content">
-                        <ul class="result-list">
-                            <li><i class="fas fa-check-circle me-2"></i> Создание уникального клиентского опыта</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Повышение удовлетворённости клиентов, рост CSI на 10%</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Повышение удовлетворённости сотрудников, рост ENPS на 5%</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Сокращение оттока сотрудников, снижение затрат на найм и обучение</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Простые техники и удобный формат позволяют помогать сотрудникам без отрыва от работы</li>
-                        </ul>
-                    </div>
-                </div>
+        <h2 class="text-center mb-4">3 ключевых уровня работы во время прохождения программы:</h2>
+        <div class="levels-container">
+            <!-- Эмоционально-личностный -->
+            <div class="level-circle" onclick="openLevelModal('Эмоционально-личностный', 'Работа над своим внутренним состоянием. Отработка навыка выделять из повседневности позитивные моменты. Развитие умения поддерживать и понимать себя.')">
+                Эмоционально-личностный
             </div>
-            
-            <!-- Результат для сотрудника -->
-            <div class="col-md-6">
-                <div class="result-block">
-                    <button class="result-toggle" onclick="toggleResult('employee')">
-                        <i class="fas fa-user-tie me-2"></i>
-                        <span>Результат для сотрудника</span>
-                        <i class="fas fa-chevron-down toggle-icon" id="employee-icon"></i>
-                    </button>
-                    <div class="result-content" id="employee-content">
-                        <ul class="result-list">
-                            <li><i class="fas fa-check-circle me-2"></i> Помочь своему разуму и телу «перезагрузиться»</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Не попадать в «замкнутый круг» негатива при общении с клиентом</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Поддерживать своё эмоциональное равновесие</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Получать удовольствие от работы</li>
-                            <li><i class="fas fa-check-circle me-2"></i> Использовать понятные инструменты, которые не займут много времени</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- Телесные практики -->
+            <div class="level-circle" onclick="openLevelModal('Телесные практики', 'Практические упражнения для снятия стресса и расслабления.')">
+                Телесные практики
+            </div>
+            <!-- Коммуникативные навыки -->
+            <div class="level-circle" onclick="openLevelModal('Коммуникативные навыки', 'Формирование навыка работы с негативом при общении с клиентами. Умение правильно реагировать на негатив, решать вопрос клиента и не пострадать самому.')">
+                Коммуникативные навыки
             </div>
         </div>
     </div>
 </section>
 
-    <!-- Блок с описанием программы марафона -->
-    <section class="marathon-description my-5">
-        <div class="container">
-            <p class="lead text-center">
-                Программа марафона позволяет научиться поддерживать своё эмоциональное равновесие каждый день. Из предложенных практик, точно найдутся те, которые подойдут каждому сотруднику. Полученные инструменты легко применяемы в работе и в жизни.
-            </p>
-        </div>
-    </section>
-
-    <!-- Блок с тремя ключевыми уровнями -->
-    <section class="key-levels my-5">
-        <div class="container">
-            <h2 class="text-center mb-4">3 ключевых уровня работы во время прохождения программы:</h2>
-            <div class="row">
-                <!-- Эмоционально-личностный -->
-                <div class="col-md-4 d-flex">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Эмоционально-личностный</h3>
-                            <p class="card-text">
-                                Работа над своим внутренним состоянием. Отработка навыка выделять из повседневности позитивные моменты. Развитие умения поддерживать и понимать себя.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Телесные практики -->
-                <div class="col-md-4 d-flex">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Телесные практики</h3>
-                            <p class="card-text">
-                                Практические упражнения для снятия стресса и расслабления.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Коммуникативные навыки -->
-                <div class="col-md-4 d-flex">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Коммуникативные навыки</h3>
-                            <p class="card-text">
-                                Формирование навыка работы с негативом при общении с клиентами. Умение правильно реагировать на негатив, решать вопрос клиента и не пострадать самому.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Модальное окно для уровня -->
+<div id="levelModal" class="level-modal">
+    <div class="level-modal-content">
+        <span class="close-level-modal" onclick="closeLevelModal()">&times;</span>
+        <h3 class="level-modal-title" id="modalLevelTitle"></h3>
+        <div class="level-modal-text" id="modalLevelText"></div>
+    </div>
+</div>
 
     <!-- Блок с тремя программами -->
     <section class="programs my-5">
@@ -193,6 +127,54 @@
             </div>
         </div>
     </section>
+
+    <!-- Блок с результатами (две колонки) -->
+<section class="results-section my-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Результат для компании -->
+            <div class="col-md-6">
+                <div class="result-block">
+                    <button class="result-toggle" onclick="toggleResult('company')">
+                        <i class="fas fa-building me-2"></i>
+                        <span>Результат для компании</span>
+                        <i class="fas fa-chevron-down toggle-icon" id="company-icon"></i>
+                    </button>
+                    <div class="result-content" id="company-content">
+                        <ul class="result-list">
+                            <li><i class="fas fa-check-circle me-2"></i> Создание уникального клиентского опыта</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Повышение удовлетворённости клиентов, рост CSI на 10%</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Повышение удовлетворённости сотрудников, рост ENPS на 5%</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Сокращение оттока сотрудников, снижение затрат на найм и обучение</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Простые техники и удобный формат позволяют помогать сотрудникам без отрыва от работы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Результат для сотрудника -->
+            <div class="col-md-6">
+                <div class="result-block">
+                    <button class="result-toggle" onclick="toggleResult('employee')">
+                        <i class="fas fa-user-tie me-2"></i>
+                        <span>Результат для сотрудника</span>
+                        <i class="fas fa-chevron-down toggle-icon" id="employee-icon"></i>
+                    </button>
+                    <div class="result-content" id="employee-content">
+                        <ul class="result-list">
+                            <li><i class="fas fa-check-circle me-2"></i> Помочь своему разуму и телу «перезагрузиться»</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Не попадать в «замкнутый круг» негатива при общении с клиентом</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Поддерживать своё эмоциональное равновесие</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Получать удовольствие от работы</li>
+                            <li><i class="fas fa-check-circle me-2"></i> Использовать понятные инструменты, которые не займут много времени</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <!-- Блок с отзывами -->
     <section class="reviews my-5">
@@ -440,6 +422,65 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.maxHeight = null;
     });
 });
+</script>
+<script>
+    // Переменные для эффекта печати
+    let typingInterval;
+    let currentText = '';
+    let currentIndex = 0;
+    
+    function openLevelModal(title, text) {
+        const modal = document.getElementById('levelModal');
+        const modalTitle = document.getElementById('modalLevelTitle');
+        const modalText = document.getElementById('modalLevelText');
+        
+        // Устанавливаем заголовок
+        modalTitle.textContent = title;
+        
+        // Очищаем предыдущий текст и эффект печати
+        modalText.innerHTML = '';
+        clearInterval(typingInterval);
+        
+        // Показываем модальное окно
+        modal.style.display = 'flex';
+        
+        // Запускаем эффект печати
+        currentText = text;
+        currentIndex = 0;
+        modalText.classList.add('typing-effect');
+        
+        typingInterval = setInterval(() => {
+            if (currentIndex < currentText.length) {
+                modalText.textContent = currentText.substring(0, currentIndex + 1);
+                currentIndex++;
+            } else {
+                clearInterval(typingInterval);
+                modalText.classList.remove('typing-effect');
+                modalText.style.borderRight = 'none';
+            }
+        }, 30); // Скорость печати (меньше = быстрее)
+    }
+    
+    function closeLevelModal() {
+        const modal = document.getElementById('levelModal');
+        const modalText = document.getElementById('modalLevelText');
+        
+        // Останавливаем эффект печати
+        clearInterval(typingInterval);
+        modalText.classList.remove('typing-effect');
+        modalText.style.borderRight = 'none';
+        
+        // Скрываем модальное окно
+        modal.style.display = 'none';
+    }
+    
+    // Закрытие модального окна при клике вне его
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById('levelModal');
+        if (event.target === modal) {
+            closeLevelModal();
+        }
+    });
 </script>
 </body>
 </html>
