@@ -410,8 +410,8 @@ header::before {
     }
     
     .level-circle {
-        width: 130px;
-        height: 130px;
+        width: 139px;
+        height: 1390px;
         font-size: 0rem;
     }
     
@@ -434,8 +434,8 @@ header::before {
     }
     
     .level-circle {
-        width: 130px;
-        height: 130px;
+        width: 139px;
+        height: 139px;
         font-size: 0.9rem;
         padding: 15px;
     }
