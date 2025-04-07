@@ -445,9 +445,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Устанавливаем заголовок
         modalTitle.textContent = title;
         
-        // Очищаем предыдущий текст и эффект печати
-        modalText.innerHTML = '';
-        clearInterval(typingInterval);
         
         // Показываем модальное окно
         modal.style.display = 'flex';
@@ -474,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 modalText.classList.remove('typing-effect');
                 modalText.style.borderRight = 'none';
             }
-        }, 50); // Скорость печати
+        }, 40); // Скорость печати
     }
     
     function closeLevelModal() {

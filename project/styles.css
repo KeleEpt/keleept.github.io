@@ -203,6 +203,15 @@ header::before {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
+    display: flex; /* Добавляем flex */
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center; /* Центрируем по горизонтали */
+    min-height: 100px; /* Минимальная высота для всех блоков */
+}
+
+.info-block p {
+    margin: 0;
+    width: 100%; /* Занимает всю ширину блока */
 }
 
 .info-block p {
@@ -857,18 +866,18 @@ footer {
 }
 
 /* Доп. адаптация для очень маленьких экранов */
+@media (max-width: 768px) {
+    .info-block {
+        min-height: 80px; /* Уменьшаем высоту для мобильных */
+        padding: 10px;
+        font-size: 0.7rem;
+    }
+}
+
 @media (max-width: 480px) {
-  .info-block {
-    flex: 1 1 calc(50% - 8px); /* 2 блока в ряд */
-    font-size: 0.65rem;
-    padding: 8px 5px;
-  }
-
-  .header-main-text h1 {
-    font-size: 1.4rem;
-  }
-
-  .header-main-text .subtitle {
-    font-size: 0.85rem;
-  }
+    .info-block {
+        min-height: 70px;
+        font-size: 0.65rem;
+        padding: 8px 5px;
+    }
 }
