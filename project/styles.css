@@ -333,6 +333,8 @@ header::before {
     position: relative;
     color: #4c2c29;
     animation: modalFadeIn 0.4s ease-out;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 @keyframes modalFadeIn {
@@ -371,13 +373,17 @@ header::before {
 .level-modal-text {
     font-size: 1.1rem;
     line-height: 1.6;
-    min-height: 100px;
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.level-modal-text p {
+    margin-bottom: 15px;
 }
 
 /* Эффект печатающегося текста */
 .typing-effect {
     border-right: 2px solid #4c2c29;
-    white-space: pre-wrap;
     overflow: hidden;
     animation: blinkCursor 0.7s steps(1) infinite;
 }
@@ -395,8 +401,8 @@ header::before {
     }
     
     .level-circle {
-        width: 180px;
-        height: 180px;
+        width: 190px;
+        height: 190px;
         font-size: 0rem;
     }
     
@@ -419,8 +425,8 @@ header::before {
     }
     
     .level-circle {
-        width: 180px;
-        height: 180px;
+        width: 190px;
+        height: 190px;
         font-size: 0.9rem;
         padding: 15px;
     }

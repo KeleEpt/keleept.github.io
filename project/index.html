@@ -53,15 +53,24 @@
         <h2 class="text-center mb-4">3 ключевых уровня работы во время прохождения программы:</h2>
         <div class="levels-container">
             <!-- Эмоционально-личностный -->
-            <div class="level-circle" onclick="openLevelModal('Эмоционально-личностный', 'Работа над своим внутренним состоянием. Отработка навыка выделять из повседневности позитивные моменты. Развитие умения поддерживать и понимать себя.')">
+            <div class="level-circle" onclick="openLevelModal('Эмоционально-личностный', [
+                '○ Работа над своим внутренним состоянием',
+                '○ Отработка навыка выделять из повседневности позитивные моменты',
+                '○ Развитие умения поддерживать и понимать себя'
+            ])">
                 Эмоционально-личностный
             </div>
             <!-- Телесные практики -->
-            <div class="level-circle" onclick="openLevelModal('Телесные практики', 'Практические упражнения для снятия стресса и расслабления.')">
+            <div class="level-circle" onclick="openLevelModal('Телесные практики', [
+                '○ Практические упражнения для снятия стресса и расслабления'
+            ])">
                 Телесные практики
             </div>
             <!-- Коммуникативные навыки -->
-            <div class="level-circle" onclick="openLevelModal('Коммуникативные навыки', 'Формирование навыка работы с негативом при общении с клиентами. Умение правильно реагировать на негатив, решать вопрос клиента и не пострадать самому.')">
+            <div class="level-circle" onclick="openLevelModal('Коммуникативные навыки', [
+                '○ Формирование навыка работы с негативом при общении с клиентами',
+                '○ Умение правильно реагировать на негатив, решать вопрос клиента и не пострадать самому'
+            ])">
                 Коммуникативные навыки
             </div>
         </div>
@@ -76,7 +85,6 @@
         <div class="level-modal-text" id="modalLevelText"></div>
     </div>
 </div>
-
     <!-- Блок с тремя программами -->
     <section class="programs my-5">
         <div class="container">
@@ -429,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentText = '';
     let currentIndex = 0;
     
-    function openLevelModal(title, text) {
+    function openLevelModal(title, textLines) {
         const modal = document.getElementById('levelModal');
         const modalTitle = document.getElementById('modalLevelTitle');
         const modalText = document.getElementById('modalLevelText');
@@ -444,21 +452,29 @@ document.addEventListener('DOMContentLoaded', function() {
         // Показываем модальное окно
         modal.style.display = 'flex';
         
+        // Подготавливаем текст с переносами строк
+        const fullText = Array.isArray(textLines) ? 
+            textLines.map(line => `<p>${line}</p>`).join('') : 
+            `<p>${textLines}</p>`;
+        
         // Запускаем эффект печати
-        currentText = text;
+        currentText = fullText;
         currentIndex = 0;
         modalText.classList.add('typing-effect');
         
         typingInterval = setInterval(() => {
             if (currentIndex < currentText.length) {
-                modalText.textContent = currentText.substring(0, currentIndex + 1);
+                modalText.innerHTML = currentText.substring(0, currentIndex + 1);
                 currentIndex++;
+                
+                // Прокручиваем текст вниз при появлении новых строк
+                modalText.scrollTop = modalText.scrollHeight;
             } else {
                 clearInterval(typingInterval);
                 modalText.classList.remove('typing-effect');
                 modalText.style.borderRight = 'none';
             }
-        }, 50); // Скорость печати (меньше = быстрее)
+        }, 50); // Скорость печати
     }
     
     function closeLevelModal() {
