@@ -952,4 +952,162 @@ footer {
     bottom: 5%;
     right: 5%;
     text-align: right;
+}/* Стили для блоков программ */
+.program-block {
+    display: flex;
+    align-items: stretch; /* Растягиваем на всю высоту */
+    background-color: #e0bba2;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #f3efec;
+    min-height: 400px; /* Фиксированная минимальная высота */
+}
+
+.program-image {
+    position: relative;
+    flex: 1;
+    min-height: 100%; /* Занимает всю высоту родителя */
+    overflow: hidden;
+}
+
+.program-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Обрезаем изображение с сохранением пропорций */
+    object-position: center; /* Центрируем изображение */
+    transition: transform 0.3s ease; /* Анимация при наведении */
+}
+
+.program-block:hover .program-image img {
+    transform: scale(1.03); /* Эффект увеличения при наведении */
+}
+
+.program-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 70%;
+    max-height: 70%;
+    z-index: 2;
+}
+
+.program-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.program-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #f3efec;
+    font-weight: 600;
+}
+
+.program-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* Кнопка в блоке программы */
+.program-content .btn-primary {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 992px) {
+    .program-block {
+        min-height: 350px;
+    }
+    
+    .program-content h3 {
+        font-size: 1.7rem;
+    }
+    
+    .program-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .program-block {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .program-right-image {
+        flex-direction: column-reverse;
+    }
+    
+    .program-image {
+        width: 100%;
+        height: 250px; /* Фиксированная высота изображения на мобильных */
+        min-height: auto;
+    }
+    
+    .program-content {
+        padding: 1.5rem;
+    }
+    
+    .program-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .program-logo {
+        max-width: 60%;
+        max-height: 60%;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .program-image {
+        height: 200px;
+    }
+    
+    .program-content {
+        padding: 1.2rem;
+    }
+    
+    .program-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .program-content p {
+        font-size: 0.95rem;
+    }
+}
+/* Стили для блоков программ */
+.program-block {
+    display: flex;
+    align-items: stretch;
+    background-color: #ffffff; /* Белый фон блока */
+    border: 5px solid #a5a5a5; /* Серая рамка 5px */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #5a3a36; /* Цвет текста */
+    min-height: 400px;
+    margin-bottom: 30px; /* Отступ между блоками */
+}
+
+.program-content h3 {
+    color: #4c2c29; /* Цвет заголовка */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.program-content p {
+    color: #5a3a36; /* Цвет текста */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
