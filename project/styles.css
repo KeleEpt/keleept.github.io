@@ -7,7 +7,7 @@
 
 body {
     background-color: #feefe8 !important;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
     font-weight: 500;
     line-height: 1.6;
     color: #e0bba2;
@@ -482,7 +482,7 @@ header::before {
 }
 
 .btn-primary {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif ;
     background-color: #bec8df !important;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -897,4 +897,41 @@ footer {
         font-size: 0.65rem;
         padding: 8px 5px;
     }
+}
+/* Тексты в шапке */
+.header-text {
+    color: #e0bba2;
+    z-index: 2;
+    position: absolute;
+    font-size: 2vw;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .header-text {
+        font-size: 1.5vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-text {
+        font-size: 1.2rem;
+    }
+}
+
+.header-text-top-left {
+    top: 5%;
+    left: 5%;
+}
+
+.header-text-bottom-left {
+    bottom: 5%;
+    left: 5%;
+}
+
+.header-text-bottom-right {
+    bottom: 5%;
+    right: 5%;
+    text-align: right;
 }
