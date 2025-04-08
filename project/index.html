@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header id="header" class="position-relative d-flex flex-column justify-content-center align-items-center overflow-hidden">
+    <header id="header" class="position-relative d-flex justify-content-center align-items-center overflow-hidden" style="height: 50vh;">
         <!-- Фон шапки -->
         <div class="background-image"></div>
 
@@ -23,28 +23,21 @@
         <img src="img/cloud.png" alt="Облако 1" class="cloud cloud-left position-absolute">
         <img src="img/cloud.png" alt="Облако 2" class="cloud cloud-right position-absolute">
         
-        <!-- Основной текст -->
-        <div class="header-content position-relative text-center">
-            <div class="header-main-text">
-                <h1>Марафоны для тех,<br>кто работает с людьми</h1>
-                <p class="subtitle">Программа позволяет в лёгкой форме научиться управлять своим настроением, учит правильно реагировать на стрессовые ситуации и прокачать навыки эмпатии.</p>
-            </div>
+        <!-- Логотип -->
+        <img src="img/logo.png" alt="Логотип" class="logo position-absolute">
 
-            <!-- Блоки с текстом -->
-            <div class="info-blocks-container d-flex flex-nowrap justify-content-center">
-                
-                <div class="info-block">
-                    <p>Иногда каждому из нас нужна перезагрузка</p>
-                </div>
-                <div class="info-block">
-                    <p>Расскажем, как начать понимать себя и заботиться о себе</p>
-                </div>
-                <div class="info-block">
-                    <p>300+ сотрудников уже ощутили позитивные изменения после прохождения марафона</p>
-                </div>
-            </div>
+        <!-- Тексты -->
+        <div class="header-text header-text-top-left position-absolute">
+            Иногда каждому из нас нужна перезагрузка
+        </div>
+        <div class="header-text header-text-bottom-left position-absolute">
+            <p>300+</p> <p>сотрудникам марафон уже помог</p>
+        </div>
+        <div class="header-text header-text-bottom-right position-absolute">
+            <p>Расскажем, как начать понимать</p> <p> себя и заботиться о себе</p>
         </div>
     </header>
+
 
     <!-- Блок с описанием программы марафона -->
     <section class="marathon-description my-5">
