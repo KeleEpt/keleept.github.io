@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #feefe8 !important;
+    background-color: #f0f8ff !important;
     font-family: 'Montserrat', sans-serif !important;
     font-weight: 500;
     line-height: 1.6;
@@ -952,21 +952,13 @@ footer {
     bottom: 5%;
     right: 5%;
     text-align: right;
-}/* Стили для блоков программ */
-.program-block {
-    display: flex;
-    align-items: stretch; /* Растягиваем на всю высоту */
-    background-color: #e0bba2;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #f3efec;
-    min-height: 400px; /* Фиксированная минимальная высота */
 }
+/* Стили для блоков программ */
+
 
 .program-image {
     position: relative;
-    flex: 1;
+    flex: 5%;
     min-height: 100%; /* Занимает всю высоту родителя */
     overflow: hidden;
 }
@@ -977,6 +969,7 @@ footer {
     object-fit: cover; /* Обрезаем изображение с сохранением пропорций */
     object-position: center; /* Центрируем изображение */
     transition: transform 0.3s ease; /* Анимация при наведении */
+    border-radius: 50px;
 }
 
 .program-block:hover .program-image img {
@@ -1089,10 +1082,10 @@ footer {
     display: flex;
     align-items: stretch;
     background-color: #ffffff; /* Белый фон блока */
-    border: 5px solid #a5a5a5; /* Серая рамка 5px */
-    border-radius: 15px;
+    border: 0px solid #a5a5a5; /* Серая рамка 5px */
+    border-radius: 0px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 px 6px rgba(0, 0, 0, 0.1);
     color: #5a3a36; /* Цвет текста */
     min-height: 400px;
     margin-bottom: 30px; /* Отступ между блоками */
