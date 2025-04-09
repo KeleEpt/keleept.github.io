@@ -103,54 +103,41 @@
 </div>
    <!-- Блок с тремя программами -->
     <section class="programs">
-        <div class="container">
-            <h2 class="text-center mb-4">Основные программы</h2>
-            <div class="row">
-                <!-- Программа 1 - Выдыхай -->
-                <div class="col-md-12 mb-5">
-                    <div class="program-block program-slider program-left-image">
-                        <div class="program-image">
-                            <img src="img/pu.png" alt="Выдыхай" class="img-fluid slider-image">
-                        </div>
-                        <div class="program-content">
-                            <h3>Выдыхай</h3>
-                            <p>Марафон для заботы о себе<br>
-                            Управления своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами</p>
-                            <a href="vydihay.html" class="btn btn-primary">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Программа 2 - Чувствуй -->
-                <div class="col-md-12 mb-5">
-                    <div class="program-block program-slider program-right-image">
-                        <div class="program-image">
-                            <img src="img/pupu.png" alt="Чувствуй" class="img-fluid slider-image">
-                        </div>
-                        <div class="program-content">
-                            <h3>Чувствуй</h3>
-                            <p>Марафон для заботы о себе<br>
-                            Управления своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами</p>
-                            <a href="chustva.html" class="btn btn-primary">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Программа 3 - Вдохновляй -->
-                <div class="col-md-12">
-                    <div class="program-block program-slider program-left-image">
-                        <div class="program-image">
-                            <img src="img/pupupu.png" alt="Вдохновляй" class="img-fluid slider-image">
-                        </div>
-                        <div class="program-content">
-                            <h3>Вдохновляй</h3>
-                            <p>Марафон внутренней и внешней красоты<br>
-                            Инструменты для поддержки эмоционального состояния и мастер-классы по созданию макияжа, прически и рабочего образа<br>
-                            Подходит для сотрудников, которые работают в очном формате</p>
-                            <a href="venera.html" class="btn btn-primary">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
+        <h2>Основные программы</h2>
+        
+        <!-- Программа 1 -->
+        <div class="program-block">
+            <div class="program-image">
+                <img src="img/pu.png" alt="Выдыхай">
+            </div>
+            <div class="program-content">
+                <h3>Выдыхай</h3>
+                <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
+                <a href="vydihay.html" class="btn-primary">Подробнее</a>
+            </div>
+        </div>
+        
+        <!-- Программа 2 -->
+        <div class="program-block">
+            <div class="program-image">
+                <img src="img/pupu.png" alt="Чувствуй">
+            </div>
+            <div class="program-content">
+                <h3>Чувствуй</h3>
+                <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
+                <a href="chustva.html" class="btn-primary">Подробнее</a>
+            </div>
+        </div>
+        
+        <!-- Программа 3 -->
+        <div class="program-block">
+            <div class="program-image">
+                <img src="img/pupupu.png" alt="Вдохновляй">
+            </div>
+            <div class="program-content">
+                <h3>Вдохновляй</h3>
+                <p>Марафон внутренней и внешней красоты. Инструменты для поддержки эмоционального состояния.</p>
+                <a href="venera.html" class="btn-primary">Подробнее</a>
             </div>
         </div>
     </section>
@@ -504,52 +491,36 @@ function closeLevelModal() {
     });
 </script>
 <script>
-        // Инициализация слайдеров для ПК
-        function initProgramSliders() {
-            if (window.matchMedia("(min-width: 769px)").matches) {
-                document.querySelectorAll('.program-slider').forEach(slider => {
-                    slider.addEventListener('mouseenter', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const programBlocks = document.querySelectorAll('.program-block');
+            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+            
+            programBlocks.forEach(block => {
+                block.addEventListener('click', function() {
+                    // На мобильных - просто toggle класса active
+                    if (isMobile) {
+                        this.classList.toggle('active');
+                    } 
+                    // На ПК - закрываем другие блоки перед открытием текущего
+                    else {
+                        // Закрываем все блоки
+                        programBlocks.forEach(b => b.classList.remove('active'));
+                        // Открываем текущий
                         this.classList.add('active');
-                    });
-                    
-                    slider.addEventListener('mouseleave', function() {
-                        this.classList.remove('active');
-                    });
+                    }
                 });
-            }
-        }
-
-        // Инициализация мобильного поведения
-        function initMobilePrograms() {
-            if (window.matchMedia("(max-width: 768px)").matches) {
-                document.querySelectorAll('.program-image').forEach(image => {
-                    image.addEventListener('click', function() {
-                        const programBlock = this.closest('.program-block');
-                        const isActive = programBlock.classList.contains('active');
-                        
-                        // Закрываем все открытые блоки
-                        document.querySelectorAll('.program-block.active').forEach(block => {
-                            if (block !== programBlock) {
-                                block.classList.remove('active');
-                            }
+            });
+            
+            // Закрытие по клику вне блока (только для ПК)
+            if (!isMobile) {
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('.program-block')) {
+                        programBlocks.forEach(block => {
+                            block.classList.remove('active');
                         });
-                        
-                        // Открываем/закрываем текущий
-                        programBlock.classList.toggle('active', !isActive);
-                    });
+                    }
                 });
             }
-        }
-
-        // Запуск при загрузке и изменении размера окна
-        window.addEventListener('DOMContentLoaded', function() {
-            initProgramSliders();
-            initMobilePrograms();
-        });
-
-        window.addEventListener('resize', function() {
-            initProgramSliders();
-            initMobilePrograms();
         });
     </script>
 
