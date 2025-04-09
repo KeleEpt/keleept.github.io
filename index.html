@@ -15,26 +15,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
     <header id="header" class="position-relative d-flex justify-content-center align-items-center overflow-hidden" style="height: 50vh;">
         <!-- Фон шапки -->
         <div class="background-image"></div>
 
         <!-- Облака -->
-        <img src="https://balancedservice.ru/img/cloud1.png" alt="Облако 1" class="cloud cloud-left position-absolute" style="transform: translate(0%, 0%);">
-        <img src="https://balancedservice.ru/img/cloud1.png" alt="Облако 2" class="cloud cloud-right position-absolute" style="transform: translate(0%, 0%);">
+        <img src="img/cloud0.png" alt="" class="cloud cloud-left position-absolute" style="transform: translate(0%, 0%);">
+        <img src="img/cloud0.png" alt="" class="cloud cloud-right position-absolute" style="transform: translate(0%, 0%);">
         
         <!-- Логотип -->
-        <img src="https://balancedservice.ru/img/logo.png" alt="Логотип" class="logo position-absolute">
+        <img src="img/logo.png" alt="Логотип" class="logo position-absolute">
 
         <!-- Тексты -->
-        <div class="header-text header-text-top-left position-absolute visible">
-            Иногда каждому из нас нужна перезагрузка
+        <div class="header-text header-text-top-center position-absolute visible">
+            <br></br>
+            <br></br>
+                 <h4>Иногда каждому из нас нужна перезагрузка</h4>
         </div>
         <div class="header-text header-text-bottom-left position-absolute visible">
-            <p>300+</p> <p>сотрудникам марафон уже помог</p>
+            
         </div>
         <div class="header-text header-text-bottom-right position-absolute visible">
-            <p>Расскажем, как начать понимать</p> <p> себя и заботиться о себе</p>
+            <p></p>
         </div>
     </header>
 
@@ -42,7 +45,7 @@
     <!-- Блок с описанием программы марафона -->
     <section class="marathon-description my-5">
         <div class="container">
-            <h2 class="text-center mb-5">Расскажем, как начать понимать себя и заботится о себе</h2>
+            <h2 class="text-center mb-5">Расскажем, как начать понимать себя и заботиться о себе</h>
             <p class="lead text-center">
                 Программа марафона позволяет научиться поддерживать своё эмоциональное равновесие каждый день. Из предложенных практик, точно найдутся те, которые подойдут каждому сотруднику. Полученные инструменты легко применяемы в работе и в жизни.
             </p>
@@ -100,66 +103,56 @@
         <div class="level-modal-text" id="modalLevelText"></div>
     </div>
 </div>
-    <!-- Блок с тремя программами -->
-<section class="programs my-5">
-    <div class="container">
-        <h2 class="text-center mb-4">Основные программы</h2>
-        <div class="row">
-            <!-- Выдыхай -->
-            <div class="col-md-12 mb-5">
-                <div class="program-block program-left-image">
-                    <div class="program-image">
-                        <img src="img/pu.png" alt="Выдыхай" class="img-fluid">
-                    </div>
-                    <div class="program-content">
-                        <h3>Выдыхай</h3>
-                        <p>Марафон для заботы о себе<br>
-                        Управления своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами</p>
-                        <a href="vydihay.html" class="btn btn-primary">Подробнее</a>
-                    </div>
+   <!-- Блок с тремя программами -->
+    <section class="programs">
+        <div class="container">
+            <h2>Основные программы</h2>
+            
+            <!-- Программа 1 - Выдыхай -->
+            <div class="program-block" data-direction="left">
+                <div class="program-image">
+                    <img src="img/pu.png" alt="Выдыхай">
+                </div>
+                <div class="program-content">
+                    <h3>Выдыхай</h3>
+                    <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
+                    <a href="vydihay.html" class="btn-primary">Подробнее</a>
                 </div>
             </div>
             
-            <!-- Чувствуй -->
-            <div class="col-md-12 mb-5">
-                <div class="program-block program-right-image">
-                    <div class="program-content">
-                        <h3>Чувствуй</h3>
-                        <p>Марафон для заботы о себе<br>
-                        Управления своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами</p>
-                        <a href="chustva.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                    <div class="program-image">
-                        <img src="img/pupu.png" alt="Чувствуй" class="img-fluid">
-                        <!-- Укажите правильный путь к изображению -->
-                    </div>
+            <!-- Программа 2 - Чувствуй -->
+            <div class="program-block" data-direction="right">
+                <div class="program-image">
+                    <img src="img/pupu.png" alt="Чувствуй">
+                </div>
+                <div class="program-content">
+                    <h3>Чувствуй</h3>
+                    <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
+                    <a href="chustva.html" class="btn-primary">Подробнее</a>
                 </div>
             </div>
             
-            <!-- Венеры -->
-            <div class="col-md-12">
-                <div class="program-block program-left-image">
-                    <div class="program-image">
-                        <img src="img/pupupu.png" alt="Венеры" class="img-fluid">
-                        <!-- Укажите правильный путь к изображению -->
-                    </div>
-                    <div class="program-content">
-                        
-                        <h3>Вдохновляй</h3>
-                        <p>Марафон внутренней и внешней красоты<br>
-                        Инструменты для поддержки эмоционального состояния и мастер-классы по созданию макияжа, прически и рабочего образа<br>
-                        Подходит для сотрудников, которые работают в очном формате</p>
-                        <a href="venera.html" class="btn btn-primary">Подробнее</a>
-                    </div>
+            <!-- Программа 3 - Вдохновляй -->
+            <div class="program-block" data-direction="left">
+                <div class="program-image">
+                    <img src="img/pupupu.png" alt="Вдохновляй">
+                </div>
+                <div class="program-content">
+                    <h3>Вдохновляй</h3>
+                    <p>Марафон внутренней и внешней красоты. Инструменты для поддержки эмоционального состояния.</p>
+                    <a href="venera.html" class="btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+
+
 
     <!-- Блок с результатами (две колонки) -->
 <section class="results-section my-5">
     <div class="container">
+        <h3 class="header-text-bottom-right">300+</h3> <h3 class="header-text-bottom-right"> сотрудникам марафон уже помог</h3> 
         <div class="row g-4">
             <!-- Результат для компании -->
             <div class="col-md-6">
@@ -383,20 +376,7 @@
         });
     </script>
     
-    <!-- Анимация облаков -->
-    <script>
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const cloudLeft = document.querySelector('.cloud-left');
-            const cloudRight = document.querySelector('.cloud-right');
 
-            const maxScroll = 300;
-            const progress = Math.min(scrollPosition / maxScroll, 1);
-
-            cloudLeft.style.transform = `translate(${50 * progress}%, ${50 * progress}%)`;
-            cloudRight.style.transform = `translate(${-50 * progress}%, ${-50 * progress}%)`;
-        });
-    </script>
     
     <!-- Подключаем Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -422,9 +402,9 @@
                 }
             }
         });
-    </script>
+    
 
-    <script>
+    
     function toggleResult(type) {
     const content = document.getElementById(`${type}-content`);
     const icon = document.getElementById(`${type}-icon`);
@@ -452,24 +432,9 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.maxHeight = null;
     });
 });
-</script>
-<script>
-    // Переменные для эффекта печати
-    let typingInterval;
-    let currentText = '';
-    let currentIndex = 0;
-    
-    function openLevelModal(title, textLines) {
-    const modal = document.getElementById('levelModal');
-    const modalTitle = document.getElementById('modalLevelTitle');
-    const modalText = document.getElementById('modalLevelText');
-    
-    modalTitle.textContent = title;
-    modalText.innerHTML = textLines.map(line => `<p>${line}</p>`).join('');
-    modal.style.display = 'flex';
-    modalText.scrollTop = 0;
-}
 
+    // Переменные для эффекта печати
+    
 function closeLevelModal() {
     const modal = document.getElementById('levelModal');
     const modalText = document.getElementById('modalLevelText');
@@ -501,8 +466,47 @@ function closeLevelModal() {
             closeLevelModal();
         }
     });
-</script>
 
+        document.addEventListener('DOMContentLoaded', function() {
+    const programBlocks = document.querySelectorAll('.program-block');
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    
+    programBlocks.forEach(block => {
+        block.addEventListener('click', function(e) {
+            // Если клик по ссылке - не обрабатываем
+            if (e.target.tagName === 'A') return;
+            
+            // На мобильных - просто toggle класса active
+            if (isMobile) {
+                this.classList.toggle('active');
+            } 
+            // На ПК - toggle класса active с закрытием других блоков
+            else {
+                const wasActive = this.classList.contains('active');
+                
+                // Закрываем все блоки
+                programBlocks.forEach(b => b.classList.remove('active'));
+                
+                // Если блок не был активен - открываем его
+                if (!wasActive) {
+                    this.classList.add('active');
+                }
+            }
+        });
+    });
+    
+    // Закрытие по клику вне блока (только для ПК)
+    if (!isMobile) {
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.program-block')) {
+                programBlocks.forEach(block => {
+                    block.classList.remove('active');
+                });
+            }
+        });
+    }
+});
+    </script>
 
 </body>
 </html>

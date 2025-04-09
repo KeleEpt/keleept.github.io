@@ -6,12 +6,23 @@
 }
 
 body {
-    background-color: #f0f8ff !important;
+    background-color: #e3edf7 !important;
     font-family: 'Montserrat', sans-serif !important;
+    background: rgba(0, 0, 0, 0.3);
+    background-image: url('img/pngwing1.com.png');
     font-weight: 500;
     line-height: 1.6;
     color: #e0bba2;
 }
+
+.content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
 /* Стили для шапки */
 header {
@@ -29,7 +40,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/rock111.png');
+    background-image: url('img/rock.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -75,12 +86,12 @@ header::before {
 }
 
 .header-main-text {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .header-main-text h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
+    font-size: 8rem;
     font-weight: 600;
     color: #f3efec;
     margin-bottom: 1rem;
@@ -90,7 +101,7 @@ header::before {
 
 .header-main-text .subtitle {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
+    font-size: 2rem;
     font-weight: 400;
     color: #f3efec;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -236,26 +247,6 @@ header::before {
     margin: 0;
 }
 
-/* Облака */
-.cloud {
-    width: 150px;
-    height: auto;
-    opacity: 0.6;
-    z-index: 2;
-    position: absolute;
-}
-
-.cloud-left {
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-}
-
-.cloud-right {
-    bottom: 0;
-    right: 0;
-    transform: translate(50%, 50%);
-}
 
 /* Стили для списков */
 .list-container {
@@ -816,13 +807,6 @@ footer {
 }
 
 
-.cloud-left {
-    animation: cloudLeft 15s ease-in-out infinite;
-}
-
-.cloud-right {
-    animation: cloudRight 15s ease-in-out infinite;
-}
 
 /* Мобильная адаптация (без горизонтального скрола!) */
 @media (max-width: 768px) {
@@ -895,8 +879,7 @@ footer {
   }
 
   /* 6. Облака — меньше */
-  .cloud {
-    width: 100px;
+  
   }
 }
 
@@ -1204,18 +1187,6 @@ footer {
     z-index: 3;
 }
 
-/* Соединительные линии-брызги */
-.levels-container::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 90%;
-    height: 30px;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg"><path fill="%234c2c29" d="M0,15c30-15,60-20,90-10s60,25,90,20s60-30,90-25s60,30,90,25s60-30,90-20s60,20,90,15" opacity="0.5"/></svg>') repeat-x center;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
 
 
 
@@ -1261,65 +1232,157 @@ footer {
         font-size: 1.2rem;
     }
 }
-/* Основные стили для фона с путём */
-.site-background-path {
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Общие стили */
+.programs {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.programs h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+}
+
+.container {
     width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1; /* Под основным контентом */
+    padding: 0 15px;
+}
+
+/* Стили блоков программ */
+.program-block {
+    position: relative;
+    margin-bottom: 30px;
+    border-radius: 50px;
     overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 400px;
+    cursor: pointer;
 }
 
-/* Контейнер для пути */
-.path-svg-container {
+.program-image {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
+}
+
+.program-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.program-content {
+    position: absolute;
+    width: 50%;
+    height: 100%;
     top: 0;
+    background: white;
+    padding: 50px;
+    box-sizing: border-box;
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto;
+    z-index: 2;
+}
+
+/* Для левого направления (контент справа) */
+.program-block[data-direction="left"] .program-content {
+    right: 0;
+    transform: translateX(100%);
+}
+
+/* Для правого направления (контент слева) */
+.program-block[data-direction="right"] .program-content {
     left: 0;
-    width: 100%;
-    height: 100%;
+    transform: translateX(-100%);
 }
 
-/* Стили для SVG пути */
-.path-svg {
-    width: 100%;
-    height: 100%;
+/* Активное состояние */
+.program-block.active .program-image {
+    width: 50%;
 }
 
-.path-line {
-    stroke: #4c2c29;
-    stroke-width: 4;
-    stroke-dasharray: 10, 15; /* Пунктир с округлыми краями */
-    stroke-linecap: round; /* Закруглённые концы пунктира */
-    stroke-linejoin: round;
-    fill: none;
-    opacity: 0.6;
-    animation: dashOffset 60s linear infinite;
+.program-block[data-direction="left"].active .program-image {
+    transform: translateX(0);
 }
 
-/* Кружки на соединениях */
-.path-dot {
-    fill: #4c2c29;
-    stroke: #f3efec;
-    stroke-width: 2;
-    opacity: 0.8;
+.program-block[data-direction="right"].active .program-image {
+    transform: translateX(50%);
 }
 
-/* Анимация движения пунктира */
-@keyframes dashOffset {
-    0% {
-        stroke-dashoffset: 0;
+.program-block.active .program-content {
+    transform: translateX(0);
+}
+
+/* Специальные стили для блока "Чувствуй" */
+.program-block[data-direction="right"] .program-image {
+    left: auto;
+    right: 0;
+}
+
+.program-block[data-direction="right"].active .program-image {
+    transform: translateX(0);
+    right: 0%;
+}
+
+/* Стили контента */
+.program-content h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.program-content p {
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .program-block {
+        height: auto;
+        min-height: 250px;
     }
-    100% {
-        stroke-dashoffset: 1000;
+    
+    .program-image {
+        position: relative;
+        height: 250px;
     }
-}
-
-/* Адаптация для мобильных */
-@media (max-width: 992px) {
-    .site-background-path {
-        display: none;
+    
+    .program-content {
+        position: relative;
+        width: 100%;
+        max-height: 0;
+        padding: 0 20px;
+        transform: none !important;
+        transition: max-height 0.5s ease, padding 0.5s ease;
+    }
+    
+    .program-block.active .program-image {
+        width: 100%;
+        transform: none !important;
+    }
+    
+    .program-block.active .program-content {
+        max-height: 500px;
+        padding: 20px;
     }
 }
