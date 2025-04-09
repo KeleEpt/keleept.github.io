@@ -25,7 +25,6 @@ body {
         }
 
 /* Стили для шапки */
-/* Стили для шапки */
 header {
     position: relative;
     height: 50vh;
@@ -49,12 +48,12 @@ header {
     bottom: 0;
     left: 0;
     z-index: 3;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для лучшей читаемости */
+    padding: 150px;
+    
 }
 
 .header-text-bottom {
-    color: #fff;
+    color: #e0bba2;
     font-size: 1.5rem;
     margin: 0 auto;
     max-width: 800px;
