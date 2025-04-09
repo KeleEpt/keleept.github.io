@@ -6,17 +6,17 @@
 }
 
 body {
-    background-color: #feefe8 !important; /* Принудительно изменяем фон */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500; /* Применяем Montserrat Medium */
+    background-color: #f0f8ff !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500;
     line-height: 1.6;
-    color: #e1dae2;
+    color: #e0bba2;
 }
 
 /* Стили для шапки */
 header {
     position: relative;
-    height: 30vh;
+    height: 40%; /* 40% от высоты страницы */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/rock.png');
+    background-image: url('img/rock111.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -47,31 +47,9 @@ header::before {
     z-index: 1;
 }
 
-/* Облака */
-.cloud {
-    width: 150px;
-    height: auto;
-    opacity: 0.6;
-    z-index: 2;
-    position: absolute;
-    transition: transform 0.5s ease-out;
-}
-
-.cloud-left {
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-}
-
-.cloud-right {
-    bottom: 0;
-    right: 0;
-    transform: translate(50%, 50%);
-}
-
 /* Логотип */
 .logo {
-    width: 300px;
+    width: 400px;
     height: auto;
     z-index: 3;
     position: absolute;
@@ -87,9 +65,860 @@ header::before {
     }
 }
 
+/* Основное содержимое шапки */
+.header-content {
+    width: 90%;
+    max-width: 1200px;
+    z-index: 3;
+    padding: 20px;
+    text-align: center;
+}
+
+.header-main-text {
+    margin-bottom: 30px;
+}
+
+.header-main-text h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f3efec;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1.3;
+}
+
+.header-main-text .subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #f3efec;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Стили для блока результатов */
+.results-section {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.result-block {
+    background-color: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: all 0.3s ease;
+    border: 0px solid #e3dfde;
+}
+
+.result-block.active {
+    background-color: #e3dfde;
+}
+
+.result-toggle {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background-color: #6c757d;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.result-toggle:hover {
+    background-color: #5a6268;
+}
+
+.result-toggle span {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.result-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    padding: 0;
+}
+
+.result-list {
+    list-style: none;
+    padding: 1.5rem;
+    margin: 0;
+}
+
+.result-list li {
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    color: #495057;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px dashed #d1d1d1;
+}
+
+.result-list li:last-child {
+    border-bottom: none;
+}
+
+.result-list i {
+    color: #28a745;
+    font-size: 1.1rem;
+    margin-top: 2px;
+    min-width: 24px;
+}
+
+
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .result-toggle {
+        padding: 1rem 1.25rem;
+        font-size: 1rem;
+    }
+    
+    .result-list {
+        padding: 1rem;
+    }
+    
+    .result-list li {
+        font-size: 0.95rem;
+    }
+}
+
+/* Контейнер для блоков */
+.info-blocks-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Информационные блоки */
+.info-block {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 15px;
+    backdrop-filter: blur(5px);
+    flex: 1;
+    min-width: 180px;
+    max-width: 250px;
+    text-align: center;
+    color: #f3efec;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex; /* Добавляем flex */
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center; /* Центрируем по горизонтали */
+    min-height: 100px; /* Минимальная высота для всех блоков */
+}
+
+.info-block p {
+    margin: 0;
+    width: 100%; /* Занимает всю ширину блока */
+}
+
+.info-block p {
+    margin: 0;
+}
+
+/* Облака */
+.cloud {
+    width: 150px;
+    height: auto;
+    opacity: 0.6;
+    z-index: 2;
+    position: absolute;
+}
+
+.cloud-left {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.cloud-right {
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+}
+
+/* Стили для списков */
+.list-container {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 2rem;
+    background-color: #e0bba2;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #f3efec;
+}
+
+.list-title {
+    cursor: pointer;
+    color: #f3efec;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.arrow {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    color: #f3efec;
+}
+
+.animated-list {
+    list-style-type: none;
+    padding-left: 0;
+    max-height: 500px;
+    opacity: 1;
+}
+
+.animated-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    color: #f3efec;
+}
+
+.animated-list li:last-child {
+    border-bottom: none;
+}
+
+/* Стили для кругов с уровнями */
+.levels-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.level-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #4c2c29;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #f3efec;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: 3px solid #e0bba2;
+}
+
+.level-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background-color: #5a3a36;
+}
+
+/* Модальное окно для описания уровня */
+.level-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.level-modal-content {
+    background-color: #e0bba2;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    color: #4c2c29;
+    animation: modalFadeIn 0.4s ease-out;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-level-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: #4c2c29;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-level-modal:hover {
+    color: #713f2b;
+}
+
+.level-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #4c2c29;
+    text-align: center;
+    font-weight: 600;
+}
+
+.level-modal-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+.level-modal-text p {
+    margin-bottom: 15px;
+}
+
+/* Улучшенная анимация текста */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #4c2c29 }
+}
+
+.typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #4c2c29;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+.typing-line {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 15px;
+    animation: typing 1s steps(40, end);
+}
+
+.typing-line:last-child {
+    margin-bottom: 0;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .levels-container {
+        gap: 25px;
+    }
+    
+    .level-circle {
+        width: 139px;
+        height: 1390px;
+        font-size: 0rem;
+    }
+    
+    .level-modal-content {
+        padding: 20px;
+    }
+    
+    .level-modal-title {
+        font-size: 1.3rem;
+    }
+    
+    .level-modal-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .levels-container {
+        gap: 15px;
+    }
+    
+    .level-circle {
+        width: 139px;
+        height: 139px;
+        font-size: 0.9rem;
+        padding: 15px;
+    }
+}
+
+/* Карточки */
+.card {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #4c2c29;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    color: #f3efec;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Кнопки */
+:root {
+    --bs-btn-border-width: 0;
+}
+
+.btn-primary {
+    font-family: 'Montserrat', sans-serif ;
+    background-color: #bec8df !important;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    color: #f3efec !important;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    outline: none;
+    border-width: 0 !important;
+}
+
+.btn-primary:hover {
+    background-color: #a58a6e !important;
+    transform: translateY(-3px);
+}
+
+.btn-primary:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Основной контент */
+main {
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Карточки с уровнями */
+.key-levels .card {
+    background-color: #e0bba2;
+    color: #f3efec;
+}
+
+.key-levels .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.key-levels .card-title {
+    color: #ffffff;
+}
+
+/* Карточки с программами */
+.programs .card {
+    background-color: #e0bba2;
+    color: #f3efec;
+}
+
+.programs .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.programs .card-title {
+    color: #ffffff;
+}
+
+/* Описание марафона */
+.marathon-description .lead {
+    font-family: 'Montserrat', sans-serif;
+    color: #708090;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Заголовки разделов */
+.key-levels h2, 
+.programs h2,
+.reviews h2,
+.author h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #708090;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Отзывы */
+.reviews {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e0bba2;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reviewSwiper {
+    padding: 20px 40px;
+    position: relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #4c2c29 !important;
+    width: 40px !important;
+    height: 40px !important;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+}
+
+.swiper-slide {
+    height: auto;
+    display: flex;
+}
+
+.review-card {
+    background-color: #957a62;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.review-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+    border: 2px solid #f3efec;
+}
+
+.review-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #f3efec;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    color: #f3efec;
+    line-height: 1.6;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 350px;
+    padding-right: 10px;
+    margin-bottom: 1rem;
+}
+
+.review-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.review-text::-webkit-scrollbar-track {
+    background: #e0bba2;
+    border-radius: 10px;
+}
+
+.review-text::-webkit-scrollbar-thumb {
+    background: #4c2c29;
+    border-radius: 10px;
+}
+
+.review-text::-webkit-scrollbar-thumb:hover {
+    background: #713f2b;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    display: block;
+    margin: 0 auto;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ccc;
+}
+
+/* Автор марафона */
+.author {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #e0bba2;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.author-photo img {
+    max-width: 80%;
+    height: auto;
+    border: 4px solid #f3efec;
+}
+
+.author-info {
+    color: #f3efec;
+}
+
+.author-name {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.author-details {
+    font-size: 1rem;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.author-details li {
+    font-size: 13px;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #713f2b;
+    color: #f3efec;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.qr-code img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.btn-telegram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #28a0d9 !important;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    border: 2px solid #1c7fb3;
+}
+
+.btn-telegram:hover {
+    background-color: #1c7fb3 !important;
+    border-color: #28a0d9;
+    transform: translateY(-3px);
+}
+
+.telegram-logo {
+    width: 24px;
+    height: 24px;
+}
+
+
+.cloud-left {
+    animation: cloudLeft 15s ease-in-out infinite;
+}
+
+.cloud-right {
+    animation: cloudRight 15s ease-in-out infinite;
+}
+
+/* Мобильная адаптация (без горизонтального скрола!) */
+@media (max-width: 768px) {
+  /* 1. Общие настройки */
+  body {
+    font-size: 14px;
+  }
+
+  /* 2. Шапка — компактная, но без скрола */
+  header {
+    height: auto;
+    min-height: 70vh; /* Фиксированная высота, но адаптивная */
+    padding: 20px 0;
+  }
+
+  .header-content {
+    padding: 0 15px;
+    width: 100%;
+  }
+
+  .header-main-text h1 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .header-main-text .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+
+  /* 3. Блоки в шапке — горизонтальные, но компактные */
+  .info-blocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .info-block {
+    flex: 1 1 calc(33% - 10px); /* 3 блока в ряд */
+    min-width: 100px;
+    max-width: 150px;
+    padding: 10px;
+    font-size: 0.7rem;
+    backdrop-filter: blur(2px);
+    text-align: center;
+    word-break: normal;
+  }
+
+  /* 4. Остальные блоки — адаптивные */
+  .card {
+    margin-bottom: 15px;
+  }
+
+  .programs .col-md-4,
+  .key-levels .col-md-4 {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* 5. Оптимизация отступов */
+  main {
+    padding: 1rem;
+  }
+
+  section {
+    margin-bottom: 1.5rem;
+  }
+
+  /* 6. Облака — меньше */
+  .cloud {
+    width: 100px;
+  }
+}
+
+/* Доп. адаптация для очень маленьких экранов */
+@media (max-width: 768px) {
+    .info-block {
+        min-height: 80px; /* Уменьшаем высоту для мобильных */
+        padding: 10px;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-block {
+        min-height: 70px;
+        font-size: 0.65rem;
+        padding: 8px 5px;
+    }
+}
 /* Тексты в шапке */
 .header-text {
-    color: #e1dae2;
+    color: #e0bba2;
     z-index: 2;
     position: absolute;
     font-size: 2vw;
@@ -124,391 +953,373 @@ header::before {
     right: 5%;
     text-align: right;
 }
-
-/* Стили для блоков с результатами */
-.list-container {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 2rem;
-    background-color: #e1dae2;
-    padding: 1rem;
-    border-radius: 20px;
+/* Стили для блоков программ */
+.program-block {
+    display: flex;
+    align-items: stretch;
+    background-color: #ffffff;
+    border-radius: 50px;
+    overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #999999;
-
+    min-height: 230px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease; /* Анимация для всего блока */
 }
 
-.list-title {
-    cursor: pointer;
-    color: #999999;
-    font-weight: bold;
+.program-block:hover {
+    transform: translateY(-10px); /* Поднимаем весь блок на 10px */
+}
+
+.program-image {
+    flex: 0 0 50%; /* Фиксированные 50% ширины */
+    position: relative;
+    overflow: hidden;
+    border-radius: 50px
+}
+
+.program-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.program-content {
+    flex: 0 0 50%; /* Фиксированные 50% ширины */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.program-content h3 {
+    font-size: 1.8rem;
     margin-bottom: 1rem;
+    color: #708090;
+    font-weight: 600;
+    text-align: left;
+}
+
+.program-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #5a3a36;
+    text-align: left;
+}
+
+.program-content .btn-primary {
+    align-self: center;
+    margin-top: 1rem;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 992px) {
+    .program-content {
+        padding: 1.5rem;
+    }
+    .program-content h3 {
+        font-size: 1.6rem;
+    }
+    .program-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .program-block {
+        flex-direction: column;
+    }
+    .program-image,
+    .program-content {
+        flex: 0 0 100%; /* На мобильных 100% ширины */
+    }
+    .program-image {
+        height: 200px;
+        border-radius: 50px 50px 0 0;
+    }
+    .program-content {
+        padding: 1.5rem;
+    }
+    .program-content h3 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+    .program-content p {
+        text-align: center;
+    }
+    .program-content .btn-primary {
+        align-self: center;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .program-image {
+        height: 180px;
+    }
+    .program-content {
+        padding: 1.2rem;
+    }
+    .program-content h3 {
+        font-size: 1.3rem;
+    }
+    .program-content p {
+        font-size: 0.95rem;
+    }
+}/* Стили для клякс с рамками и водяным эффектом */
+.levels-container {
+    position: relative;
+    padding: 100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.level-blot {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    cursor: pointer;
+    transition: all 0.5s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    z-index: 2;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
-.arrow {
-    margin-left: 0.5rem;
-    font-size: 1.2rem;
-    color: #999999;
+/* Рамка для кляксы */
+.level-blot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 8px solid #708090;
+    border-radius: 50% 30% 50% 30%/40% 50% 40% 50%;
+    z-index: 3;
+    pointer-events: none;
+    transition: all 0.4s ease;
 }
 
-.animated-list {
-    list-style-type: none;
-    padding-left: 0;
-    max-height: 500px; /* Убираем скрытие списков */
-    opacity: 1; /* Убираем скрытие списков */
+.level-blot:hover::before {
+    border-color: #708090;
+    transform: rotate(5deg) scale(1.05);
 }
 
-.animated-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
-    color: #999999;
-}
-
-.animated-list li:last-child {
-    border-bottom: none;
-}
-
-/* Стили для карточек */
-.card {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #4c2c29;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Внутренняя часть с гифкой */
+.blot-inner {
+    position: relative;
+    width: 100%;
     height: 100%;
-    color: #999999;
-    margin-bottom: 1.5rem; /* Отступ между карточками */
-}
-
-.card:hover {
-    font-family: 'Montserrat', sans-serif;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Стили для кнопок */
-.btn-primary {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #bec8df !important; /* Цвет фона */
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    color: #f3efec !important; /* Цвет текста */
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary:hover {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #a58a6e !important; /* Цвет при наведении */
-    transform: translateY(-3px);
-}
-
-/* Стили для основного контента */
-main {
-    padding: 2rem;
-}
-
-section {
-    margin-bottom: 2rem;
-}
-
-footer {
+    background: url('img/woter.gif') center/cover no-repeat;
+    border-radius: 50% 30% 50% 30%/40% 50% 40% 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 1rem;
-    background: #4c2c29;
-    color: #999999;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    box-sizing: border-box;
 }
 
-/* Стили для карточек с уровнями (Эмоционально-личностный, Телесные практики, Коммуникативные навыки) */
-.key-levels .card {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Новый цвет фона для карточек */
-    color: #999999; /* Цвет текста */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Затемнение фона для лучшей читаемости текста */
+.blot-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(76, 44, 41, 0.3);
+    z-index: 1;
 }
 
-.key-levels .card:hover {
-    font-family: 'Montserrat', sans-serif;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.blot-content {
+    position: relative;
+    z-index: 2;
+    transform: rotate(-5deg);
+    word-break: break-word;
 }
 
-.key-levels .card-title {
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff; /* Белый цвет для заголовков */
+/* Индивидуальные формы и повороты для каждой кляксы */
+.level-blot:nth-child(1) {
+    margin-top: -20px;
+}
+.level-blot:nth-child(1) .blot-inner {
+    border-radius: 60% 40% 50% 40%/50% 40% 60% 50%;
+}
+.level-blot:nth-child(1) .blot-content {
+    transform: rotate(-7deg);
 }
 
-/* Стили для карточек с программами (Выдыхай, Чувствуй, Венеры) */
-.programs .card {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Новый цвет фона для карточек */
-    color: #999999; /* Цвет текста */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.level-blot:nth-child(2) {
+    margin-bottom: 30px;
+}
+.level-blot:nth-child(2) .blot-inner {
+    border-radius: 40% 60% 40% 60%/50% 50% 50% 50%;
+}
+.level-blot:nth-child(2) .blot-content {
+    transform: rotate(3deg);
 }
 
-.programs .card:hover {
-    font-family: 'Montserrat', sans-serif;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.level-blot:nth-child(3) {
+    margin-top: -40px;
+}
+.level-blot:nth-child(3) .blot-inner {
+    border-radius: 50% 50% 40% 60%/40% 50% 50% 60%;
+}
+.level-blot:nth-child(3) .blot-content {
+    transform: rotate(-2deg);
 }
 
-.programs .card-title {
-    font-family: 'Montserrat', sans-serif;
-    color: #ffffff; /* Белый цвет для заголовков */
+/* Эффект капли при наведении */
+.level-blot:hover {
+    transform: translateY(-10px);
 }
 
-/* Стили для текста в блоке с описанием программы марафона */
-.marathon-description .lead {
-    font-family: 'Montserrat', sans-serif;
-    color: #849aa7; /* Новый цвет текста (белый) */
-    font-size: 1.2rem; /* Размер текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 2rem; /* Отступ снизу */
+.level-blot:hover .blot-inner::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 30px;
+    background: radial-gradient(ellipse at center, rgba(76,44,41,0.6) 0%, rgba(76,44,41,0) 70%);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 3;
 }
 
-/* Стили для заголовка "3 ключевых уровня работы" */
-.key-levels h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #849aa7; /* Новый цвет текста (белый) */
-    font-size: 2rem; /* Размер текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 2rem; /* Отступ снизу */
+/* Соединительные линии-брызги */
+.levels-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 30px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg"><path fill="%234c2c29" d="M0,15c30-15,60-20,90-10s60,25,90,20s60-30,90-25s60,30,90,25s60-30,90-20s60,20,90,15" opacity="0.5"/></svg>') repeat-x center;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
-/* Стили для заголовка "Три блока с основными программами" */
-.programs h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #849aa7; /* Новый цвет текста (белый) */
-    font-size: 2rem; /* Размер текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 2rem; /* Отступ снизу */
+
+
+/* Адаптация для мобильных */
+@media (max-width: 992px) {
+    .levels-container {
+        gap: 40px;
+    }
+    
+    .level-blot {
+        width: 280px;
+        height: 280px;
+    }
 }
 
-/* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
-    .card {
-        margin-bottom: 2rem; /* Увеличиваем отступ между карточками */
+    .levels-container {
+        flex-direction: column;
+        gap: 70px;
+        padding: 80px 0;
     }
-
-    .key-levels h2, .programs h2 {
-        font-size: 1.5rem; /* Уменьшаем размер заголовков */
+    
+    .level-blot {
+        width: 300px;
+        height: 300px;
+        margin: 0 !important;
     }
-
-    .marathon-description .lead {
-        font-size: 1rem; /* Уменьшаем размер текста */
+    
+    .levels-container::after {
+        width: 30px;
+        height: 90%;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 30 500" xmlns="http://www.w3.org/2000/svg"><path fill="%234c2c29" d="M15,0c15-30,20-60,10-90s25-60,20-90s-30-60-25-90s30-60,25-90" opacity="0.5"/></svg>') repeat-y center;
     }
 }
 
-/* Стили для блока с отзывами */
-.reviews {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Цвет фона блока */
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+@media (max-width: 480px) {
+    .level-blot {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .blot-content {
+        font-size: 1.2rem;
+    }
 }
-
-.reviews h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #f3efec; /* Цвет заголовка */
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.review-image, .review-gif {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+/* Основные стили для фона с путём */
+.site-background-path {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1; /* Под основным контентом */
     overflow: hidden;
 }
 
-.review-image img, .review-gif img {
+/* Контейнер для пути */
+.path-svg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    border-radius: 10px;
+    height: 100%;
 }
 
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-    .reviews {
-        padding: 1rem;
+/* Стили для SVG пути */
+.path-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.path-line {
+    stroke: #4c2c29;
+    stroke-width: 4;
+    stroke-dasharray: 10, 15; /* Пунктир с округлыми краями */
+    stroke-linecap: round; /* Закруглённые концы пунктира */
+    stroke-linejoin: round;
+    fill: none;
+    opacity: 0.6;
+    animation: dashOffset 60s linear infinite;
+}
+
+/* Кружки на соединениях */
+.path-dot {
+    fill: #4c2c29;
+    stroke: #f3efec;
+    stroke-width: 2;
+    opacity: 0.8;
+}
+
+/* Анимация движения пунктира */
+@keyframes dashOffset {
+    0% {
+        stroke-dashoffset: 0;
     }
-
-    .reviews h2 {
-        font-size: 1.5rem;
-    }
-
-    .review-image, .review-gif {
-        margin-bottom: 1.5rem; /* Отступ между изображениями на мобильных устройствах */
-    }
-}
-
-/* Стили для блока "Автор марафона" */
-.author {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #e1dae2; /* Цвет фона блока */
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.author h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #f3efec; /* Цвет заголовка */
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.author-photo img {
-    max-width: 100%;
-    height: auto;
-    border: 4px solid #f3efec; /* Рамка вокруг фото */
-}
-
-.author-info {
-    font-family: 'Montserrat', sans-serif;
-    color: #999999; /* Цвет текста */
-}
-
-.author-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
-}
-
-.author-details {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.author-details li {
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-    .author {
-        padding: 1rem;
-    }
-
-    .author h2 {
-        font-size: 1.5rem;
-    }
-
-    .author-photo {
-        margin-bottom: 1.5rem; /* Отступ между фото и текстом на мобильных устройствах */
-    }
-
-    .author-name {
-        font-size: 1.5rem;
-    }
-
-    .author-details li {
-        font-size: 0.9rem;
+    100% {
+        stroke-dashoffset: 1000;
     }
 }
 
-/* Стили для страницы "Выдыхай" */
-.results-list, .marathon-list {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.results-list li, .marathon-list li {
-    background-color: #e1dae2;
-    color: #f3efec;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.results-list li:hover, .marathon-list li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Карточки */
-.card {
-    background-color: #5a3a37;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: #f3efec;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.card-body {
-    padding: 1.5rem;
-}
-
-/* Кнопка "Узнать подробнее" */
-.btn-primary {
-    background-color: #92745a; /* Новый цвет фона кнопок */
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    color: #f3efec;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #a58a6e;
-    transform: translateY(-3px);
-}
-
-/* Адаптация для мобильных устройств */
-@media (max-width: 768px) {
-    .results-list li, .marathon-list li {
-        font-size: 0.9rem;
+/* Адаптация для мобильных */
+@media (max-width: 992px) {
+    .site-background-path {
+        display: none;
     }
-
-    .btn-primary {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
-    }
-}
-
-/* Стили для кнопки "На главную" */
-.btn-back {
-    display: inline-block;
-    background-color: #e1dae2;
-    color: #f3efec;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-bottom: 2rem; /* Отступ снизу */
-}
-
-.btn-back:hover {
-    background-color: #8a6e4c;
-    transform: translateY(-3px);
-}
-
-.btn-back span {
-    margin-right: 0.5rem;
 }
