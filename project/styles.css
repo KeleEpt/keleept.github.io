@@ -247,26 +247,6 @@ header::before {
     margin: 0;
 }
 
-/* Облака */
-.cloud {
-    width: 150px;
-    height: auto;
-    opacity: 0.6;
-    z-index: 2;
-    position: absolute;
-}
-
-.cloud-left {
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-}
-
-.cloud-right {
-    bottom: 0;
-    right: 0;
-    transform: translate(50%, 50%);
-}
 
 /* Стили для списков */
 .list-container {
@@ -827,13 +807,6 @@ footer {
 }
 
 
-.cloud-left {
-    animation: cloudLeft 15s ease-in-out infinite;
-}
-
-.cloud-right {
-    animation: cloudRight 15s ease-in-out infinite;
-}
 
 /* Мобильная адаптация (без горизонтального скрола!) */
 @media (max-width: 768px) {
@@ -906,8 +879,7 @@ footer {
   }
 
   /* 6. Облака — меньше */
-  .cloud {
-    width: 100px;
+  
   }
 }
 
@@ -1215,18 +1187,6 @@ footer {
     z-index: 3;
 }
 
-/* Соединительные линии-брызги */
-.levels-container::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 90%;
-    height: 30px;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg"><path fill="%234c2c29" d="M0,15c30-15,60-20,90-10s60,25,90,20s60-30,90-25s60,30,90,25s60-30,90-20s60,20,90,15" opacity="0.5"/></svg>') repeat-x center;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
 
 
 
