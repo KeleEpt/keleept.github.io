@@ -400,9 +400,9 @@
                 }
             }
         });
-    </script>
+    
 
-    <script>
+    
     function toggleResult(type) {
     const content = document.getElementById(`${type}-content`);
     const icon = document.getElementById(`${type}-icon`);
@@ -430,24 +430,9 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.maxHeight = null;
     });
 });
-</script>
-<script>
-    // Переменные для эффекта печати
-    let typingInterval;
-    let currentText = '';
-    let currentIndex = 0;
-    
-    function openLevelModal(title, textLines) {
-    const modal = document.getElementById('levelModal');
-    const modalTitle = document.getElementById('modalLevelTitle');
-    const modalText = document.getElementById('modalLevelText');
-    
-    modalTitle.textContent = title;
-    modalText.innerHTML = textLines.map(line => `<p>${line}</p>`).join('');
-    modal.style.display = 'flex';
-    modalText.scrollTop = 0;
-}
 
+    // Переменные для эффекта печати
+    
 function closeLevelModal() {
     const modal = document.getElementById('levelModal');
     const modalText = document.getElementById('modalLevelText');
@@ -479,8 +464,7 @@ function closeLevelModal() {
             closeLevelModal();
         }
     });
-</script>
-<script>
+
         document.addEventListener('DOMContentLoaded', function() {
     const programBlocks = document.querySelectorAll('.program-block');
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
