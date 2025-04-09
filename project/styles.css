@@ -8,10 +8,21 @@
 body {
     background-color: #f0f8ff !important;
     font-family: 'Montserrat', sans-serif !important;
+    background: rgba(0, 0, 0, 0.3);
+    background-image: url('img/pngwing.com.png');
     font-weight: 500;
     line-height: 1.6;
     color: #e0bba2;
 }
+
+.content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
 /* Стили для шапки */
 header {
@@ -29,7 +40,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/rock.png');
+    background-image: url('img/rock111.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -566,7 +577,7 @@ section {
 /* Описание марафона */
 .marathon-description .lead {
     font-family: 'Montserrat', sans-serif;
-    color: #834f4b;
+    color: #708090;
     font-size: 1.2rem;
     text-align: center;
     margin-bottom: 2rem;
@@ -578,7 +589,7 @@ section {
 .reviews h2,
 .author h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #834f4b;
+    color: #708090;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 2rem;
@@ -954,40 +965,39 @@ footer {
     text-align: right;
 }
 /* Стили для блоков программ */
+.program-block {
+    display: flex;
+    align-items: stretch;
+    background-color: #ffffff;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 230px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease; /* Анимация для всего блока */
+}
 
+.program-block:hover {
+    transform: translateY(-10px); /* Поднимаем весь блок на 10px */
+}
 
 .program-image {
+    flex: 0 0 50%; /* Фиксированные 50% ширины */
     position: relative;
-    flex: 5%;
-    min-height: 100%; /* Занимает всю высоту родителя */
     overflow: hidden;
+    border-radius: 50px
 }
 
 .program-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Обрезаем изображение с сохранением пропорций */
-    object-position: center; /* Центрируем изображение */
-    transition: transform 0.3s ease; /* Анимация при наведении */
-    border-radius: 50px;
-}
-
-.program-block:hover .program-image img {
-    transform: scale(1.03); /* Эффект увеличения при наведении */
-}
-
-.program-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 70%;
-    max-height: 70%;
-    z-index: 2;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
 }
 
 .program-content {
-    flex: 1;
+    flex: 0 0 50%; /* Фиксированные 50% ширины */
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -995,34 +1005,34 @@ footer {
 }
 
 .program-content h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #f3efec;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #708090;
     font-weight: 600;
+    text-align: left;
 }
 
 .program-content p {
     font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    color: #5a3a36;
+    text-align: left;
 }
 
-/* Кнопка в блоке программы */
 .program-content .btn-primary {
-    align-self: flex-start;
-    margin-top: auto;
+    align-self: center;
+    margin-top: 1rem;
 }
 
 /* Адаптация для планшетов */
 @media (max-width: 992px) {
-    .program-block {
-        min-height: 350px;
+    .program-content {
+        padding: 1.5rem;
     }
-    
     .program-content h3 {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
     }
-    
     .program-content p {
         font-size: 1rem;
     }
@@ -1032,75 +1042,277 @@ footer {
 @media (max-width: 768px) {
     .program-block {
         flex-direction: column;
-        min-height: auto;
     }
-    
-    .program-right-image {
-        flex-direction: column-reverse;
+    .program-image,
+    .program-content {
+        flex: 0 0 100%; /* На мобильных 100% ширины */
     }
-    
     .program-image {
-        width: 100%;
-        height: 250px; /* Фиксированная высота изображения на мобильных */
-        min-height: auto;
+        height: 200px;
+        border-radius: 50px 50px 0 0;
     }
-    
     .program-content {
         padding: 1.5rem;
     }
-    
     .program-content h3 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        text-align: center;
     }
-    
-    .program-logo {
-        max-width: 60%;
-        max-height: 60%;
+    .program-content p {
+        text-align: center;
+    }
+    .program-content .btn-primary {
+        align-self: center;
     }
 }
 
 /* Для очень маленьких экранов */
 @media (max-width: 480px) {
     .program-image {
-        height: 200px;
+        height: 180px;
     }
-    
     .program-content {
         padding: 1.2rem;
     }
-    
     .program-content h3 {
         font-size: 1.3rem;
     }
-    
     .program-content p {
         font-size: 0.95rem;
     }
-}
-/* Стили для блоков программ */
-.program-block {
+}/* Стили для клякс с рамками и водяным эффектом */
+.levels-container {
+    position: relative;
+    padding: 100px 0;
     display: flex;
-    align-items: stretch;
-    background-color: #ffffff; /* Белый фон блока */
-    border: 0px solid #a5a5a5; /* Серая рамка 5px */
-    border-radius: 0px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.level-blot {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    z-index: 2;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Рамка для кляксы */
+.level-blot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 8px solid #708090;
+    border-radius: 50% 30% 50% 30%/40% 50% 40% 50%;
+    z-index: 3;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.level-blot:hover::before {
+    border-color: #708090;
+    transform: rotate(5deg) scale(1.05);
+}
+
+/* Внутренняя часть с гифкой */
+.blot-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('img/woter.gif') center/cover no-repeat;
+    border-radius: 50% 30% 50% 30%/40% 50% 40% 50%;
     overflow: hidden;
-    box-shadow: 0 px 6px rgba(0, 0, 0, 0.1);
-    color: #5a3a36; /* Цвет текста */
-    min-height: 400px;
-    margin-bottom: 30px; /* Отступ между блоками */
-}
-
-.program-content h3 {
-    color: #4c2c29; /* Цвет заголовка */
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.4rem;
     font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    box-sizing: border-box;
 }
 
-.program-content p {
-    color: #5a3a36; /* Цвет текста */
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+/* Затемнение фона для лучшей читаемости текста */
+.blot-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(76, 44, 41, 0.3);
+    z-index: 1;
+}
+
+.blot-content {
+    position: relative;
+    z-index: 2;
+    transform: rotate(-5deg);
+    word-break: break-word;
+}
+
+/* Индивидуальные формы и повороты для каждой кляксы */
+.level-blot:nth-child(1) {
+    margin-top: -20px;
+}
+.level-blot:nth-child(1) .blot-inner {
+    border-radius: 60% 40% 50% 40%/50% 40% 60% 50%;
+}
+.level-blot:nth-child(1) .blot-content {
+    transform: rotate(-7deg);
+}
+
+.level-blot:nth-child(2) {
+    margin-bottom: 30px;
+}
+.level-blot:nth-child(2) .blot-inner {
+    border-radius: 40% 60% 40% 60%/50% 50% 50% 50%;
+}
+.level-blot:nth-child(2) .blot-content {
+    transform: rotate(3deg);
+}
+
+.level-blot:nth-child(3) {
+    margin-top: -40px;
+}
+.level-blot:nth-child(3) .blot-inner {
+    border-radius: 50% 50% 40% 60%/40% 50% 50% 60%;
+}
+.level-blot:nth-child(3) .blot-content {
+    transform: rotate(-2deg);
+}
+
+/* Эффект капли при наведении */
+.level-blot:hover {
+    transform: translateY(-10px);
+}
+
+.level-blot:hover .blot-inner::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 30px;
+    background: radial-gradient(ellipse at center, rgba(76,44,41,0.6) 0%, rgba(76,44,41,0) 70%);
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 3;
+}
+
+/* Соединительные линии-брызги */
+.levels-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 30px;
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg"><path fill="%234c2c29" d="M0,15c30-15,60-20,90-10s60,25,90,20s60-30,90-25s60,30,90,25s60-30,90-20s60,20,90,15" opacity="0.5"/></svg>') repeat-x center;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+
+
+/* Адаптация для мобильных */
+@media (max-width: 992px) {
+    .levels-container {
+        gap: 40px;
+    }
+    
+    .level-blot {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .levels-container {
+        flex-direction: column;
+        gap: 70px;
+        padding: 80px 0;
+    }
+    
+    .level-blot {
+        width: 300px;
+        height: 300px;
+        margin: 0 !important;
+    }
+    
+    .levels-container::after {
+        width: 30px;
+        height: 90%;
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 30 500" xmlns="http://www.w3.org/2000/svg"><path fill="%234c2c29" d="M15,0c15-30,20-60,10-90s25-60,20-90s-30-60-25-90s30-60,25-90" opacity="0.5"/></svg>') repeat-y center;
+    }
+}
+
+@media (max-width: 480px) {
+    .level-blot {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .blot-content {
+        font-size: 1.2rem;
+    }
+}
+/* Анимация для блоков программ */
+.program-block {
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.program-image {
+    transition: all 0.5s ease;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.program-content {
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateX(100%);
+    z-index: 2;
+    background-color: white;
+}
+
+.program-block.active .program-image {
+    width: 50%;
+    left: 0;
+}
+
+.program-block.program-right-image.active .program-image {
+    left: auto;
+    right: 0;
+}
+
+.program-block.active .program-content {
+    opacity: 1;
+    transform: translateX(0);
+    width: 50%;
+    margin-left: 50%;
+}
+
+.program-block.program-right-image.active .program-content {
+    margin-left: 0;
+    margin-right: 50%;
 }

@@ -15,13 +15,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
     <header id="header" class="position-relative d-flex justify-content-center align-items-center overflow-hidden" style="height: 50vh;">
         <!-- Фон шапки -->
         <div class="background-image"></div>
 
         <!-- Облака -->
-        <img src="https://balancedservice.ru/img/cloud.png" alt="Облако 1" class="cloud cloud-left position-absolute" style="transform: translate(0%, 0%);">
-        <img src="https://balancedservice.ru/img/cloud.png" alt="Облако 2" class="cloud cloud-right position-absolute" style="transform: translate(0%, 0%);">
+        <img src="img/cloud.png" alt="Облако 1" class="cloud cloud-left position-absolute" style="transform: translate(0%, 0%);">
+        <img src="img/cloud.png" alt="Облако 2" class="cloud cloud-right position-absolute" style="transform: translate(0%, 0%);">
         
         <!-- Логотип -->
         <img src="https://balancedservice.ru/img/logo.png" alt="Логотип" class="logo position-absolute">
@@ -31,10 +32,10 @@
             Иногда каждому из нас нужна перезагрузка
         </div>
         <div class="header-text header-text-bottom-left position-absolute visible">
-            <p>300+</p> <p>сотрудникам марафон уже помог</p>
+            
         </div>
         <div class="header-text header-text-bottom-right position-absolute visible">
-            <p>Расскажем, как начать понимать</p> <p> себя и заботиться о себе</p>
+            <p></p>
         </div>
     </header>
 
@@ -42,6 +43,7 @@
     <!-- Блок с описанием программы марафона -->
     <section class="marathon-description my-5">
         <div class="container">
+            <h2 class="text-center mb-5">Расскажем, как начать понимать себя и заботится о себе</h>
             <p class="lead text-center">
                 Программа марафона позволяет научиться поддерживать своё эмоциональное равновесие каждый день. Из предложенных практик, точно найдутся те, которые подойдут каждому сотруднику. Полученные инструменты легко применяемы в работе и в жизни.
             </p>
@@ -50,28 +52,42 @@
     <!-- Блок с тремя ключевыми уровнями -->
 <section class="key-levels my-5">
     <div class="container">
-        <h2 class="text-center mb-4">3 ключевых уровня работы во время прохождения программы:</h2>
+        <h2 class="text-center mb-5">3 ключевых уровня работы во время прохождения программы:</h2>
         <div class="levels-container">
             <!-- Эмоционально-личностный -->
-            <div class="level-circle" onclick="openLevelModal('Эмоционально-личностный', [
+            <div class="level-blot" onclick="openLevelModal('Эмоционально-личностный', [
                 '○ Работа над своим внутренним состоянием',
                 '○ Отработка навыка выделять из повседневности позитивные моменты',
                 '○ Развитие умения поддерживать и понимать себя'
             ])">
-                Эмоционально-личностный
+                <div class="blot-inner">
+                    <div class="blot-content">
+                        Эмоциональный
+                    </div>
+                </div>
             </div>
+            
             <!-- Телесные практики -->
-            <div class="level-circle" onclick="openLevelModal('Телесные практики', [
+            <div class="level-blot" onclick="openLevelModal('Телесные практики', [
                 '○ Практические упражнения для снятия стресса и расслабления'
             ])">
-                Телесные практики
+                <div class="blot-inner">
+                    <div class="blot-content">
+                        Телесный
+                    </div>
+                </div>
             </div>
+            
             <!-- Коммуникативные навыки -->
-            <div class="level-circle" onclick="openLevelModal('Коммуникативные навыки', [
+            <div class="level-blot" onclick="openLevelModal('Коммуникативные навыки', [
                 '○ Формирование навыка работы с негативом при общении с клиентами',
-                '○ Умение правильно реагировать на негатив, решать вопрос клиента и не пострадать самому'
+                '○ Умение правильно реагировать на негатив, решает вопрос клиента и не пострадать самому'
             ])">
-                Коммуникативные навыки
+                <div class="blot-inner">
+                    <div class="blot-content">
+                        Коммуникативный
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -88,27 +104,24 @@
     <!-- Блок с тремя программами -->
 <section class="programs my-5">
     <div class="container">
-        <h2 class="text-center mb-4">3 блока с основными программами</h2>
+        <h2 class="text-center mb-4">Основные программы</h2>
         <div class="row">
             <!-- Выдыхай -->
-            <div class="col-md-12 mb-5">
-                <div class="program-block program-left-image">
-                    <div class="program-image">
-                        <img src="img/pupupu.png" alt="Выдыхай" class="img-fluid">
-                    </div>
-                    <div class="program-content">
-                        <h3>Вдохновляй</h3>
-                        <p>Марафон внутренней и внешней красоты<br>
-                        Инструменты для поддержки эмоционального состояния и мастер-классы по созданию макияжа, прически и рабочего образа<br>
-                        Подходит для сотрудников, которые работают в очном формате</p>
-                        <a href="venera.html" class="btn btn-primary">Подробнее</a>
-                    </div>
-                </div>
+            <div class="program-block program-left-image">
+            <div class="program-image" onclick="toggleProgram(this)">
+            <img src="img/pu.png" alt="Выдыхай" class="img-fluid">
+            </div>
+            <div class="program-content">
+            <h3>Выдыхай</h3>
+            <p>Марафон для заботы о себе<br>
+            Управления своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами</p>
+            <a href="vydihay.html" class="btn btn-primary">Подробнее</a>
+            </div>
             </div>
             
             <!-- Чувствуй -->
             <div class="col-md-12 mb-5">
-                <div class="program-block program-right-image">
+                <div class="program-block program-right-image" onclick="toggleProgram(this)">
                     <div class="program-content">
                         <h3>Чувствуй</h3>
                         <p>Марафон для заботы о себе<br>
@@ -124,16 +137,18 @@
             
             <!-- Венеры -->
             <div class="col-md-12">
-                <div class="program-block program-left-image">
+                <div class="program-block program-left-image"onclick="toggleProgram(this)">
                     <div class="program-image">
-                        <img src="img/pu.png" alt="Венеры" class="img-fluid">
+                        <img src="img/pupupu.png" alt="Венеры" class="img-fluid">
                         <!-- Укажите правильный путь к изображению -->
                     </div>
                     <div class="program-content">
-                        <h3>Выдыхай</h3>
-                        <p>Марафон для заботы о себе<br>
-                        Управления своим физическим и эмоциональным состоянием. Формирование навыка работы с негативом при общении с клиентами</p>
-                        <a href="vydihay.html" class="btn btn-primary">Подробнее</a>
+                        
+                        <h3>Вдохновляй</h3>
+                        <p>Марафон внутренней и внешней красоты<br>
+                        Инструменты для поддержки эмоционального состояния и мастер-классы по созданию макияжа, прически и рабочего образа<br>
+                        Подходит для сотрудников, которые работают в очном формате</p>
+                        <a href="venera.html" class="btn btn-primary">Подробнее</a>
                     </div>
                 </div>
             </div>
@@ -141,9 +156,11 @@
     </div>
 </section>
 
+
     <!-- Блок с результатами (две колонки) -->
 <section class="results-section my-5">
     <div class="container">
+        <h3 class="header-text-bottom-right">300+</h3> <h3 class="header-text-bottom-right"> сотрудникам марафон уже помог</h3> 
         <div class="row g-4">
             <!-- Результат для компании -->
             <div class="col-md-6">
@@ -323,6 +340,7 @@
         </div>
     </section>
 
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -484,6 +502,19 @@ function closeLevelModal() {
             closeLevelModal();
         }
     });
+</script>
+<script>
+function toggleProgram(element) {
+    const programBlock = element.closest('.program-block');
+    programBlock.classList.toggle('active');
+    
+    // Закрываем другие открытые блоки
+    document.querySelectorAll('.program-block').forEach(block => {
+        if (block !== programBlock && block.classList.contains('active')) {
+            block.classList.remove('active');
+        }
+    });
+}
 </script>
 </body>
 </html>
