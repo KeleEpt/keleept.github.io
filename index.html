@@ -43,18 +43,52 @@
 
 
     <!-- Блок с описанием программы марафона -->
-    <section class="marathon-description my-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Расскажем, как начать понимать себя и заботиться о себе</h>
-            <p class="lead text-center">
-                Программа марафона позволяет научиться поддерживать своё эмоциональное равновесие каждый день. Из предложенных практик, точно найдутся те, которые подойдут каждому сотруднику. Полученные инструменты легко применяемы в работе и в жизни.
-            </p>
+<section class="marathon-description my-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Расскажем, как начать понимать себя и заботиться о себе</h2>
+        <div class="program-features-container">
+            <!-- Блок с кляксой слева -->
+            <div class="learn-blot-container">
+                <div class="feature-blot">
+                    <div class="blot-inner">
+                        <div class="blot-content">
+                            Программа позволяет научиться
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Три карточки с фото справа -->
+            <div class="features-cards-container">
+                <div class="feature-card">
+                    <img src="img/ramka.jpg" alt="Карточка" class="card-bg">
+                    <div class="card-content">
+                        <img src="img/ris1.png" alt="Иконка" class="card-icon">
+                        <span>Правильно реагировать</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="img/ramka.jpg" alt="Карточка" class="card-bg">
+                    <div class="card-content">
+                        <img src="img/ris2.png" alt="Иконка" class="card-icon">
+                        <span>Управлять своим настроением</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <img src="img/ramka.jpg" alt="Карточка" class="card-bg">
+                    <div class="card-content">
+                        <img src="img/ris3.png" alt="Иконка" class="card-icon">
+                        <span>Прокачать эмпатию</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
     <!-- Блок с тремя ключевыми уровнями -->
 <section class="key-levels my-5">
     <div class="container">
-        <h2 class="text-center mb-5">3 ключевых уровня работы во время прохождения программы:</h2>
+        <h2 class="text-center mb-5">&nbsp</h2>
         <div class="levels-container">
             <!-- Эмоционально-личностный -->
             <div class="level-blot" onclick="openLevelModal('Эмоционально-личностный', [
@@ -504,6 +538,43 @@ function closeLevelModal() {
                 });
             }
         });
+    }
+});
+
+        // Функция для открытия модального окна с уровнем
+function openLevelModal(title, items) {
+    const modal = document.getElementById('levelModal');
+    const modalTitle = document.getElementById('modalLevelTitle');
+    const modalText = document.getElementById('modalLevelText');
+    
+    // Устанавливаем заголовок
+    modalTitle.textContent = title;
+    
+    // Очищаем предыдущее содержимое
+    modalText.innerHTML = '';
+    
+    // Добавляем элементы списка
+    items.forEach(item => {
+        const p = document.createElement('p');
+        p.textContent = item;
+        modalText.appendChild(p);
+    });
+    
+    // Показываем модальное окно
+    modal.style.display = 'flex';
+}
+
+// Функция для закрытия модального окна
+function closeLevelModal() {
+    const modal = document.getElementById('levelModal');
+    modal.style.display = 'none';
+}
+
+// Закрытие модального окна при клике вне его
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('levelModal');
+    if (event.target === modal) {
+        closeLevelModal();
     }
 });
     </script>
