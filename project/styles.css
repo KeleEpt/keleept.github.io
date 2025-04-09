@@ -884,7 +884,7 @@ text-align: center; /* Центрируем текст */
 @@media (max-width: 992px) {
     .header-text-top-center {
         font-size: 1.3rem;
-        top: 35%;
+        top: 55%;
     }
 }
 
@@ -892,7 +892,7 @@ text-align: center; /* Центрируем текст */
 @media (max-width: 768px) {
     .header-text-top-center {
         font-size: 1.1rem; /* Уменьшаем размер шрифта */
-        top: 33%; /* Опускаем текст ниже */
+        top: 50%; /* Опускаем текст ниже */
         width: 85%; /* Уменьшаем ширину */
         line-height: 1.4; /* Улучшаем читаемость */
     }
@@ -907,7 +907,7 @@ text-align: center; /* Центрируем текст */
 @media (max-width: 480px) {
     .header-text-top-center {
         font-size: 1rem;
-        top: 35%;
+        top: 50%;
         width: 90%;
     }
     
