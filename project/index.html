@@ -21,14 +21,14 @@
         <div class="background-image"></div>
 
         <!-- Облака -->
-        <img src="img/cloud0.png" alt="Облако 1" class="cloud cloud-left position-absolute" style="transform: translate(0%, 0%);">
-        <img src="img/cloud0.png" alt="Облако 2" class="cloud cloud-right position-absolute" style="transform: translate(0%, 0%);">
+        <img src="img/cloud0.png" alt="" class="cloud cloud-left position-absolute" style="transform: translate(0%, 0%);">
+        <img src="img/cloud0.png" alt="" class="cloud cloud-right position-absolute" style="transform: translate(0%, 0%);">
         
         <!-- Логотип -->
         <img src="img/logo.png" alt="Логотип" class="logo position-absolute">
 
         <!-- Тексты -->
-        <div class="header-text header-text-top-left position-absolute visible">
+        <div class="header-text header-text-top-center position-absolute visible">
             Иногда каждому из нас нужна перезагрузка
         </div>
         <div class="header-text header-text-bottom-left position-absolute visible">
@@ -374,20 +374,7 @@
         });
     </script>
     
-    <!-- Анимация облаков -->
-    <script>
-        window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
-            const cloudLeft = document.querySelector('.cloud-left');
-            const cloudRight = document.querySelector('.cloud-right');
 
-            const maxScroll = 300;
-            const progress = Math.min(scrollPosition / maxScroll, 1);
-
-            cloudLeft.style.transform = `translate(${50 * progress}%, ${50 * progress}%)`;
-            cloudRight.style.transform = `translate(${-50 * progress}%, ${-50 * progress}%)`;
-        });
-    </script>
     
     <!-- Подключаем Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
