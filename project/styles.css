@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f0f8ff !important;
+    background-color: #e3edf7 !important;
     font-family: 'Montserrat', sans-serif !important;
     background: rgba(0, 0, 0, 0.3);
     background-image: url('img/pngwing1.com.png');
@@ -86,12 +86,12 @@ header::before {
 }
 
 .header-main-text {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .header-main-text h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
+    font-size: 8rem;
     font-weight: 600;
     color: #f3efec;
     margin-bottom: 1rem;
@@ -101,7 +101,7 @@ header::before {
 
 .header-main-text .subtitle {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
+    font-size: 2rem;
     font-weight: 400;
     color: #f3efec;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -1384,5 +1384,212 @@ footer {
     .program-block.active .program-content {
         max-height: 500px;
         padding: 20px;
+    }
+}
+/* Стили для контейнера с особенностями программы */
+.program-features-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* Контейнер для кляксы слева */
+.learn-blot-container {
+    flex: 0 0 auto;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили для кляксы с текстом */
+.feature-blot {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    z-index: 2;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Окантовка как у раздела "Эмоциональный" */
+.feature-blot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 8px solid #708090;
+    border-radius: 50% 30% 50% 30%/40% 50% 40% 50%;
+    z-index: 3;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+.feature-blot:hover::before {
+    border-color: #708090;
+    transform: rotate(5deg) scale(1.05);
+}
+
+.feature-blot .blot-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('img/sphere-power.gif') center/cover no-repeat;
+    border-radius: 50% 30% 50% 30%/40% 50% 40% 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.feature-blot .blot-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(76, 44, 41, 0.3);
+    z-index: 1;
+}
+
+.feature-blot .blot-content {
+    position: relative;
+    z-index: 2;
+    transform: rotate(-5deg);
+    word-break: break-word;
+}
+
+/* Контейнер для карточек справа */
+.features-cards-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-left: 20px; /* Отступ от кляксы */
+}
+
+/* Стили для карточек с фото */
+.feature-card {
+    position: relative;
+    max-height: 101px;
+    max-width: 688px;
+}
+
+.card-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    color: #4c2c29;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    margin-right: 25px;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 992px) {
+    .program-features-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .learn-blot-container {
+        width: 100%;
+    }
+    
+    .features-cards-container {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .feature-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .card-content {
+        font-size: 1.5rem;
+        padding-left: 30px;
+    }
+    
+    .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .feature-blot {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .feature-blot .blot-content {
+        font-size: 1.4rem;
+    }
+    
+    .card-content {
+        font-size: 1.3rem;
+        padding-left: 20px;
+    }
+    
+    .card-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-blot {
+        width: 260px;
+        height: 260px;
+    }
+    
+    .feature-blot .blot-content {
+        font-size: 1.2rem;
+    }
+    
+    .card-content {
+        font-size: 1.1rem;
+    }
+    
+    .card-icon {
+        width: 35px;
+        height: 35px;
     }
 }
