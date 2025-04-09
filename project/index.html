@@ -103,44 +103,47 @@
 </div>
    <!-- Блок с тремя программами -->
     <section class="programs">
-        <h2>Основные программы</h2>
-        
-        <!-- Программа 1 -->
-        <div class="program-block">
-            <div class="program-image">
-                <img src="img/pu.png" alt="Выдыхай">
+        <div class="container">
+            <h2>Основные программы</h2>
+            
+            <!-- Программа 1 - Выдыхай -->
+            <div class="program-block" data-direction="left">
+                <div class="program-image">
+                    <img src="img/pu.png" alt="Выдыхай">
+                </div>
+                <div class="program-content">
+                    <h3>Выдыхай</h3>
+                    <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
+                    <a href="vydihay.html" class="btn-primary">Подробнее</a>
+                </div>
             </div>
-            <div class="program-content">
-                <h3>Выдыхай</h3>
-                <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
-                <a href="vydihay.html" class="btn-primary">Подробнее</a>
+            
+            <!-- Программа 2 - Чувствуй -->
+            <div class="program-block" data-direction="right">
+                <div class="program-image">
+                    <img src="img/pupu.png" alt="Чувствуй">
+                </div>
+                <div class="program-content">
+                    <h3>Чувствуй</h3>
+                    <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
+                    <a href="chustva.html" class="btn-primary">Подробнее</a>
+                </div>
             </div>
-        </div>
-        
-        <!-- Программа 2 -->
-        <div class="program-block">
-            <div class="program-image">
-                <img src="img/pupu.png" alt="Чувствуй">
-            </div>
-            <div class="program-content">
-                <h3>Чувствуй</h3>
-                <p>Марафон для заботы о себе. Управления своим физическим и эмоциональным состоянием.</p>
-                <a href="chustva.html" class="btn-primary">Подробнее</a>
-            </div>
-        </div>
-        
-        <!-- Программа 3 -->
-        <div class="program-block">
-            <div class="program-image">
-                <img src="img/pupupu.png" alt="Вдохновляй">
-            </div>
-            <div class="program-content">
-                <h3>Вдохновляй</h3>
-                <p>Марафон внутренней и внешней красоты. Инструменты для поддержки эмоционального состояния.</p>
-                <a href="venera.html" class="btn-primary">Подробнее</a>
+            
+            <!-- Программа 3 - Вдохновляй -->
+            <div class="program-block" data-direction="left">
+                <div class="program-image">
+                    <img src="img/pupupu.png" alt="Вдохновляй">
+                </div>
+                <div class="program-content">
+                    <h3>Вдохновляй</h3>
+                    <p>Марафон внутренней и внешней красоты. Инструменты для поддержки эмоционального состояния.</p>
+                    <a href="venera.html" class="btn-primary">Подробнее</a>
+                </div>
             </div>
         </div>
     </section>
+
 
 
 
@@ -492,36 +495,44 @@ function closeLevelModal() {
 </script>
 <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const programBlocks = document.querySelectorAll('.program-block');
-            const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const programBlocks = document.querySelectorAll('.program-block');
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    
+    programBlocks.forEach(block => {
+        block.addEventListener('click', function(e) {
+            // Если клик по ссылке - не обрабатываем
+            if (e.target.tagName === 'A') return;
             
-            programBlocks.forEach(block => {
-                block.addEventListener('click', function() {
-                    // На мобильных - просто toggle класса active
-                    if (isMobile) {
-                        this.classList.toggle('active');
-                    } 
-                    // На ПК - закрываем другие блоки перед открытием текущего
-                    else {
-                        // Закрываем все блоки
-                        programBlocks.forEach(b => b.classList.remove('active'));
-                        // Открываем текущий
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // Закрытие по клику вне блока (только для ПК)
-            if (!isMobile) {
-                document.addEventListener('click', function(e) {
-                    if (!e.target.closest('.program-block')) {
-                        programBlocks.forEach(block => {
-                            block.classList.remove('active');
-                        });
-                    }
+            // На мобильных - просто toggle класса active
+            if (isMobile) {
+                this.classList.toggle('active');
+            } 
+            // На ПК - toggle класса active с закрытием других блоков
+            else {
+                const wasActive = this.classList.contains('active');
+                
+                // Закрываем все блоки
+                programBlocks.forEach(b => b.classList.remove('active'));
+                
+                // Если блок не был активен - открываем его
+                if (!wasActive) {
+                    this.classList.add('active');
+                }
+            }
+        });
+    });
+    
+    // Закрытие по клику вне блока (только для ПК)
+    if (!isMobile) {
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.program-block')) {
+                programBlocks.forEach(block => {
+                    block.classList.remove('active');
                 });
             }
         });
+    }
+});
     </script>
 
 </body>
