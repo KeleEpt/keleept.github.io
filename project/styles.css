@@ -1262,73 +1262,82 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
-    .level-blot {
-        width: 260px;
-        height: 260px;
-    }
-    
-    .blot-content {
-        font-size: 1.2rem;
-    }
-}
-/* Анимация для блоков программ */
-.program-block {
-    transition: all 0.5s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.program-image {
-    transition: all 0.5s ease;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.program-content {
-    transition: all 0.5s ease;
-    opacity: 0;
-    transform: translateX(100%);
-    z-index: 2;
-    background-color: white;
-}
-
-.program-block.active .program-image {
-    width: 50%;
-    left: 0;
-}
-
-.program-block.program-right-image.active .program-image {
-    left: auto;
-    right: 0;
-}
-
-.program-block.active .program-content {
-    opacity: 1;
-    transform: translateX(0);
-    width: 50%;
-    margin-left: 50%;
-}
-
-.program-block.program-right-image.active .program-content {
-    margin-left: 0;
-    margin-right: 50%;
-}
+/* Мобильная адаптация для блоков программ */
 @media (max-width: 768px) {
-    .program-block.active .program-image {
-        width: 100%;
-        height: 200px;
-        position: relative;
+    .program-block {
+        flex-direction: column;
+        min-height: auto;
     }
     
+    .program-image, 
+    .program-content {
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        transform: none !important;
+        position: relative !important;
+    }
+    
+    .program-image {
+        height: 250px; /* Фиксированная высота для изображения */
+        border-radius: 20px 20px 0 0 !important;
+    }
+    
+    .program-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Обеспечиваем полное заполнение области */
+    }
+    
+    .program-content {
+        padding: 20px !important;
+        opacity: 1 !important;
+        transform: none !important;
+        border-radius: 0 0 20px 20px !important;
+    }
+    
+    /* Отключаем анимацию на мобильных */
+    .program-block.active .program-image,
     .program-block.active .program-content {
-        width: 100%;
-        margin: 0;
+        width: 100% !important;
+        margin: 0 !important;
+        transform: none !important;
     }
     
-    .program-block.program-right-image.active .program-content {
-        margin: 0;
+    /* Улучшаем отображение текста */
+    .program-content h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .program-content p {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .program-content .btn-primary {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .program-image {
+        height: 200px;
+    }
+    
+    .program-content {
+        padding: 15px !important;
+    }
+    
+    .program-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .program-content p {
+        font-size: 0.9rem;
     }
 }
