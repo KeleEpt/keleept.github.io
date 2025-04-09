@@ -25,13 +25,11 @@ body {
         }
 
 /* Стили для шапки */
+/* Стили для шапки */
 header {
     position: relative;
-    height: 40%; /* 40% от высоты страницы */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    height: 50vh;
+    min-height: 400px; /* Минимальная высота */
 }
 
 .background-image {
@@ -43,8 +41,55 @@ header {
     background-image: url('img/rock.jpg');
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     z-index: 0;
+}
+
+/* Контейнер для текста под изображением */
+.header-text-container {
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон для лучшей читаемости */
+}
+
+.header-text-bottom {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    header {
+        height: 70vh; /* Увеличиваем высоту шапки */
+        min-height: 500px;
+    }
+    
+    .header-text-container {
+        padding: 15px;
+    }
+    
+    .header-text-bottom h4 {
+        font-size: 1.2rem; /* Уменьшаем размер текста */
+    }
+    
+    .logo {
+        width: 80%;
+        top: 30% !important; /* Поднимаем логотип выше */
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-text-bottom h4 {
+        font-size: 1rem;
+    }
+    
+    header {
+        min-height: 400px;
+    }
 }
 
 header::before {
@@ -76,39 +121,6 @@ header::before {
     }
 }
 
-/* Основное содержимое шапки */
-.header-content {
-    width: 90%;
-    max-width: 1200px;
-    z-index: 3;
-    padding: 20px;
-    text-align: center;
-}
-
-.header-main-text {
-    margin-bottom: 50px;
-}
-
-.header-main-text h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 8rem;
-    font-weight: 600;
-    color: #f3efec;
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    line-height: 1.3;
-}
-
-.header-main-text .subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-    font-weight: 400;
-    color: #f3efec;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    line-height: 1.5;
-    max-width: 800px;
-    margin: 0 auto;
-}
 
 /* Стили для блока результатов */
 .results-section {
@@ -780,30 +792,7 @@ footer {
     font-size: 14px;
   }
 
-  /* 2. Шапка — компактная, но без скрола */
-  header {
-    height: auto;
-    min-height: 70vh; /* Фиксированная высота, но адаптивная */
-    padding: 20px 0;
-  }
-
-  .header-content {
-    padding: 0 15px;
-    width: 100%;
-  }
-
-  .header-main-text h1 {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-
-  .header-main-text .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    line-height: 1.4;
-  }
-
+  
   /* 3. Блоки в шапке — горизонтальные, но компактные */
   .info-blocks-container {
     display: flex;
@@ -864,72 +853,7 @@ footer {
         padding: 8px 5px;
     }
 }
-/* Тексты в шапке */
-.header-text {
-    color: #e0bba2;
-    z-index: 2;
-    position: absolute;
-    font-size: 2vw;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-text-align: center; /* Центрируем текст */
-    width: 90%; /* Ограничиваем ширину */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translateX(-50%); /* Точное центрирование */
-}
-.header-text-top-center {
-    top: 30%; /* Позиционируем ниже */
-    font-size: 1.5rem; /* Размер для десктопа */
-}
-@@media (max-width: 992px) {
-    .header-text-top-center {
-        font-size: 1.3rem;
-        top: 55%;
-    }
-}
 
-/* Адаптация для мобильных */
-@media (max-width: 768px) {
-    .header-text-top-center {
-        font-size: 1.1rem; /* Уменьшаем размер шрифта */
-        top: 50%; /* Опускаем текст ниже */
-        width: 85%; /* Уменьшаем ширину */
-        line-height: 1.4; /* Улучшаем читаемость */
-    }
-    
-    .logo {
-        width: 80%; /* Уменьшаем логотип */
-        top: 40%; /* Опускаем логотип ниже */
-    }
-}
-
-/* Для очень маленьких экранов */
-@media (max-width: 480px) {
-    .header-text-top-center {
-        font-size: 1rem;
-        top: 50%;
-        width: 90%;
-    }
-    
-    header {
-        height: 60vh; /* Увеличиваем высоту шапки */
-    }
-}
-.header-text-top-left {
-    top: 5%;
-    left: 5%;
-}
-
-.header-text-bottom-left {
-    bottom: 5%;
-    left: 5%;
-}
-
-.header-text-bottom-right {
-    bottom: 5%;
-    right: 5%;
-    text-align: right;
-}
 /* Стили для блоков программ */
 .program-block {
     display: flex;
@@ -1218,12 +1142,12 @@ text-align: center; /* Центрируем текст */
     }
     
     .level-blot:nth-child(2) {
-        right: 15%;
+        right: 5%;
         top: 150px;
     }
     
     .level-blot:nth-child(3) {
-        left: 35%;
+        left: 25%;
         top: 300px;
     }
 }
