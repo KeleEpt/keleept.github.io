@@ -1218,12 +1218,12 @@ text-align: center; /* Центрируем текст */
     }
     
     .level-blot:nth-child(2) {
-        right: 5%;
+        right: 15%;
         top: 150px;
     }
     
     .level-blot:nth-child(3) {
-        left: 25%;
+        left: 35%;
         top: 300px;
     }
 }
