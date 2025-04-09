@@ -516,5 +516,23 @@ function toggleProgram(element) {
     });
 }
 </script>
+<script>
+function toggleProgram(element) {
+    // Проверяем, является ли устройство мобильным
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    
+    if (!isMobile) {
+        const programBlock = element.closest('.program-block');
+        programBlock.classList.toggle('active');
+        
+        // Закрываем другие открытые блоки
+        document.querySelectorAll('.program-block').forEach(block => {
+            if (block !== programBlock && block.classList.contains('active')) {
+                block.classList.remove('active');
+            }
+        });
+    }
+}
+</script>
 </body>
 </html>
