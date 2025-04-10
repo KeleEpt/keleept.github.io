@@ -598,34 +598,30 @@ window.addEventListener('click', (event) => {
     </script>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const levelsContainer = document.querySelector('.levels-container');
-    const rectangles = document.querySelectorAll('.level-rectangle');
-    let isAnimated = false;
-    
-    // Для мобильных - ничего не делаем (блоки уже в колонке)
-    if (window.innerWidth <= 768) return;
-    
-    // Для ПК - обработка клика
-    levelsContainer.addEventListener('click', function() {
-        if (!isAnimated) {
-            levelsContainer.classList.add('animated');
-            isAnimated = true;
-        } else {
-            // Сбрасываем анимацию
-            levelsContainer.classList.remove('animated');
-            setTimeout(() => {
-                levelsContainer.classList.add('animated');
-            }, 50);
-        }
-    });
-    
-    // Для тач-устройств (на случай если это планшет)
-    levelsContainer.addEventListener('touchstart', function() {
-        if (!isAnimated && window.innerWidth > 768) {
-            levelsContainer.classList.add('animated');
-            isAnimated = true;
-        }
-    });
+  const levelsContainer = document.querySelector('.levels-container');
+  
+  // Функция для проверки мобильного устройства
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+  
+  // Инициализация анимации для мобильных
+  if (isMobile()) {
+    setTimeout(() => {
+      levelsContainer.classList.add('animated');
+    }, 1000);
+  }
+  
+  // Обработчик клика/тапа
+  levelsContainer.addEventListener('click', function() {
+    this.classList.toggle('animated');
+  });
+  
+  // Для тач-устройств
+  levelsContainer.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    this.classList.toggle('animated');
+  }, { passive: false });
 });
 </script>
 
