@@ -79,23 +79,18 @@
         </div>
     </div>
 </section>
-   <!-- Блок с тремя ключевыми уровнями -->
+    <!-- Блок с тремя ключевыми уровнями -->
+<!-- Блок с тремя ключевыми уровнями -->
 <section class="key-levels my-5">
     <div class="container">
         <h2 class="text-center mb-5">Три ключевых уровня</h2>
         <div class="levels-container">
-            <!-- Все три уровня в одной точке на мобильных -->
-            <div class="levels-start-point" onclick="expandLevels()">
-                <div class="level-dot"></div>
-            </div>
-            
             <!-- Эмоционально-личностный -->
-            <div class="level-rectangle mobile-level" 
-                 onclick="openLevelModal('Эмоционально-личностный', [
-                    '○ Работа над своим внутренним состоянием',
-                    '○ Отработка навыка выделять из повседневности позитивные моменты',
-                    '○ Развитие умения поддерживать и понимать себя'
-                 ])">
+            <div class="level-rectangle" onclick="openLevelModal('Эмоционально-личностный', [
+                '○ Работа над своим внутренним состоянием',
+                '○ Отработка навыка выделять из повседневности позитивные моменты',
+                '○ Развитие умения поддерживать и понимать себя'
+            ])">
                 <div class="rectangle-inner">
                     <div class="rectangle-content">
                         Эмоциональный
@@ -104,10 +99,9 @@
             </div>
             
             <!-- Телесные практики -->
-            <div class="level-rectangle mobile-level" 
-                 onclick="openLevelModal('Телесные практики', [
-                    '○ Практические упражнения для снятия стресса и расслабления'
-                 ])">
+            <div class="level-rectangle" onclick="openLevelModal('Телесные практики', [
+                '○ Практические упражнения для снятия стресса и расслабления'
+            ])">
                 <div class="rectangle-inner">
                     <div class="rectangle-content">
                         Телесный
@@ -116,11 +110,10 @@
             </div>
             
             <!-- Коммуникативные навыки -->
-            <div class="level-rectangle mobile-level" 
-                 onclick="openLevelModal('Коммуникативные навыки', [
-                    '○ Формирование навыка работы с негативом при общении с клиентами',
-                    '○ Умение правильно реагировать на негатив, решает вопрос клиента и не пострадать самому'
-                 ])">
+            <div class="level-rectangle" onclick="openLevelModal('Коммуникативные навыки', [
+                '○ Формирование навыка работы с негативом при общении с клиентами',
+                '○ Умение правильно реагировать на негатив, решает вопрос клиента и не пострадать самому'
+            ])">
                 <div class="rectangle-inner">
                     <div class="rectangle-content">
                         Коммуникативный
@@ -637,53 +630,6 @@ document.addEventListener('DOMContentLoaded', function() {
             isAnimated = true;
         }
     });
-});
-</script>
-
-<script>
-    // Функция для раскрытия уровней на мобильных
-function expandLevels() {
-    if (window.innerWidth <= 768) {
-        const container = document.querySelector('.levels-container');
-        container.classList.add('expanded');
-    }
-}
-
-// Модифицированная функция открытия модального окна
-function openLevelModal(title, items) {
-    // На мобильных сначала проверяем, раскрыты ли уровни
-    if (window.innerWidth <= 768 && !document.querySelector('.levels-container').classList.contains('expanded')) {
-        expandLevels();
-        return;
-    }
-    
-    const modal = document.getElementById('levelModal');
-    const modalTitle = document.getElementById('modalLevelTitle');
-    const modalText = document.getElementById('modalLevelText');
-    
-    // Устанавливаем заголовок
-    modalTitle.textContent = title;
-    
-    // Очищаем предыдущее содержимое
-    modalText.innerHTML = '';
-    
-    // Добавляем элементы списка
-    items.forEach(item => {
-        const p = document.createElement('p');
-        p.textContent = item;
-        modalText.appendChild(p);
-    });
-    
-    // Показываем модальное окно
-    modal.style.display = 'flex';
-}
-
-// Закрытие модального окна при клике вне его
-window.addEventListener('click', (event) => {
-    const modal = document.getElementById('levelModal');
-    if (event.target === modal) {
-        closeLevelModal();
-    }
 });
 </script>
 
