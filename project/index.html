@@ -599,37 +599,28 @@ window.addEventListener('click', (event) => {
     <script>
 document.addEventListener('DOMContentLoaded', function() {
   const levelsContainer = document.querySelector('.levels-container');
-  let isAnimated = false;
+  let isExpanded = false;
   
-  // Функция для проверки мобильного устройства
-  function isMobile() {
-    return window.innerWidth <= 768;
+  // Обработчик клика/тапа
+  function toggleLevels() {
+    if (!isExpanded) {
+      levelsContainer.classList.add('expanded');
+      isExpanded = true;
+    }
   }
   
-  // Обработчик клика
-  levelsContainer.addEventListener('click', function() {
-    isAnimated = !isAnimated;
-    
-    if (isAnimated) {
-      this.classList.add('animated');
-    } else {
-      this.classList.remove('animated');
-    }
-  });
-  
-  // Для тач-устройств
+  levelsContainer.addEventListener('click', toggleLevels);
   levelsContainer.addEventListener('touchend', function(e) {
-    if (isMobile()) {
+    if (window.innerWidth <= 768) {
       e.preventDefault();
-      isAnimated = !isAnimated;
-      
-      if (isAnimated) {
-        this.classList.add('animated');
-      } else {
-        this.classList.remove('animated');
-      }
+      toggleLevels();
     }
   }, { passive: false });
+  
+  // Для мобильных - автоматически раскрываем через 1 секунду
+  if (window.innerWidth <= 768) {
+    setTimeout(toggleLevels, 1000);
+  }
 });
 </script>
 

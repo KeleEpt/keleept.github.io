@@ -1034,7 +1034,8 @@ footer {
 /* Базовые стили для контейнера */
 .levels-container {
   position: relative;
-  min-height: 500px;
+  min-height: 330px;
+  min-width: 100%;
   border: 3px dashed #708090;
   border-radius: 15px;
   padding: 20px;
@@ -1050,7 +1051,6 @@ footer {
   position: absolute;
   width: 280px;
   height: 140px;
-  cursor: pointer;
   z-index: 1;
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   opacity: 0;
@@ -1095,7 +1095,7 @@ footer {
   animation-delay: 0.6s;
 }
 
-/* Стили для ПК (исходная анимация) */
+/* Стили для ПК */
 @media (min-width: 769px) {
   .level-rectangle {
     top: 50%;
@@ -1108,34 +1108,34 @@ footer {
   .level-rectangle:nth-child(2) { z-index: 2; }
   .level-rectangle:nth-child(3) { z-index: 1; }
   
-  /* Анимация разлета при клике */
-  .levels-container.animated .level-rectangle:nth-child(1) {
-    transform: translate(-200%, -50%) rotate(-10deg);
-  }
-  
-  .levels-container.animated .level-rectangle:nth-child(2) {
-    transform: translate(-50%, 60%) rotate(0deg);
-  }
-  
-  .levels-container.animated .level-rectangle:nth-child(3) {
-    transform: translate(100%, -50%) rotate(10deg);
-  }
-  
-  /* Эффект при наведении */
-  .levels-container:hover:not(.animated) .level-rectangle:nth-child(1) {
+  /* Анимация при наведении (только если не раскрыто) */
+  .levels-container:not(.expanded):hover .level-rectangle:nth-child(1) {
     transform: translate(-60%, -50%) rotate(-5deg);
   }
   
-  .levels-container:hover:not(.animated) .level-rectangle:nth-child(2) {
+  .levels-container:not(.expanded):hover .level-rectangle:nth-child(2) {
     transform: translate(-50%, 20%) rotate(0deg);
   }
   
-  .levels-container:hover:not(.animated) .level-rectangle:nth-child(3) {
+  .levels-container:not(.expanded):hover .level-rectangle:nth-child(3) {
     transform: translate(-40%, -50%) rotate(5deg);
+  }
+  
+  /* Финальное положение после клика */
+  .levels-container.expanded .level-rectangle:nth-child(1) {
+    transform: translate(-200%, -50%) rotate(-10deg);
+  }
+  
+  .levels-container.expanded .level-rectangle:nth-child(2) {
+    transform: translate(-50%, 20%) rotate(0deg);
+  }
+  
+  .levels-container.expanded .level-rectangle:nth-child(3) {
+    transform: translate(100%, -50%) rotate(10deg);
   }
 }
 
-/* Стили для мобильных (вертикальное выстраивание) */
+/* Стили для мобильных */
 @media (max-width: 768px) {
   .levels-container {
     min-height: 400px;
@@ -1153,7 +1153,7 @@ footer {
     top: auto !important;
     left: auto !important;
     transform: none !important;
-    margin: 5px 0;
+    margin: 0;
     opacity: 1;
   }
   
@@ -1173,8 +1173,8 @@ footer {
     z-index: 1;
   }
   
-  /* Состояние после клика */
-  .levels-container.animated .level-rectangle {
+  /* Финальное положение после клика */
+  .levels-container.expanded .level-rectangle {
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -1182,6 +1182,11 @@ footer {
   .rectangle-inner {
     font-size: 1.2rem;
     padding: 15px;
+  }
+  
+  /* На мобильных отключаем hover-эффекты */
+  .levels-container:hover .level-rectangle {
+    transform: none !important;
   }
 }
 /* Общие стили */
