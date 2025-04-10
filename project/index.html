@@ -595,60 +595,7 @@ window.addEventListener('click', (event) => {
         closeLevelModal();
     }
 });
-// Обновленная функция для работы на мобильных устройствах
-document.addEventListener('DOMContentLoaded', function() {
-  const levelsContainer = document.querySelector('.levels-container');
-  const levelRectangles = document.querySelectorAll('.level-rectangle');
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-  if (isMobile) {
-    // Для мобильных - каждый прямоугольник обрабатываем отдельно
-    levelRectangles.forEach(rectangle => {
-      rectangle.addEventListener('click', function(e) {
-        // Получаем данные из атрибута onclick
-        const onclickAttr = this.getAttribute('onclick');
-        if (onclickAttr) {
-          // Выполняем функцию, указанную в onclick
-          eval(onclickAttr);
-        }
-      });
-    });
-  } else {
-    // Для ПК оставляем существующую логику
-    levelsContainer.addEventListener('click', function() {
-      this.classList.add('expanded');
-    });
-  }
-});
-
-// Функция для открытия модального окна (оставляем без изменений)
-function openLevelModal(title, items) {
-    const modal = document.getElementById('levelModal');
-    const modalTitle = document.getElementById('modalLevelTitle');
-    const modalText = document.getElementById('modalLevelText');
-    
-    // Устанавливаем заголовок
-    modalTitle.textContent = title;
-    
-    // Очищаем предыдущее содержимое
-    modalText.innerHTML = '';
-    
-    // Добавляем элементы списка
-    items.forEach(item => {
-        const p = document.createElement('p');
-        p.textContent = item;
-        modalText.appendChild(p);
-    });
-    
-    // Показываем модальное окно
-    modal.style.display = 'flex';
-}
-
-// Функция для закрытия модального окна (оставляем без изменений)
-function closeLevelModal() {
-    const modal = document.getElementById('levelModal');
-    modal.style.display = 'none';
-}
     </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

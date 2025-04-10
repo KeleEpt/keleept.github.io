@@ -386,52 +386,56 @@ header::before {
 }
 
 
-/* Обновленные стили для мобильных устройств */
+/* Полностью убираем анимацию для мобильных */
 @media (max-width: 768px) {
   .levels-container {
-    min-height: auto;
-    display: block;
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     border: 3px dashed #708090;
+    border-radius: 15px;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.1);
-    cursor: pointer;
+    min-height: auto;
+    cursor: default;
   }
-
+  
   .level-rectangle {
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 100px;
-    margin-bottom: 20px;
+    min-height: 80px;
+    margin: 0;
     opacity: 1;
     transform: none !important;
-    left: auto !important;
-    top: auto !important;
     animation: none;
     cursor: pointer;
   }
-
-  .level-rectangle:last-child {
-    margin-bottom: 0;
-  }
-
+  
   .rectangle-inner {
-    font-size: 1.3rem;
-    padding: 20px;
+    font-size: 1.2rem;
+    padding: 15px;
+    transition: none;
   }
-
+  
   /* Модальное окно для мобильных */
   .level-modal {
+    padding: 20px 10px;
     align-items: flex-start;
-    padding-top: 20px;
   }
   
   .level-modal-content {
-    width: 95%;
+    width: 100%;
     max-width: none;
     margin-top: 20px;
     max-height: 80vh;
-    overflow-y: auto;
+    animation: none;
+  }
+  
+  /* Отключаем все hover-эффекты */
+  .level-rectangle:hover .rectangle-inner,
+  .levels-container:hover .level-rectangle {
+    transform: none !important;
   }
 }
 /* Карточки */
