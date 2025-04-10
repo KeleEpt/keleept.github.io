@@ -597,32 +597,8 @@ window.addEventListener('click', (event) => {
 });
 
     </script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const levelsContainer = document.querySelector('.levels-container');
-  let isExpanded = false;
-  
-  // Обработчик клика/тапа
-  function toggleLevels() {
-    if (!isExpanded) {
-      levelsContainer.classList.add('expanded');
-      isExpanded = true;
-    }
-  }
-  
-  levelsContainer.addEventListener('click', toggleLevels);
-  levelsContainer.addEventListener('touchend', function(e) {
-    if (window.innerWidth <= 768) {
-      e.preventDefault();
-      toggleLevels();
-    }
-  }, { passive: false });
-  
-  // Для мобильных - автоматически раскрываем через 1 секунду
-  if (window.innerWidth <= 768) {
-    setTimeout(toggleLevels, 1000);
-  }
-});
+
+
 </script>
 </body>
 </html>
