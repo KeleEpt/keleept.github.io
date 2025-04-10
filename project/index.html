@@ -599,28 +599,36 @@ window.addEventListener('click', (event) => {
     <script>
 document.addEventListener('DOMContentLoaded', function() {
   const levelsContainer = document.querySelector('.levels-container');
+  let isAnimated = false;
   
   // Функция для проверки мобильного устройства
   function isMobile() {
     return window.innerWidth <= 768;
   }
   
-  // Инициализация анимации для мобильных
-  if (isMobile()) {
-    setTimeout(() => {
-      levelsContainer.classList.add('animated');
-    }, 1000);
-  }
-  
-  // Обработчик клика/тапа
+  // Обработчик клика
   levelsContainer.addEventListener('click', function() {
-    this.classList.toggle('animated');
+    isAnimated = !isAnimated;
+    
+    if (isAnimated) {
+      this.classList.add('animated');
+    } else {
+      this.classList.remove('animated');
+    }
   });
   
   // Для тач-устройств
-  levelsContainer.addEventListener('touchstart', function(e) {
-    e.preventDefault();
-    this.classList.toggle('animated');
+  levelsContainer.addEventListener('touchend', function(e) {
+    if (isMobile()) {
+      e.preventDefault();
+      isAnimated = !isAnimated;
+      
+      if (isAnimated) {
+        this.classList.add('animated');
+      } else {
+        this.classList.remove('animated');
+      }
+    }
   }, { passive: false });
 });
 </script>
