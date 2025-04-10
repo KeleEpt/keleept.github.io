@@ -79,6 +79,7 @@
         </div>
     </div>
 </section>
+    <!-- Блок с тремя ключевыми уровнями -->
 <!-- Блок с тремя ключевыми уровнями -->
 <section class="key-levels my-5">
     <div class="container">
@@ -595,10 +596,42 @@ window.addEventListener('click', (event) => {
         closeLevelModal();
     }
 });
-
     </script>
-
-
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const levelsContainer = document.querySelector('.levels-container');
+    const rectangles = document.querySelectorAll('.level-rectangle');
+    let isAnimated = false;
+    
+    // Для мобильных - сразу включаем анимацию
+    if (window.innerWidth <= 768) {
+        levelsContainer.classList.add('animated');
+        return;
+    }
+    
+    // Для ПК - обработка клика
+    levelsContainer.addEventListener('click', function() {
+        if (!isAnimated) {
+            levelsContainer.classList.add('animated');
+            isAnimated = true;
+        } else {
+            // Сбрасываем анимацию
+            levelsContainer.classList.remove('animated');
+            setTimeout(() => {
+                levelsContainer.classList.add('animated');
+            }, 50);
+        }
+    });
+    
+    // Для тач-устройств
+    levelsContainer.addEventListener('touchstart', function() {
+        if (!isAnimated) {
+            levelsContainer.classList.add('animated');
+            isAnimated = true;
+        }
+    });
+});
 </script>
+
 </body>
 </html>
