@@ -431,96 +431,197 @@
 
     
     <!-- Подключаем Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Инициализация Swiper для отзывов
+        const reviewSwiper = new Swiper('.reviewSwiper', {
+            slidesPerView: 1, // По умолчанию 1 слайд на мобильных
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                // При ширине экрана >= 768px
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 20
+                },
+                // При ширине экрана >= 992px
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                }
+            }
+        });
+    
+
+    
+    function toggleResult(type) {
+    const content = document.getElementById(`${type}-content`);
+    const icon = document.getElementById(`${type}-icon`);
+    const block = content.parentElement;
+    
+    // Переключаем текущий блок
+    if (content.style.maxHeight) {
+        // Закрываем блок
+        content.style.maxHeight = null;
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+        block.classList.remove('active');
+    } else {
+        // Открываем блок
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+        block.classList.add('active');
+    }
+}
+
+// Инициализация - все блоки закрыты по умолчанию
 document.addEventListener('DOMContentLoaded', function() {
-  const levelsContainer = document.querySelector('.levels-container');
-  const levelRectangles = document.querySelectorAll('.level-rectangle');
-  const modal = document.getElementById('levelModal');
-  const modalTitle = document.getElementById('modalLevelTitle');
-  const modalText = document.getElementById('modalLevelText');
-  const closeModal = document.querySelector('.close-level-modal');
-  let isExpanded = false;
+    document.querySelectorAll('.result-content').forEach(el => {
+        el.style.maxHeight = null;
+    });
+});
 
-  // Данные для модальных окон
-  const levelData = {
-    1: {
-      title: "Эмоционально-личностный",
-      items: [
-        "○ Работа над своим внутренним состоянием",
-        "○ Отработка навыка выделять из повседневности позитивные моменты",
-        "○ Развитие умения поддерживать и понимать себя"
-      ]
-    },
-    2: {
-      title: "Телесные практики",
-      items: [
-        "○ Практические упражнения для снятия стресса и расслабления"
-      ]
-    },
-    3: {
-      title: "Коммуникативные навыки",
-      items: [
-        "○ Формирование навыка работы с негативом при общении с клиентами",
-        "○ Умение правильно реагировать на негатив, решает вопрос клиента и не пострадать самому"
-      ]
-    }
-  };
-
-  // Функция открытия модального окна
-  function openModal(levelNum) {
-    const data = levelData[levelNum];
-    modalTitle.textContent = data.title;
-    modalText.innerHTML = data.items.map(item => `<p>${item}</p>`).join('');
-    modal.style.display = 'flex';
-  }
-
-  // Функция закрытия модального окна
-  function closeModalFunc() {
+    // Переменные для эффекта печати
+    
+function closeLevelModal() {
+    const modal = document.getElementById('levelModal');
+    const modalText = document.getElementById('modalLevelText');
+    
+    // Скрываем модальное окно
     modal.style.display = 'none';
-  }
-
-  // Обработчики для модального окна
-  closeModal.addEventListener('click', closeModalFunc);
-  modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-      closeModalFunc();
+    
+    // Очищаем содержимое
+    modalText.innerHTML = '';
+}
+    
+    function closeLevelModal() {
+        const modal = document.getElementById('levelModal');
+        const modalText = document.getElementById('modalLevelText');
+        
+        // Останавливаем эффект печати
+        clearInterval(typingInterval);
+        modalText.classList.remove('typing-effect');
+        modalText.style.borderRight = 'none';
+        
+        // Скрываем модальное окно
+        modal.style.display = 'none';
     }
-  });
+    
+    // Закрытие модального окна при клике вне его
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById('levelModal');
+        if (event.target === modal) {
+            closeLevelModal();
+        }
+    });
 
-  // Обработчики для блоков
-  levelRectangles.forEach((rect, index) => {
-    rect.addEventListener('click', function() {
-      if (window.innerWidth <= 768) {
-        openModal(index + 1);
-      } else if (!isExpanded) {
-        levelsContainer.classList.add('expanded');
-        isExpanded = true;
-      }
+        document.addEventListener('DOMContentLoaded', function() {
+    const programBlocks = document.querySelectorAll('.program-block');
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    
+    programBlocks.forEach(block => {
+        block.addEventListener('click', function(e) {
+            // Если клик по ссылке - не обрабатываем
+            if (e.target.tagName === 'A') return;
+            
+            // На мобильных - просто toggle класса active
+            if (isMobile) {
+                this.classList.toggle('active');
+            } 
+            // На ПК - toggle класса active с закрытием других блоков
+            else {
+                const wasActive = this.classList.contains('active');
+                
+                // Закрываем все блоки
+                programBlocks.forEach(b => b.classList.remove('active'));
+                
+                // Если блок не был активен - открываем его
+                if (!wasActive) {
+                    this.classList.add('active');
+                }
+            }
+        });
     });
     
-    rect.addEventListener('touchend', function(e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        openModal(index + 1);
-      }
-    }, { passive: false });
-  });
+    // Закрытие по клику вне блока (только для ПК)
+    if (!isMobile) {
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.program-block')) {
+                programBlocks.forEach(block => {
+                    block.classList.remove('active');
+                });
+            }
+        });
+    }
+});
 
-  // Для мобильных - автоматическое раскрытие
-  if (window.innerWidth <= 768) {
-    setTimeout(() => {
+        // Функция для открытия модального окна с уровнем
+function openLevelModal(title, items) {
+    const modal = document.getElementById('levelModal');
+    const modalTitle = document.getElementById('modalLevelTitle');
+    const modalText = document.getElementById('modalLevelText');
+    
+    // Устанавливаем заголовок
+    modalTitle.textContent = title;
+    
+    // Очищаем предыдущее содержимое
+    modalText.innerHTML = '';
+    
+    // Добавляем элементы списка
+    items.forEach(item => {
+        const p = document.createElement('p');
+        p.textContent = item;
+        modalText.appendChild(p);
+    });
+    
+    // Показываем модальное окно
+    modal.style.display = 'flex';
+}
+
+// Функция для закрытия модального окна
+function closeLevelModal() {
+    const modal = document.getElementById('levelModal');
+    modal.style.display = 'none';
+}
+
+// Закрытие модального окна при клике вне его
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('levelModal');
+    if (event.target === modal) {
+        closeLevelModal();
+    }
+});
+    </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const levelsContainer = document.querySelector('.levels-container');
+  let isExpanded = false;
+  
+  // Обработчик клика/тапа
+  function toggleLevels() {
+    if (!isExpanded) {
       levelsContainer.classList.add('expanded');
-    }, 1000);
+      isExpanded = true;
+    }
+  }
+  
+  levelsContainer.addEventListener('click', toggleLevels);
+  levelsContainer.addEventListener('touchend', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      toggleLevels();
+    }
+  }, { passive: false });
+  
+  // Для мобильных - автоматически раскрываем через 1 секунду
+  if (window.innerWidth <= 768) {
+    setTimeout(toggleLevels, 1000);
   }
 });
 </script>
-<!-- Модальное окно для уровня -->
-<div id="levelModal" class="level-modal">
-  <div class="level-modal-content">
-    <span class="close-level-modal">&times;</span>
-    <h3 class="level-modal-title" id="modalLevelTitle"></h3>
-    <div class="level-modal-text" id="modalLevelText"></div>
-  </div>
-</div>
 </body>
 </html>
