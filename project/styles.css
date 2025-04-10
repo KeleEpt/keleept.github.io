@@ -385,63 +385,64 @@ header::before {
     50% { border-color: #4c2c29 }
 }
 
-.typing-effect {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #4c2c29;
-    animation: blink-caret 0.75s step-end infinite;
-}
 
-.typing-line {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    margin-bottom: 15px;
-    animation: typing 1s steps(40, end);
-}
-
-.typing-line:last-child {
-    margin-bottom: 0;
-}
-
-/* Адаптация для мобильных */
+/* Обновленные стили для мобильных устройств */
 @media (max-width: 768px) {
-    .levels-container {
-        gap: 25px;
-    }
-    
-    .level-circle {
-        width: 139px;
-        height: 1390px;
-        font-size: 0rem;
-    }
-    
-    .level-modal-content {
-        padding: 20px;
-    }
-    
-    .level-modal-title {
-        font-size: 1.3rem;
-    }
-    
-    .level-modal-text {
-        font-size: 1rem;
-    }
+  .levels-container {
+    min-height: auto;
+    display: block;
+    padding: 15px;
+    border: 3px dashed #708090;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+
+  .level-rectangle {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    margin-bottom: 20px;
+    opacity: 1;
+    transform: none !important;
+    left: auto !important;
+    top: auto !important;
+    animation: none;
+  }
+
+  .level-rectangle:last-child {
+    margin-bottom: 0;
+  }
+
+  .rectangle-inner {
+    font-size: 1.3rem;
+    padding: 20px;
+  }
+
+  /* Убираем все hover-эффекты на мобильных */
+  .levels-container:hover .level-rectangle {
+    transform: none !important;
+  }
+
+  /* Стили для модального окна (остаются как на ПК) */
+  .level-modal-content {
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    font-size: 1rem;
+  }
 }
 
-@media (max-width: 480px) {
-    .levels-container {
-        gap: 15px;
-    }
-    
-    .level-circle {
-        width: 139px;
-        height: 139px;
-        font-size: 0.9rem;
-        padding: 15px;
-    }
+/* Убираем автоматическое раскрытие на мобильных */
+@media (max-width: 768px) {
+  .levels-container {
+    height: auto !important;
+  }
+  
+  .level-rectangle {
+    margin-top: 0 !important;
+  }
 }
-
 /* Карточки */
 .card {
     font-family: 'Montserrat', sans-serif;
