@@ -1569,3 +1569,88 @@ footer {
         margin-right: 5px;
     }
 }
+/* Мобильная версия блоков уровней */
+@media (max-width: 768px) {
+    .levels-container {
+        min-height: 300px;
+        position: relative;
+        border: none;
+        background: transparent;
+        padding: 0;
+    }
+    
+    .levels-start-point {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+    }
+    
+    .level-dot {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #ff4757, #1e90ff, #2ed573);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    
+    .mobile-level {
+        position: absolute;
+        width: 80%;
+        height: 80px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 1;
+    }
+    
+    .levels-container.expanded .mobile-level:nth-child(2) {
+        transform: translate(-50%, -150%) scale(1);
+        opacity: 1;
+    }
+    
+    .levels-container.expanded .mobile-level:nth-child(3) {
+        transform: translate(-50%, 0%) scale(1);
+        opacity: 1;
+    }
+    
+    .levels-container.expanded .mobile-level:nth-child(4) {
+        transform: translate(-50%, 150%) scale(1);
+        opacity: 1;
+    }
+    
+    .levels-start-point {
+        transition: opacity 0.3s;
+    }
+    
+    .levels-container.expanded .levels-start-point {
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    /* Адаптация модального окна для мобильных */
+    .level-modal-content {
+        max-height: 90vh;
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .level-modal-text {
+        font-size: 1rem;
+    }
+}
