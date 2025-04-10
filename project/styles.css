@@ -408,6 +408,7 @@ header::before {
     left: auto !important;
     top: auto !important;
     animation: none;
+    cursor: pointer;
   }
 
   .level-rectangle:last-child {
@@ -419,28 +420,18 @@ header::before {
     padding: 20px;
   }
 
-  /* Убираем все hover-эффекты на мобильных */
-  .levels-container:hover .level-rectangle {
-    transform: none !important;
-  }
-
-  /* Стили для модального окна (остаются как на ПК) */
-  .level-modal-content {
-    width: 90%;
-    max-width: 500px;
-    padding: 20px;
-    font-size: 1rem;
-  }
-}
-
-/* Убираем автоматическое раскрытие на мобильных */
-@media (max-width: 768px) {
-  .levels-container {
-    height: auto !important;
+  /* Модальное окно для мобильных */
+  .level-modal {
+    align-items: flex-start;
+    padding-top: 20px;
   }
   
-  .level-rectangle {
-    margin-top: 0 !important;
+  .level-modal-content {
+    width: 95%;
+    max-width: none;
+    margin-top: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 }
 /* Карточки */
