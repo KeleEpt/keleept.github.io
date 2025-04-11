@@ -777,14 +777,14 @@ section {
 }
 
 .author-name {
-    border: 15px dashed #cebfc9;
+    border: 15px dashed #cd9a7b;
     border-radius: 15px;
     font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
 .author-details {
-    border:  15px dashed #cebfc9;
+    border:  15px dashed #cd9a7b;
      border-radius: 15px;
     font-size: 2rem;
     list-style-type: none;
@@ -1045,7 +1045,7 @@ footer {
 .levels-container {
     position: relative;
     min-height: 500px;
-    border: 15px dashed #cebfc9;
+    border: 15px dashed #cd9a7b;
     border-radius: 15px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
@@ -1161,7 +1161,7 @@ footer {
 @media (max-width: 768px) {
     .levels-container {
         min-height: auto !important;
-        border: 15px dashed #cebfc9;
+        border: 15px dashed #cd9a7b;
         background: transparent !important;
         display: flex !important;
         flex-direction: column;
@@ -1377,81 +1377,73 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    margin-top: 40px;
-    padding: 30px;
-    border:  15px dashed #cebfc9; /* Пунктирная граница */
+    gap: 25px; /* Уменьшили зазор */
+    margin-top: 20px; /* Уменьшили отступ сверху */
+    padding: 20px; /* Уменьшили внутренний отступ */
+    border: 8px dashed #cd9a7b;
     border-radius: 15px;
     position: relative;
     background: rgba(255, 255, 255, 0.1);
 }
-/* Контейнер для кляксы слева */
-.learn-blot-container {
-    flex: 0 0 auto;
-    width: 35%;
+.features-cards-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px; /* Уменьшили расстояние между карточками */
+    width: 60%;
 }
 
 
 /* Стили для прямоугольника в контейнере (без анимации) */
-.learn-blot-container .level-rectangle {
+/* Стили для нового кубического блока */
+.cube-block {
     position: relative;
-    width: 325px;
-    height: 325px;
+    width: 340px;
+    height: 340px;
+    cursor: default;
     z-index: 1;
-    opacity: 1;
-    align-items: center;
-    top: auto;
-    left: auto;
-    transform: none;
-    margin: 10px;
+    margin: 70px;
 }
 
-.learn-blot-container .rectangle-inner {
-    font-size: 2rem;
-    font-weight: 600;
-    border-radius: 20px;
+.cube-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    color: #212529;
+    font-size: 2rem;
+    font-weight: 600;
+    border: 12px dashed #cd9a7b;
     padding: 20px;
-    width: 100%;
-    height: 100%;
 
 }
 
-/* Убираем эффекты при наведении для этого блока */
-.learn-blot-container .level-rectangle:hover {
-    transform: none !important;
-    z-index: 1 !important;
+/* Убираем все эффекты при наведении */
+.cube-block:hover .cube-inner {
+    transform: none;
 }
 
-.learn-blot-container .rectangle-inner::before {
-    display: none !important; /* Убираем эффект блеска */
-}
-
-/* Адаптация для мобильных */
+/* Мобильная версия */
 @media (max-width: 768px) {
-    .learn-blot-container .level-rectangle {
+    .cube-block {
         width: 100%;
         max-width: 300px;
         height: 120px;
     }
-    
-    .learn-blot-container .rectangle-inner {
+    .cube-inner {
         font-size: 1.3rem;
         padding: 15px;
+        border-width: 6px;
     }
 }
 /* Стили для карточек с пунктирной обводкой */
 .feature-card {
     position: relative;
     height: 100px;
-    width: 100%;
-    border: 8px dashed #cebfc9;
+    width: 90%;
+    border: 8px dashed #cd9a7b;
     border-radius: 25px;
     display: flex;
     align-items: center;
@@ -1585,4 +1577,74 @@ footer {
         height: 35px;
         margin-right: 5px;
     }
+}
+
+.marathon-description h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #212529;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+/* Добавьте в styles.css */
+/* Обновленные стили для заголовков с рамкой */
+.reviews h2,
+.author h2 {
+    border: 5px dashed #f5e6cb;
+    border-radius: 15px;
+    padding: 15px;
+    display: block; /* Изменено с inline-block на block */
+    width: fit-content; /* Ширина по содержимому */
+    margin: 0 auto 40px !important; /* Центрирование и отступ */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+/* Дополнительно для мобильных */
+@media (max-width: 768px) {
+    .reviews h2,
+    .author h2 {
+        padding: 10px;
+        border-width: 10px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Увеличиваем отступ между заголовком "Отзывы" и блоком с отзывами */
+.reviews h2 {
+    margin-bottom: 60px !important;
+}
+/* Добавьте в styles.css */
+.author-photo {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Квадратное соотношение */
+}
+
+.frame-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 2;
+}
+
+.author-img {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 1;
+    border: 4px solid #f3efec;
 }
