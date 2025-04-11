@@ -1746,3 +1746,229 @@ footer {
         height: 350px;
     }
 }
+/* Мобильная адаптация (основные настройки) */
+@media (max-width: 768px) {
+  /* 1. Общие настройки */
+  body {
+    font-size: 14px;
+  }
+
+  /* 2. Шапка сайта */
+  header {
+    height: 70vh;
+    min-height: 500px;
+  }
+  
+  .header-text-container {
+    padding: 15px;
+  }
+  
+  .header-text-bottom h4 {
+    font-size: 1.2rem;
+  }
+  
+  .logo {
+    width: 80%;
+    top: 30% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  /* 3. Блоки в шапке */
+  .info-blocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .info-block {
+    flex: 1 1 calc(33% - 10px);
+    min-width: 100px;
+    max-width: 150px;
+    padding: 10px;
+    font-size: 0.7rem;
+    backdrop-filter: blur(2px);
+    min-height: 80px;
+  }
+
+  /* 4. Карточки и блоки контента */
+  .card {
+    margin-bottom: 15px;
+  }
+
+  .programs .col-md-4,
+  .key-levels .col-md-4 {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* 5. Отступы */
+  main {
+    padding: 1rem;
+  }
+
+  section {
+    margin-bottom: 1.5rem;
+  }
+
+  /* 6. Блок "Три ключевых уровня" */
+  .levels-container {
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0 !important;
+  }
+  
+  .level-rectangle {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    height: 100px !important;
+    margin: 0 !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* 7. Блок программ */
+  .program-block {
+    flex-direction: column;
+    height: auto;
+    min-height: 250px;
+  }
+  
+  .program-image,
+  .program-content {
+    flex: 0 0 100%;
+  }
+  
+  .program-image {
+    height: 200px;
+    border-radius: 50px 50px 0 0;
+  }
+  
+  .program-content {
+    padding: 1.5rem;
+  }
+  
+  .program-content h3 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  
+  .program-content p {
+    text-align: center;
+  }
+
+  /* 8. Блок с кляксой и карточками */
+  .program-features-container {
+    height: auto;
+    flex-direction: column;
+  }
+  
+  .cube-block {
+    width: 100%;
+    max-width: 300px;
+    height: 120px;
+    margin: 20px 0;
+  }
+  
+  .features-cards-container {
+    width: 100%;
+  }
+  
+  .feature-card {
+    height: 80px;
+    padding: 0 20px;
+  }
+  
+  .card-content {
+    font-size: 1.3rem;
+  }
+  
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+  }
+
+  /* 9. Отзывы */
+  .review-bg {
+    height: 110%;
+    top: -5%;
+  }
+  
+  .review-content {
+    padding: 1rem;
+    margin: 8px;
+  }
+  
+  .review-photo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .review-name {
+    font-size: 1rem;
+  }
+  
+  .review-text {
+    font-size: 0.85rem;
+  }
+
+  /* 10. Автор марафона */
+  .author-photo {
+    margin-bottom: 20px;
+  }
+  
+  .author-name,
+  .author-details {
+    font-size: 1.5rem;
+    border-width: 10px;
+  }
+}
+
+/* Доп. адаптация для очень маленьких экранов */
+@media (max-width: 480px) {
+  .header-text-bottom h4 {
+    font-size: 1rem;
+  }
+  
+  header {
+    min-height: 400px;
+  }
+
+  .info-block {
+    min-height: 70px;
+    font-size: 0.65rem;
+    padding: 8px 5px;
+  }
+
+  .feature-card {
+    height: 70px;
+    padding: 0 15px;
+  }
+  
+  .card-content {
+    font-size: 1.1rem;
+  }
+  
+  .card-icon {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+  }
+
+  .review-bg {
+    height: 105%;
+    top: -2%;
+  }
+  
+  .review-content {
+    padding: 0.8rem;
+    margin: 5px;
+  }
+}
