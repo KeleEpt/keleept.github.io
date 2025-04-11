@@ -603,9 +603,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const rectangles = document.querySelectorAll('.level-rectangle');
     let isAnimated = false;
     
-    // Для мобильных - сразу включаем анимацию
+    // Для мобильных - сразу показываем блоки без анимации
     if (window.innerWidth <= 768) {
-        levelsContainer.classList.add('animated');
+        rectangles.forEach(rect => {
+            rect.style.opacity = '1';
+            rect.style.position = 'relative';
+            rect.style.transform = 'none';
+            rect.style.top = 'auto';
+            rect.style.left = 'auto';
+        });
+        levelsContainer.style.minHeight = 'auto';
+        levelsContainer.style.flexDirection = 'column';
         return;
     }
     
@@ -620,14 +628,6 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 levelsContainer.classList.add('animated');
             }, 50);
-        }
-    });
-    
-    // Для тач-устройств
-    levelsContainer.addEventListener('touchstart', function() {
-        if (!isAnimated) {
-            levelsContainer.classList.add('animated');
-            isAnimated = true;
         }
     });
 });
