@@ -1086,31 +1086,34 @@ footer {
 }
 
 /* Эффект блеска при наведении */
-.rectangle-inner::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 300%;
-    height: 300%;
-    background: linear-gradient(
-        to bottom right,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(255, 255, 255, 0) 60%
-    );
-    transform: rotate(30deg);
-    transition: all 0.7s ease;
+@media (min-width: 769px) {
+    .rectangle-inner::before {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: linear-gradient(
+            to bottom right,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0) 60%
+        );
+        transform: rotate(30deg);
+        transition: all 0.7s ease;
+    }
+
+    .rectangle-inner:hover::before {
+        transform: rotate(45deg) translate(40%, 40%);
+    }
+
+    /* Анимация при наведении на ПК */
+    .level-rectangle:hover {
+        transform: translate(-35%, -30%) scale(1.10) rotate(5deg);
+        z-index: 2;
+    }
 }
 
-.rectangle-inner:hover::before {
-    transform: rotate(45deg) translate(40%, 40%);
-}
-
-.rectangle-content {
-    position: relative;
-    z-index: 2;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
 
 /* Анимация разлета при клике (для ПК) */
 .levels-container.animated .level-rectangle:nth-child(1) {
@@ -1127,12 +1130,12 @@ footer {
 
 /* Разные цвета и анимационные задержки */
 .level-rectangle:nth-child(1) .rectangle-inner {
-    background: linear-gradient(135deg, #ff4757, #ff6b81);
+    background: linear-gradient(135deg, #1e90ff, #70a1ff);
     animation-delay: 0.2s;
 }
 
 .level-rectangle:nth-child(2) .rectangle-inner {
-    background: linear-gradient(135deg, #2ed573, #7bed9f);
+    background: linear-gradient(135deg, #1e90ff, #70a1ff);
     animation-delay: 0.4s;
 }
 
