@@ -42,6 +42,21 @@ header {
     z-index: 0;
 }
 
+.background-image-page2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/pu.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+.background-image-page2::before {
+    display: none !important;
+}
+
 /* Контейнер для текста под изображением */
 .header-text-container {
     bottom: 0;
@@ -101,6 +116,7 @@ header::before {
     z-index: 1;
 }
 
+
 /* Логотип */
 .logo {
     width: 400px;
@@ -135,12 +151,12 @@ header::before {
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     height: 100%;
     transition: all 0.3s ease;
-    border: 2px dashed #F5E6CB; /* Пунктирная рамка */
+    border: 2px dashed #F0FFFF; /* Пунктирная рамка */
 }
 
 .result-block.active {
     background-color: transparent; /* Убираем цвет фона */
-    border: 2px dashed #F5E6CB; /* Пунктирная рамка остается */
+    border: 2px dashed #F0FFFF; /* Пунктирная рамка остается */
 }
 
 .result-toggle {
@@ -157,7 +173,7 @@ header::before {
     align-items: center;
     justify-content: space-between;
     transition: all 0.3s ease;
-    border-bottom: 2px dashed #F5E6CB; /* Пунктир снизу */
+    border-bottom: 2px dashed #F0FFFF; /* Пунктир снизу */
 }
 
 .result-toggle:hover {
@@ -194,7 +210,7 @@ header::before {
     color: #708090; /* Цвет текста */
     display: flex;
     align-items: flex-start;
-    border-bottom: 1px dashed #F5E6CB; /* Пунктир между пунктами */
+    border-bottom: 1px dashed #F0FFFF; /* Пунктир между пунктами */
 }
 
 .result-list li:last-child {
@@ -778,7 +794,6 @@ section {
 /* Автор марафона */
 .author {
     font-family: 'Montserrat', sans-serif;
-    background-image: url(img/anbg.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 80%;
@@ -799,15 +814,16 @@ section {
 }
 
 .author-name {
-    border: 15px dashed #F5E6Cb;
+    background-color: #f0ffff;
+    border: 8px dashed #F0FFFF;
     border-radius: 15px;
     font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
 .author-details {
-    border:  15px dashed #F5E6Cb;
-     border-radius: 15px;
+    background-color: #f0ffff;
+     border-radius: 1px;
     font-size: 2rem;
     list-style-type: none;
     padding-left: 0;
@@ -1067,7 +1083,7 @@ footer {
 .levels-container {
     position: relative;
     min-height: 500px;
-    border: 15px dashed #F5E6Cb;
+    border: 15px dashed #F0FFFF;
     border-radius: 15px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
@@ -1183,7 +1199,7 @@ footer {
 @media (max-width: 768px) {
     .levels-container {
         min-height: auto !important;
-        border: 15px dashed #F5E6Cb;
+        border: 15px dashed #F0FFFF;
         background: transparent !important;
         display: flex !important;
         flex-direction: column;
@@ -1402,7 +1418,7 @@ footer {
     gap: 25px; /* Уменьшили зазор */
     margin-top: 20px; /* Уменьшили отступ сверху */
     padding: 20px; /* Уменьшили внутренний отступ */
-    border: 8px dashed #F5E6Cb;
+    border: 8px dashed #F0FFFF;
     border-radius: 15px;
     position: relative;
     background: rgba(255, 255, 255, 0.1);
@@ -1437,7 +1453,7 @@ footer {
     color: #212529;
     font-size: 2rem;
     font-weight: 600;
-    border: 12px dashed #F5E6Cb;
+    border: 12px dashed #F0FFFF;
     padding: 20px;
 
 }
@@ -1465,7 +1481,7 @@ footer {
     position: relative;
     height: 100px;
     width: 90%;
-    border: 8px dashed #F5E6Cb;
+    border: 8px dashed #F0FFFF;
     border-radius: 25px;
     display: flex;
     align-items: center;
@@ -1613,7 +1629,7 @@ footer {
 /* Обновленные стили для заголовков с рамкой */
 .reviews h2,
 .author h2 {
-    border: 5px dashed #f5e6cb;
+    border: 5px dashed #F0FFFF;
     border-radius: 15px;
     padding: 15px;
     display: block; /* Изменено с inline-block на block */
@@ -1691,7 +1707,7 @@ footer {
     gap: 25px;
     margin-top: 20px;
     padding: 20px;
-    border: 8px dashed #F5E6Cb;
+    border: 8px dashed #F0FFFF;
     border-radius: 15px;
     position: relative;
     background: rgba(255, 255, 255, 0.1);
@@ -1713,7 +1729,7 @@ footer {
 .levels-container {
     height: 400px; /* Такая же высота, как у блоков программ */
     position: relative;
-    border: 15px dashed #F5E6Cb;
+    border: 15px dashed #F0FFFF;
     border-radius: 15px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.1);
@@ -1971,4 +1987,49 @@ footer {
     padding: 0.8rem;
     margin: 5px;
   }
+}
+/* Стили для растянутой картинки БЕЗ отступов */
+.full-width-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px; /* Только верхний отступ */
+    margin-bottom: 0; /* Убираем нижний отступ */
+}
+
+.no-bottom-margin {
+    margin-bottom: 0 !important;
+}
+
+.full-width-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    min-height: 100px;
+    max-height: 140px;
+}
+
+/* Убираем верхний отступ у блока "Автор" */
+.author {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .full-width-image {
+        max-height: 300px;
+    }
+    .full-width-image-wrapper {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .full-width-image {
+        max-height: 200px;
+    }
+    .full-width-image-wrapper {
+        margin-top: 10px;
+    }
 }
