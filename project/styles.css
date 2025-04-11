@@ -755,10 +755,10 @@ section {
 .author {
     font-family: 'Montserrat', sans-serif;
     background-image: url(img/anbg.png);
-    position: relative;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: rem;;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
 }
 
 .author-photo img {
@@ -1150,7 +1150,7 @@ footer {
 @media (max-width: 768px) {
     .levels-container {
         min-height: auto !important;
-        border: none !important;
+        border: 3px dashed #708090;
         background: transparent !important;
         display: flex !important;
         flex-direction: column;
