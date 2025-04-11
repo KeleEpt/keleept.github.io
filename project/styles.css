@@ -1620,17 +1620,17 @@ footer {
     }
     
     .levels-container.expanded .mobile-level:nth-child(2) {
-        transform: translate(-50%, -150%) scale(1);
+        transform: translate(-30%, -70%) scale(1);
         opacity: 1;
     }
     
     .levels-container.expanded .mobile-level:nth-child(3) {
-        transform: translate(-50%, 0%) scale(1);
+        transform: translate(-30%, 0%) scale(1);
         opacity: 1;
     }
     
     .levels-container.expanded .mobile-level:nth-child(4) {
-        transform: translate(-50%, 150%) scale(1);
+        transform: translate(-30%, 70%) scale(1);
         opacity: 1;
     }
     
