@@ -89,6 +89,75 @@
             width: 100%;
         }
 
+        /* Новые стили для блока "Формат марафона" */
+        .marathon-format {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .marathon-format h2 {
+            text-align: center;
+            color: #708090;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        
+        .format-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .format-card {
+            background-color: #CEBFCD;
+            border-radius: 15px;
+            padding: 15px 20px;
+            min-width: 200px;
+            text-align: center;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            flex: 1;
+            max-width: 250px;
+        }
+        
+        .format-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            background-color: #b8a9b6;
+        }
+        
+        .format-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .format-detail {
+            background-color: rgba(206, 191, 205, 0.2);
+            border-radius: 10px;
+            padding: 15px 20px;
+            color: #708090;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .format-detail::before {
+            content: "•";
+            position: absolute;
+            left: 20px;
+            color: #CEBFCD;
+            font-size: 1.5rem;
+        }
+
         /* Адаптация для мобильных */
         @media (max-width: 768px) {
             .dashed-block-container {
@@ -106,6 +175,21 @@
                 font-size: 1.5rem;
                 margin-bottom: 20px;
             }
+            
+            .format-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .format-card {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .format-detail {
+                font-size: 1rem;
+                padding-left: 35px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -121,6 +205,11 @@
             
             .dashed-block-title {
                 font-size: 1.3rem;
+            }
+            
+            .format-detail {
+                font-size: 0.95rem;
+                padding-left: 30px;
             }
         }
     </style>
@@ -158,18 +247,25 @@
         <!-- Формат марафона -->
         <section class="marathon-format my-5">
             <h2 class="text-center mb-4">Формат марафона</h2>
-            <ul class="animated-list-v">
-                <li>20+ практических кейсов работы со сложными клиентами, основанные на практическом эффективном опыте работы с сотрудниками сервиса</li>
-                <li>Индивидуально проработанные кейсы для вашей компании</li>
-                <li>40+ практик для управления собственным состоянием от практикующего психолога</li>
-                <li>Видео-уроки от специалиста телесно-ориентированной терапии</li>
-                <li>Групповая работа</li>
-                <li>Вся информация в удобном и привычном формате в Telegram</li>
-                <li>Практика занимает не более 20 минут в день</li>
-                <li>Совмещение рабочего графика и обучения, для которого не нужно выделять отдельные дни</li>
-                <li>Упражнения, которые станут для сотрудников постоянными практиками</li>
-                <li>14 вдохновляющих дней!!!</li>
-            </ul>
+            
+            <!-- Прямоугольные карточки в одну строку -->
+            <div class="format-cards">
+                <div class="format-card">Основано на практическом опыте</div>
+                <div class="format-card">Индивидуальные кейсы для компании</div>
+                <div class="format-card">Вся информация в telegram</div>
+                <div class="format-card">Не более 20 минут в день</div>
+                <div class="format-card">Приобретение постоянных практик</div>
+            </div>
+            
+            <!-- Детали формата -->
+            <div class="format-details">
+                <div class="format-detail">20+ практических кейсов работы со сложными клиентами</div>
+                <div class="format-detail">40+ практик для управления собственным состоянием от практикующего психолога</div>
+                <div class="format-detail">Видео-уроки от специалиста телесно-ориентированной терапии</div>
+                <div class="format-detail">Совмещение рабочего графика и обучения, для которого не нужно выделять отдельные дни</div>
+                <div class="format-detail">Самостоятельные и групповые задания</div>
+                <div class="format-detail">12 расслабляющих дней</div>
+            </div>
         </section>
 
         <!-- Кнопка "Узнать подробнее" -->
@@ -200,7 +296,7 @@
     <script>
         // Анимация появления элементов
         document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.animated-list-v li');
+            const cards = document.querySelectorAll('.format-card, .format-detail');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
