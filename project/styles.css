@@ -519,7 +519,7 @@ header::before {
 }
 
 .btn-primary:hover {
-    background-color: #a58a6e !important;
+    background-color: #9D81BA !important;
     transform: translateY(-3px);
 }
 
@@ -792,49 +792,80 @@ section {
 }
 
 /* Автор марафона */
+/* Стили для блока автора */
 .author {
-    font-family: 'Montserrat', sans-serif;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 80%;
-
-    padding: rem;;
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+    margin: 60px auto;
 }
 
-.author-photo img {
-    max-width: 80%;
-    background-image: url();
-    height: auto;
-    border: 4px solid #f3efec;
-}
-
-.author-info {
-    color: #807090;
+.author-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .author-name {
-    background-color: #f0ffff;
-    border: 8px dashed #F0FFFF;
-    border-radius: 15px;
     font-size: 2rem;
+    color: #708090;
     margin-bottom: 1.5rem;
+    font-weight: 600;
 }
 
 .author-details {
-    background-color: #f0ffff;
-     border-radius: 1px;
-    font-size: 2rem;
     list-style-type: none;
     padding-left: 0;
+    color: #708090;
 }
 
 .author-details li {
-    font-size: 18px;
-    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
     line-height: 1.6;
+    position: relative;
+    padding-left: 20px;
 }
 
+.author-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #CEBFCD;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .author {
+        margin: 40px auto !important;
+        padding: 0 15px;
+    }
+    
+    .author-container {
+        border-radius: 15px;
+    }
+    
+    .author .col-md-6 {
+        width: 100%;
+    }
+    
+    .author .col-md-6:first-child {
+        height: 300px;
+    }
+    
+    .author-name {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
+    .author-details li {
+        font-size: 1rem;
+    }
+    
+    .author-details li::before {
+        font-size: 1.2rem;
+    }
+}
 /* Футер */
 footer {
     text-align: center;
@@ -1536,9 +1567,7 @@ footer {
         padding: 0 20px;
     }
     
-    .card-content {
-        font-size: 1.3rem;
-    }
+
     
     .card-icon {
         width: 40px;
@@ -1553,9 +1582,7 @@ footer {
         padding: 0 15px;
     }
     
-    .card-content {
-        font-size: 1.1rem;
-    }
+
     
     .card-icon {
         width: 35px;
@@ -1578,7 +1605,7 @@ footer {
         font-size: 1.3rem;
         padding-left: 20px;
         top: 50%;
-        transform: translateY(-50%);
+        transform: translateY(0%);
     }
      .card-bg
     {
@@ -1886,7 +1913,7 @@ footer {
   /* 9. Отзывы */
   .review-bg {
     height: 110%;
-    top: -15%;
+    top: -20%;
   }
   
   .review-content {
@@ -1940,9 +1967,7 @@ footer {
     padding: 0 15px;
   }
   
-  .card-content {
-    font-size: 1.1rem;
-  }
+ 
   
   .card-icon {
     width: 35px;

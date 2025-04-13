@@ -182,100 +182,7 @@
             font-size: 1.5rem;
         }
 
-        /* Стили для блока автора (как на главной странице) */
-        .author {
-            max-width: 1200px;
-            margin: 60px auto;
-            padding: 40px;
-            border: 8px dashed #F0FFFF;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .author h2 {
-            text-align: center;
-            color: #708090;
-            margin-bottom: 40px;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-        
-        .author-photo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .author-photo img {
-            max-width: 200px;
-            border-radius: 50%;
-            border: 4px solid #f3efec;
-        }
-        
-        .author-info {
-            text-align: center;
-        }
-        
-        .author-name {
-            font-size: 1.5rem;
-            color: #708090;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .author-details {
-            color: #708090;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
 
-        /* Адаптация для мобильных */
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 2rem;
-            }
-            
-            .sub-title {
-                font-size: 1.5rem;
-            }
-            
-            .dashed-block-container {
-                padding: 20px;
-            }
-            
-            .dashed-list-item {
-                padding: 15px;
-                font-size: 1rem;
-            }
-            
-            .format-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .format-card {
-                max-width: 100%;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .main-title {
-                font-size: 1.8rem;
-            }
-            
-            .sub-title {
-                font-size: 1.3rem;
-            }
-            
-            .dashed-block-container {
-                padding: 15px;
-            }
-            
-            .dashed-list-item {
-                padding: 12px;
-                font-size: 0.95rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -290,31 +197,28 @@
     </div>
 
     <!-- Основной контент -->
-    <main class="container py-5">
-        <h1 class="main-title">Вдохновляй</h1>
-        
+
         <h2 class="sub-title">Раскрытие внешней и внутренней красоты</h2>
         
         <!-- Теги -->
-        <div class="tags-container">
-            <div class="tag">Сотрудники сервиса</div>
-            <div class="tag">Работа в offline-формате</div>
-            <div class="tag">Работа с бизнес и privet сегментом</div>
-            <div class="tag">Работа в сфере красоты и здоровья</div>
-            <div class="tag">Работа в банковском сегменте</div>
-            <div class="tag">Работа в гостиничном бизнесе</div>
-        </div>
+        <div class="tags-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 0 auto; max-width: 1200px;">
+    <div class="tag" style="display: flex; align-items: center; justify-content: center;">Сотрудники сервиса</div>
+    <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в offline-формате</div>
+    <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа с бизнес и privet сегментом</div>
+    <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в сфере красоты и здоровья</div>
+    <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в банковском сегменте</div>
+    <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в гостиничном бизнесе</div>
+</div>
 
         <!-- Список с пунктиром -->
         <div class="dashed-block-container">
             <ul class="dashed-list">
-                <li class="dashed-list-item">Проявлять эмпатию и фокусироваться на решении вопроса клиента</li>
-                <li class="dashed-list-item">Находить клиентоориентированное решение в сложных конфликтных ситуациях</li>
-                <li class="dashed-list-item">Выглядеть аккуратно и опрятно, соответствующе вашему дресс-коду</li>
-                <li class="dashed-list-item">Находиться в эмоциональном равновесии</li>
-                <li class="dashed-list-item">Использовать телесные практики для снятия стресса</li>
-                <li class="dashed-list-item">Получать удовольствие от работы</li>
-                <li class="dashed-list-item">Подходит для сотрудников сервиса, работающих в офлайн формате, компаний, работающих с бизнес и private сегментом клиентов, организаций в сфере красоты, здоровья, банковского сегмента и гостиничного бизнеса</li>
+                <li class="dashed-list-item">проявлять эмпатию и фокусироваться на решении вопроса клиента</li>
+                <li class="dashed-list-item">находить клиентоориентированное решение в сложных конфликтных ситуациях</li>
+                <li class="dashed-list-item">выглядеть аккуратно и опрятно, соответствующе вашему дресс-коду</li>
+                <li class="dashed-list-item">находиться в эмоциональном равновесии</li>
+                <li class="dashed-list-item">использовать телесные практики для снятия стресса</li>
+                <li class="dashed-list-item">получать удовольствие от работы</li>
             </ul>
 
         </div>
@@ -354,35 +258,32 @@
     </div>
 
     <!-- Блок "Автор марафона" -->
-    <section class="author my-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Приглашенный эксперт по beauty Лиза Гречкина</h2>
-            <div class="row align-items-center">
-               <!-- Измените блок с фото автора в index.html -->
-<div class="col-md-4 d-flex justify-content-center">
-    <div class="author-photo">
-        <div class="photo-frame">
+<section class="author my-5">
+    <div class="container" style="max-width: 1200px; margin: 0 auto;">
+        <div class="author-container" style="background: white; border-radius: 15px; overflow: hidden;">
+            <div class="row align-items-stretch g-0">
+                <!-- Фото автора (левая часть) -->
+                <div class="col-md-6">
+                    <img src="img/liza.jpg" alt="Лиза" 
+                         class="img-fluid h-100" 
+                         style="object-fit: cover; display: block;">
+                </div>
+                
+                <!-- Текст об авторе (правая часть) -->
+                <div class="col-md-6 p-4 p-lg-5">
+                    <h3 class="author-name mb-4"><strong>Приглашенный эксперт по beauty Лиза Гречкина</strong></h3>
+                    <ul class="author-details">
+                        <li>Лиза занимается макияжем и волосами более 7 лет. Опыт работы в студийных рекламных проектах, лукбуках, эдиториалах, контент съёмках для брендов. Сотрудничает сUshatava, Pitkina, 12 storeez, Belle you, Lime, ЦУМ, Finn Flare, SHIK cosmetics, Choux, Totti, Moonka, 1811 Eighteen One One, Lovegoods, Ostin, Pusy beauty, Ralf Ringer, Yandex, Sberbank и др</li>
 
-            <img src="img/liza.jpg" alt="Лиза" class="author-img">
-        </div>
-    </div>
-</div>
-                <!-- Текст об авторе -->
-                <div class="col-md-8">
-                    <div class="author-info">
-                        <ul class="author-details">
-                            <li>Лиза занимается макияжем и волосами более 7 лет. Опыт работы в студийных рекламных проектах, лукбуках, эдиториалах, контент съёмках для брендов. Сотрудничает сUshatava, Pitkina, 12 storeez, Belle you, Lime, ЦУМ, Finn Flare, SHIK cosmetics, Choux, Totti, Moonka, 1811 Eighteen One One, Lovegoods, Ostin, Pusy beauty, Ralf Ringer, Yandex, Sberbank и др</li>
-                            
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
         <!-- Кнопка "Узнать подробнее" -->
         <div class="text-center my-5">
-            <a href="#" class="btn btn-primary">Узнать подробнее</a>
+            <a href="t.me/annagubanna" class="btn btn-primary">Узнать подробнее</a>
         </div>
     </main>
 
