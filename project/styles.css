@@ -1550,7 +1550,7 @@ footer {
     }
     
     .card-content {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     
     .card-icon {
@@ -1602,7 +1602,7 @@ footer {
     }
     
    .card-content {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         padding-left: 20px;
         top: 50%;
         transform: translateY(0%);
@@ -1633,8 +1633,8 @@ footer {
         border-radius: 10;
     }
     .card-content {
-        font-size: 1.1rem;
-        padding-left: 15px;
+        font-size: 1rem;
+        padding-left: 1px;
     }
     
     .card-icon {
@@ -1901,7 +1901,7 @@ footer {
   }
   
   .card-content {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
   
   .card-icon {
@@ -1917,7 +1917,7 @@ footer {
   }
   
   .review-content {
-    padding: 1rem;
+    padding: 3rem;
     margin: 8px;
   }
   
@@ -1977,7 +1977,7 @@ footer {
 
   .review-bg {
     height: 105%;
-    top: -2%;
+    top: -20%;
   }
   
   .review-content {
