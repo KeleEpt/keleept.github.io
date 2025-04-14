@@ -25,17 +25,48 @@
         }
         
         .background-image-page3 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('img/pupupu.png');
-            background-size: cover;
-            background-position: center;
-            z-index: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('img/pupupu.png'); /* Основная картинка */
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+    }
+    
+    /* Добавляем класс для мобильной версии */
+    .background-image-mobile {
+        display: none; /* По умолчанию скрыта */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('img/pupupu1.png'); /* Мобильная картинка */
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+    }
+    
+    /* Медиазапрос для мобильных */
+    @media (max-width: 768px) {
+        #header-lite {
+            height: 60vh;
+            min-height: 250px;
         }
-            
+        
+        .background-image-page3 {
+            display: none; /* Скрываем основную картинку */
+        }
+        
+        .background-image-mobile {
+            display: block; /* Показываем мобильную версию */
+        }
+    }
+
+
         /* Основные стили */
         .main-title {
             text-align: center;
@@ -195,9 +226,10 @@
 </head>
 <body>
     <!-- Шапка -->
-    <header id="header-lite">
-        <div class="background-image-page3"></div>
-    </header>
+<header id="header-lite">
+    <div class="background-image-page3"></div>
+    <div class="background-image-mobile"></div>
+</header>
 
     <!-- Кнопка "На главную" -->
     <div class="text-center my-4">
@@ -213,7 +245,7 @@
     <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в offline-формате</div>
 
     <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в гостиничном бизнесе</div>
-         <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в банковском сегменте</div>
+         <div class="tag" style="display: flex; align-items: center; justify-content: center;">&nbsp Работа в банковском сегменте &nbsp </div>
     <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа с бизнес и privet сегментом</div>
     <div class="tag" style="display: flex; align-items: center; justify-content: center;">Работа в сфере красоты и здоровья</div>
    
@@ -237,14 +269,14 @@
         <section class="marathon-format">
             <h2 class="text-center mb-4">Формат марафона</h2>
             
-            <!-- Теги формата -->
-            <div class="format-cards">
-                <div class="format-card">Основано на практическом опыте</div>
-                <div class="format-card">Индивидуальные кейсы для компании</div>
-                <div class="format-card">Вся информация в Telegram</div>
-                <div class="format-card">Не более 20 минут в день</div>
-                <div class="format-card">Приобретение постоянных практик</div>
-            </div>
+            <!-- Прямоугольные карточки в одну строку -->
+<div class="format-cards">
+    <div class="format-card">Основано на практическом опыте</div>
+    <div class="format-card">Индивидуальные кейсы для компании</div>
+    <div class="format-card multiline">Вся информация<br>в telegram</div>
+    <div class="format-card multiline">Не более<br>20 минут в день</div>
+    <div class="format-card">Приобретение постоянных практик</div>
+</div>
             
             <!-- Список деталей -->
             <div class="format-details">
