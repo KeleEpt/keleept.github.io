@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чувствуй | Йога-студия баланса</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Основные цвета из изображения */
+        :root {
+            --primary: #CA478A;    /* Основной розовый */
+            --secondary: #849670;  /* Зеленый */
+            --light: #DBD8D1;      /* Светлый бежевый */
+            --dark: #7E5741;       /* Темно-коричневый */
+            --medium: #997658;     /* Средний коричневый */
+            --accent: #B3B8A8;     /* Светло-серо-зеленый */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Шапка как на фото */
+        .yoga-header {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(219, 216, 209, 0.3), rgba(219, 216, 209, 0.3)), 
+                        url('img/pu.png') center/cover no-repeat;
+            text-align: center;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .yoga-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .yoga-subtitle {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--dark);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Контентная область */
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Секция с пунктирной рамкой */
+        .dotted-section {
+
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Элементы списка */
+        .yoga-item {
+
+            border-radius: 15px;
+            padding: 25px 30px;
+            margin: 25px 0;
+            background-color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all 0.4s ease;
+        }
+
+        .yoga-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            background-color: var(--light);
+        }
+
+        /* Блок формата */
+        .format-section {
+            margin: 80px 0;
+        }
+
+        .format-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .format-card {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 15px;
+            padding: 25px 20px;
+            text-align: center;
+            font-weight: 600;
+            flex: 1;
+            min-width: 220px;
+            max-width: 240px;
+            box-shadow: 0 8px 20px rgba(202, 71, 138, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .format-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(202, 71, 138, 0.4);
+        }
+
+        .format-details {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .format-detail {
+            background-color: rgba(202, 71, 138, 0.08);
+            border-radius: 12px;
+            padding: 20px 25px 20px 60px;
+            margin-bottom: 20px;
+            position: relative;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .format-detail:before {
+            content: "•";
+            position: absolute;
+            left: 30px;
+            color: var(--primary);
+            font-size: 2.5rem;
+            line-height: 0.8;
+        }
+
+        /* Кнопки */
+        .yoga-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            border-radius: 35px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(202, 71, 138, 0.3);
+            text-decoration: none;
+            margin: 20px 0;
+        }
+
+        .yoga-btn:hover {
+            background-color: #b53b79;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(202, 71, 138, 0.4);
+            color: white;
+        }
+
+        /* Адаптация под мобильные */
+        @media (max-width: 992px) {
+            .yoga-header {
+                height: 60vh;
+                min-height: 500px;
+            }
+            
+            .yoga-title {
+                font-size: 3rem;
+            }
+            
+            .yoga-subtitle {
+                font-size: 1.5rem;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .yoga-title {
+                font-size: 2.5rem;
+                letter-spacing: 3px;
+            }
+            
+            .dotted-section {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .yoga-item {
+                padding: 20px;
+                font-size: 1.1rem;
+            }
+            
+            .format-card {
+                min-width: 180px;
+                padding: 20px 15px;
+            }
+            
+            .format-detail {
+                padding: 15px 20px 15px 50px;
+                font-size: 1rem;
+            }
+            
+            .yoga-btn {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .yoga-header {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .yoga-title {
+                font-size: 2rem;
+            }
+            
+            .yoga-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .dotted-section {
+                padding: 25px 15px;
+                border-width: 6px;
+            }
+            
+            .format-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .format-card {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .format-detail {
+                padding-left: 40px;
+            }
+            
+            .format-detail:before {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка как на фото Yoga Studio -->
+    <header class="yoga-header">
+        <h1 class="yoga-title">Чувствуй</h1>
+        <p class="yoga-subtitle">Понимание себя и других</p>
+    </header>
+
+    <!-- Кнопка возврата -->
+    <div class="content-wrapper text-center">
+        <a href="index.html" class="yoga-btn">На главную</a>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="content-wrapper">
+        <!-- Секция с результатами -->
+        <section class="dotted-section">
+            <h2 class="section-title">В результате ваши сотрудники научатся</h2>
+            
+            <div class="yoga-list">
+                <div class="yoga-item">Находить клиентоориентированное решение в сложных ситуациях</div>
+                <div class="yoga-item">Правильно реагировать на негатив</div>
+                <div class="yoga-item">Отслеживать своё эмоциональное состояние «здесь и сейчас»</div>
+                <div class="yoga-item">Снимать стресс с помощью телесных практик</div>
+                <div class="yoga-item">Получать удовольствие от работы</div>
+            </div>
+        </section>
+
+        <!-- Секция формата -->
+        <section class="format-section">
+            <h2 class="section-title">Формат марафона</h2>
+            
+            <div class="format-cards">
+                <div class="format-card">Основан на практическом опыте</div>
+                <div class="format-card">Индивидуальные кейсы для компании</div>
+                <div class="format-card">Вся информация в telegram</div>
+                <div class="format-card">Занимает 20 минут в день</div>
+                <div class="format-card">Приобретение постоянных практик</div>
+            </div>
+            
+            <div class="format-details">
+                <div class="format-detail">20+ практических кейсов работы со сложными клиентами</div>
+                <div class="format-detail">40+ практик для управления собственным состоянием от практикующего психолога</div>
+                <div class="format-detail">Видео-уроки от специалиста телесно-ориентированной терапии</div>
+                <div class="format-detail">Обучение, встроенное в рабочий график</div>
+                <div class="format-detail">Индивидуальные и групповые задания</div>
+                <div class="format-detail">14 расслабляющих дней</div>
+            </div>
+        </section>
+
+        <!-- Кнопка CTA -->
+        <div class="text-center">
+            <a href="https://t.me/annagubanna" target="_blank" class="yoga-btn">Узнать подробнее</a>
+        </div>
+    </main>
+
+    <script>
+        // Анимация элементов при прокрутке
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.yoga-item, .format-card, .format-detail');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(40px)';
+                el.style.transition = 'all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1)';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
