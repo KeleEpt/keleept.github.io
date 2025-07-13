@@ -16,6 +16,7 @@
             --modal-content: #ffffff;
             --button-bg: #4CAF50;
             --button-hover: #45a049;
+            --header-bg: #f0f0f0;
         }
 
         .dark-theme {
@@ -29,6 +30,7 @@
             --modal-content: #2d2d2d;
             --button-bg: #2e7d32;
             --button-hover: #1b5e20;
+            --header-bg: #2a2a2a;
         }
 
         body {
@@ -51,6 +53,9 @@
             align-items: center;
             margin-bottom: 15px;
             flex-wrap: wrap;
+            background-color: var(--header-bg);
+            padding: 10px;
+            border-radius: 8px;
         }
 
         h1 {
@@ -62,7 +67,7 @@
             background-color: var(--button-bg);
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -79,6 +84,9 @@
             align-items: center;
             margin-bottom: 10px;
             flex-wrap: wrap;
+            background-color: var(--header-bg);
+            padding: 8px;
+            border-radius: 8px;
         }
 
         .month-title {
@@ -93,12 +101,13 @@
             background-color: var(--button-bg);
             color: white;
             border: none;
-            padding: 6px 12px;
+            padding: 8px 12px;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
             font-size: 0.9rem;
             margin: 2px;
+            min-width: 80px;
         }
 
         .nav-button:hover {
@@ -108,28 +117,31 @@
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
+            gap: 5px;
             background-color: var(--calendar-bg);
             padding: 8px;
-            border-radius: 6px;
+            border-radius: 8px;
         }
 
         .day-header {
             text-align: center;
             font-weight: bold;
-            padding: 8px 4px;
+            padding: 8px 2px;
             font-size: 0.8rem;
         }
 
         .day {
             background-color: var(--day-bg);
             border-radius: 4px;
-            padding: 8px;
-            min-height: 60px;
+            padding: 5px;
+            min-height: 40px;
             cursor: pointer;
             transition: background-color 0.3s;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
         }
 
         .day:hover {
@@ -138,17 +150,30 @@
 
         .day-number {
             font-weight: bold;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
             font-size: 0.9rem;
         }
 
         .other-month {
-            opacity: 0.5;
+            opacity: 0.3;
         }
 
         .today {
             background-color: var(--today-bg);
             font-weight: bold;
+            position: relative;
+        }
+
+        .today::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: var(--button-bg);
+            border-radius: 50%;
         }
 
         .modal {
@@ -180,6 +205,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ccc;
         }
 
         .modal-title {
@@ -201,57 +228,82 @@
 
         .employee-item {
             margin-bottom: 8px;
-            padding: 6px;
-            border-bottom: 1px solid #ccc;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
             font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .vacation-item {
+        .employee-name {
+            font-weight: 500;
+        }
+
+        .vacation-item .employee-hours {
             color: #888;
             font-style: italic;
         }
 
         @media (max-width: 600px) {
             .calendar {
-                grid-template-columns: repeat(1, 1fr);
-            }
-            
-            .day-header {
-                display: none;
+                gap: 3px;
+                padding: 5px;
             }
             
             .day {
-                min-height: auto;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                padding: 8px 12px;
+                min-height: 30px;
+                padding: 3px;
             }
             
             .day-number {
-                margin-bottom: 0;
-                margin-right: 10px;
+                font-size: 0.8rem;
+            }
+            
+            .day-header {
+                font-size: 0.7rem;
+                padding: 5px 1px;
             }
             
             .month-title {
                 font-size: 1rem;
                 order: -1;
                 flex: 0 0 100%;
+                margin-bottom: 8px;
             }
             
             .nav-button {
-                padding: 5px 10px;
+                padding: 6px 10px;
                 font-size: 0.8rem;
+                min-width: 70px;
             }
             
             h1 {
                 font-size: 1.3rem;
             }
+            
+            .header, .month-navigation {
+                padding: 8px;
+            }
+            
+            .employee-item {
+                flex-direction: column;
+                padding: 6px 0;
+            }
+            
+            .employee-name {
+                margin-bottom: 2px;
+            }
         }
 
         @media (min-width: 601px) and (max-width: 900px) {
             .calendar {
-                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+                padding: 6px;
+            }
+            
+            .day {
+                min-height: 35px;
+                padding: 4px;
             }
         }
     </style>
@@ -488,16 +540,25 @@
             // Добавляем сотрудников в список
             employees.forEach(employee => {
                 const employeeItem = document.createElement('div');
+                employeeItem.className = 'employee-item';
+                
+                const nameElement = document.createElement('span');
+                nameElement.className = 'employee-name';
+                nameElement.textContent = employee.name;
+                
+                const hoursElement = document.createElement('span');
+                hoursElement.className = 'employee-hours';
                 
                 // Проверяем, находится ли сотрудник в отпуске
                 if (vacations[employee.name] && vacations[employee.name].includes(dateStr)) {
-                    employeeItem.className = 'employee-item vacation-item';
-                    employeeItem.textContent = `${employee.name} (отпуск)`;
+                    employeeItem.classList.add('vacation-item');
+                    hoursElement.textContent = '(отпуск)';
                 } else {
-                    employeeItem.className = 'employee-item';
-                    employeeItem.textContent = `${employee.name} (${employee.hours})`;
+                    hoursElement.textContent = employee.hours;
                 }
                 
+                employeeItem.appendChild(nameElement);
+                employeeItem.appendChild(hoursElement);
                 employeeListEl.appendChild(employeeItem);
             });
             
