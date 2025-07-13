@@ -3,254 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Календарь рабочих смен 2025</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Календарь смен 2025</title>
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2980b9;
-            --bg-color: #f9f9f9;
-            --card-bg: #ffffff;
+            --bg-color: #ffffff;
             --text-color: #333333;
-            --border-color: #e0e0e0;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-            --off-day: #e74c3c;
-            --working-day: #2ecc71;
-            --hover-color: #f1f1f1;
-            --transition-speed: 0.3s;
-            --today-color: #f1c40f;
-            --vacation-color: #f39c12;
+            --calendar-bg: #f5f5f5;
+            --day-bg: #ffffff;
+            --day-hover: #e0e0e0;
+            --today-bg: #d4e6f1;
+            --modal-bg: rgba(0, 0, 0, 0.5);
+            --modal-content: #ffffff;
+            --button-bg: #4CAF50;
+            --button-hover: #45a049;
+            --vacation-bg: #ffcccc;
         }
 
         .dark-theme {
-            --primary-color: #3498db;
-            --secondary-color: #2980b9;
             --bg-color: #121212;
-            --card-bg: #1e1e1e;
             --text-color: #e0e0e0;
-            --border-color: #333333;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --off-day: #e74c3c;
-            --working-day: #27ae60;
-            --hover-color: #2a2a2a;
-            --today-color: #f39c12;
-            --vacation-color: #e67e22;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color var(--transition-speed), 
-                        color var(--transition-speed),
-                        transform 0.2s ease,
-                        box-shadow 0.2s ease;
+            --calendar-bg: #1e1e1e;
+            --day-bg: #2d2d2d;
+            --day-hover: #3d3d3d;
+            --today-bg: #2a4365;
+            --modal-bg: rgba(0, 0, 0, 0.8);
+            --modal-content: #2d2d2d;
+            --button-bg: #2e7d32;
+            --button-hover: #1b5e20;
+            --vacation-bg: #5d1a1a;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
+            margin: 0;
             padding: 20px;
-            background-image: linear-gradient(135deg, var(--bg-color) 0%, #e6e6e6 100%);
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .dark-theme body {
-            background-image: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        header {
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
         }
 
         h1 {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .today-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            padding: 10px 20px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .today-btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            margin: 0;
         }
 
         .theme-toggle {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
             cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--text-color);
-            padding: 10px;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: background-color 0.3s;
         }
 
         .theme-toggle:hover {
-            background-color: var(--hover-color);
-            transform: rotate(15deg);
+            background-color: var(--button-hover);
         }
 
-        .calendar-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
+        .month-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
         }
 
-        .month-container {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            box-shadow: 0 6px 20px var(--shadow-color);
-            overflow: hidden;
-            padding: 20px;
-            transition: transform 0.3s ease;
+        .month-title {
+            font-size: 1.5em;
+            font-weight: bold;
         }
 
-        .month-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px var(--shadow-color);
+        .nav-button {
+            background-color: var(--button-bg);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .month-header {
-            text-align: center;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .nav-button:hover {
+            background-color: var(--button-hover);
         }
 
-        .days-grid {
+        .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
+            gap: 10px;
+            background-color: var(--calendar-bg);
+            padding: 10px;
+            border-radius: 8px;
         }
 
         .day-header {
             text-align: center;
             font-weight: bold;
-            padding: 8px 0;
-            font-size: 0.85rem;
-            color: var(--primary-color);
-            text-transform: uppercase;
+            padding: 10px;
         }
 
-        .day-cell {
-            aspect-ratio: 1;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .day {
+            background-color: var(--day-bg);
+            border-radius: 4px;
+            padding: 10px;
+            min-height: 80px;
             cursor: pointer;
-            background-color: var(--card-bg);
-            border: 2px solid var(--border-color);
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
+            transition: background-color 0.3s;
         }
 
-        .day-cell.today {
-            border: 3px solid var(--today-color);
-            box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.3);
-        }
-
-        .day-cell:hover {
-            background-color: var(--hover-color);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px var(--shadow-color);
-        }
-
-        .day-cell.working {
-            background-color: rgba(46, 204, 113, 0.15);
-            border-color: var(--working-day);
-        }
-
-        .day-cell.off {
-            background-color: rgba(231, 76, 60, 0.15);
-            border-color: var(--off-day);
-        }
-
-        .day-cell.empty {
-            background-color: transparent;
-            border: none;
-            cursor: default;
-            box-shadow: none;
-        }
-
-        .day-cell.empty:hover {
-            transform: none;
-            background-color: transparent;
+        .day:hover {
+            background-color: var(--day-hover);
         }
 
         .day-number {
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .other-month {
+            opacity: 0.5;
+        }
+
+        .today {
+            background-color: var(--today-bg);
             font-weight: bold;
         }
 
-        .day-info {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            font-size: 0.7rem;
-            color: var(--text-color);
-            opacity: 0.9;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 2px 5px;
-            border-radius: 10px;
-        }
-
-        .dark-theme .day-info {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .day-info.working {
-            color: var(--working-day);
-        }
-
-        .day-info.off {
-            color: var(--off-day);
+        .vacation {
+            background-color: var(--vacation-bg);
         }
 
         .modal {
@@ -260,924 +152,382 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: var(--modal-bg);
             z-index: 1000;
-            align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity var(--transition-speed);
-        }
-
-        .modal.show {
-            display: flex;
-            opacity: 1;
+            align-items: center;
         }
 
         .modal-content {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            width: 90%;
+            background-color: var(--modal-content);
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
             max-width: 500px;
             max-height: 80vh;
             overflow-y: auto;
-            padding: 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            position: relative;
-            transform: translateY(20px);
-            transition: transform var(--transition-speed);
         }
 
-        .modal.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--text-color);
-            background: none;
-            border: none;
-            width: 40px;
-            height: 40px;
+        .modal-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .close-modal:hover {
-            background-color: var(--hover-color);
+            margin-bottom: 15px;
         }
 
         .modal-title {
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 1.6rem;
-            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
         }
 
-        .shift-list {
-            list-style: none;
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .employee-list {
+            margin-bottom: 15px;
+        }
+
+        .employee-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .vacation-controls {
             margin-top: 15px;
         }
 
-        .shift-item {
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background: rgba(0, 0, 0, 0.03);
-            transition: transform 0.2s ease;
-        }
-
-        .dark-theme .shift-item {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .shift-item:hover {
-            transform: translateX(5px);
-        }
-
-        .employee-name {
-            font-weight: 700;
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .shift-time {
-            font-size: 1rem;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        .shift-time.working {
-            background: rgba(46, 204, 113, 0.15);
-            color: var(--working-day);
-            font-weight: 600;
-        }
-
-        .shift-time.vacation {
-            background: rgba(243, 156, 18, 0.15);
-            color: var(--vacation-color);
-            font-weight: 600;
-        }
-
-        .legend {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            flex-wrap: wrap;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
-            padding: 8px 15px;
-            border-radius: 20px;
-            background: var(--card-bg);
-            box-shadow: 0 2px 5px var(--shadow-color);
-        }
-
-        .legend-color {
-            width: 22px;
-            height: 22px;
-            border-radius: 5px;
-        }
-
-        .legend-working {
-            background-color: rgba(46, 204, 113, 0.3);
-            border: 2px solid var(--working-day);
-        }
-
-        .legend-off {
-            background-color: rgba(231, 76, 60, 0.3);
-            border: 2px solid var(--off-day);
-        }
-
-        .legend-today {
-            background-color: rgba(241, 196, 15, 0.3);
-            border: 2px solid var(--today-color);
-        }
-
-        .no-data {
-            text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
-            font-style: italic;
-        }
-
-        .employee-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .vacation-button {
+            background-color: var(--button-bg);
             color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .vacation-button:hover {
+            background-color: var(--button-hover);
         }
 
         @media (max-width: 768px) {
-            .calendar-container {
-                grid-template-columns: 1fr;
+            .calendar {
+                grid-template-columns: repeat(1, 1fr);
             }
             
-            h1 {
-                font-size: 1.8rem;
+            .day-header {
+                display: none;
             }
             
-            .month-header {
-                font-size: 1.2rem;
-            }
-            
-            header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .header-left {
-                justify-content: space-between;
+            .day {
+                min-height: auto;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-left">
-            <h1><i class="fas fa-calendar-alt"></i> График смен 2025</h1>
-            <button class="today-btn" id="todayBtn">
-                <i class="fas fa-calendar-day"></i> Сегодня
-            </button>
+    <div class="container">
+        <div class="header">
+            <h1>Календарь смен 2025</h1>
+            <button class="theme-toggle" id="themeToggle">Темная тема</button>
         </div>
-        <button class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i>
-        </button>
-    </header>
-    
-    <div class="calendar-container" id="calendarContainer">
-        <!-- Calendar will be generated here -->
-    </div>
-    
-    <div class="legend">
-        <div class="legend-item">
-            <div class="legend-color legend-working"></div>
-            <span>Рабочий день</span>
+
+        <div class="month-navigation">
+            <button class="nav-button" id="prevMonth">← Предыдущий</button>
+            <div class="month-title" id="monthTitle">Январь 2025</div>
+            <button class="nav-button" id="nextMonth">Следующий →</button>
         </div>
-        <div class="legend-item">
-            <div class="legend-color legend-off"></div>
-            <span>Выходной</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color legend-today"></div>
-            <span>Сегодня</span>
-        </div>
-        <div class="legend-item">
-            <i class="fas fa-sun" style="color: var(--vacation-color);"></i>
-            <span>Отпуск</span>
+
+        <div class="calendar" id="calendar">
+            <!-- Календарь будет сгенерирован JavaScript -->
         </div>
     </div>
-    
+
     <div class="modal" id="dayModal">
         <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <h2 class="modal-title" id="modalTitle">Детали смены</h2>
-            <ul class="shift-list" id="shiftList">
-                <!-- Shift details will be added here -->
-            </ul>
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">1 января 2025</div>
+                <button class="close-button" id="closeModal">&times;</button>
+            </div>
+            <div class="employee-list" id="employeeList">
+                <!-- Список сотрудников будет добавлен JavaScript -->
+            </div>
+            <div class="vacation-controls">
+                <button class="vacation-button" id="toggleVacation">Добавить отпуск</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Полные данные на 2025 год
-        const scheduleData = {
-            employees: [
-                "Чехова Фарида",
-                "Захарова Вика",
-                "Емелина Елена",
-                "Старикова Дарья",
-                "Краснова Ольга",
-                "Балашов Кирилл",
-                "Архипова Екатерина"
-            ],
-            
-            shifts: {
-                // Январь
-                "2025-01-01": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-02": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-03": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-04": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-01-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-06": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-07": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-08": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-09": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-01-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-11": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-12": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Еlena:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-13": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-14": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-01-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-16": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-17": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-18": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-19": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-01-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-21": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-22": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-23": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-24": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-01-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-26": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-27": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-01-28": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-29": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-01-30": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-01-31": ["Чехова Фарида:off", "Захарова Виka:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                
-                // Февраль
-                "2025-02-01": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-02": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-03": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-04": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-02-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-06": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-07": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-08": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-09": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-02-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-11": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-12": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-13": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-14": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-02-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-16": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-17": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-18": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-19": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-02-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-21": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-22": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-23": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-24": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-02-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-02-26": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-27": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-02-28": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                
-                // Март
-                "2025-03-01": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-02": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-03-03": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-04": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-06": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-03-07": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-08": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-09": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-11": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-03-12": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-13": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-14": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-16": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-03-17": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-18": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-19": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-21": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-03-22": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-23": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-24": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-26": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                "2025-03-27": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-28": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-29": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-03-30": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-03-31": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатериina:off"],
-                
-                // Апрель
-                "2025-04-01": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-02": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-03": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-04": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-06": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-07": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-08": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-09": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-11": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-12": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-13": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-14": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-16": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-17": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-18": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-19": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-21": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-22": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-23": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-24": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-26": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-27": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-04-28": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-29": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-04-30": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                
-                // Май
-                "2025-05-01": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-02": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-03": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-04": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-06": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-07": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-08": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-09": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-11": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-12": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-13": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-14": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-16": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-17": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-18": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-19": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-21": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-22": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-23": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-24": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-26": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-27": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-28": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-29": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-05-30": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-05-31": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                
-                // Июнь
-                "2025-06-01": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-02": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-03": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-04": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-06": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-07": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-08": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-09": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-11": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-12": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-13": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-14": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-16": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-17": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-18": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-19": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-21": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-22": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-23": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-24": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-26": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-27": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-28": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-06-29": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-06-30": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                
-                // Июль
-                "2025-07-01": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-02": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-03": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-04": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-06": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-07": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-08": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-09": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-11": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-12": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-13": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-14": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-16": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-17": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-18": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-19": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-21": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-22": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-23": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-24": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-26": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-27": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-28": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-07-29": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-30": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-07-31": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                
-                // Август
-                "2025-08-01": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-02": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-03": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-04": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-05": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-06": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-07": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-08": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-09": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-10": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-11": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-12": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-13": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-14": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-15": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-16": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-17": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-18": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-19": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-20": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-21": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-22": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-23": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-24": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-25": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-26": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-27": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-08-28": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-29": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-30": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-08-31": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                
-                // Сентябрь
-                "2025-09-01": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-02": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-03": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-04": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-05": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-06": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-07": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-08": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-09": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-10": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-11": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-12": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-13": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-14": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-15": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-16": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-17": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-18": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-19": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-20": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-21": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-22": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-23": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-24": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-25": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-26": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-09-27": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-28": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-29": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-09-30": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                
-                // Октябрь
-                "2025-10-01": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-02": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-03": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-04": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-05": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-06": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-07": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-08": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-09": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-10": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-11": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-12": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-13": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-14": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-15": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-16": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-17": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-18": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-19": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-20": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-21": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-22": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-23": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-24": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-25": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-26": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-27": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-28": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-29": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-10-30": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-10-31": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                
-                // Ноябрь
-                "2025-11-01": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-02": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-03": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-04": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-05": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-06": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-07": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-08": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-09": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-10": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-11": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-12": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-13": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-14": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-15": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-16": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-17": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-18": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-19": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-20": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-21": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-22": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-23": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-24": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-25": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-26": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-27": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-28": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-11-29": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-11-30": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                
-                // Декабрь
-                "2025-12-01": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-02": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-03": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-04": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-05": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-06": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-07": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-08": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-09": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-10": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-11": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-12": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-13": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-14": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-15": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-16": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-17": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-18": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-19": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-20": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-21": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-22": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-23": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-24": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-25": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-26": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-27": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-28": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"],
-                "2025-12-29": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-30": ["Чехова Фарида:off", "Захарова Вика:off", "Емелина Елена:off", "Старикова Дарья:off", "Краснова Ольга:8", "Балашов Кирилл:15", "Архипова Екатерина:12"],
-                "2025-12-31": ["Чехова Фарида:13", "Захарова Вика:8", "Емелина Елена:10", "Старикова Дарья:10", "Краснова Ольга:off", "Балашов Кирилл:off", "Архипова Екатерина:off"]
-            }
-        };
+        // Данные сотрудников для каждой смены
+        const shiftA = [
+            { name: "Краснова Ольга", hours: "8-20" },
+            { name: "Балашов Кирилл", hours: "15-03" },
+            { name: "Архипова Екатерина", hours: "12-00" },
+            { name: "Морозова Анастасия", hours: "10-22" }
+        ];
 
-        // Функция для генерации календаря
-        function generateCalendar() {
-            const container = document.getElementById('calendarContainer');
-            container.innerHTML = '';
+        const shiftB = [
+            { name: "Чехова Фарида", hours: "13-01" },
+            { name: "Захарова Вика", hours: "8-20" },
+            { name: "Емелена Елена", hours: "10-22" },
+            { name: "Старикова Дарья", hours: "10-22" }
+        ];
+
+        // График 2-2-3
+        const schedulePattern = ['A', 'A', 'B', 'B', 'B', 'A', 'A', 'B', 'B', 'A', 'A', 'A', 'B', 'B'];
+
+        // Текущая дата
+        const today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+
+        // Состояние отпусков
+        let vacations = JSON.parse(localStorage.getItem('vacations')) || {};
+
+        // DOM элементы
+        const calendarEl = document.getElementById('calendar');
+        const monthTitleEl = document.getElementById('monthTitle');
+        const prevMonthBtn = document.getElementById('prevMonth');
+        const nextMonthBtn = document.getElementById('nextMonth');
+        const dayModal = document.getElementById('dayModal');
+        const modalTitleEl = document.getElementById('modalTitle');
+        const employeeListEl = document.getElementById('employeeList');
+        const closeModalBtn = document.getElementById('closeModal');
+        const toggleVacationBtn = document.getElementById('toggleVacation');
+        const themeToggleBtn = document.getElementById('themeToggle');
+
+        // Тема
+        let darkTheme = localStorage.getItem('darkTheme') === 'true';
+        updateTheme();
+
+        // Инициализация календаря
+        function initCalendar() {
+            renderCalendar(currentMonth, currentYear);
             
-            const today = new Date();
-            const todayFormatted = formatDate(today);
-            
-            for (let month = 0; month < 12; month++) {
-                const monthDate = new Date(2025, month, 1);
-                const monthName = monthDate.toLocaleString('ru-RU', { month: 'long' });
-                const daysInMonth = new Date(2025, month + 1, 0).getDate();
-                
-                const monthContainer = document.createElement('div');
-                monthContainer.className = 'month-container';
-                monthContainer.id = `month-${month}`;
-                
-                const monthHeader = document.createElement('h2');
-                monthHeader.className = 'month-header';
-                monthHeader.textContent = `${monthName.charAt(0).toUpperCase() + monthName.slice(1)} 2025`;
-                
-                const daysGrid = document.createElement('div');
-                daysGrid.className = 'days-grid';
-                
-                // Добавляем заголовки дней недели
-                ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].forEach(day => {
-                    const dayHeader = document.createElement('div');
-                    dayHeader.className = 'day-header';
-                    dayHeader.textContent = day;
-                    daysGrid.appendChild(dayHeader);
-                });
-                
-                // Определяем день недели для первого дня месяца (0 - воскресенье, 1 - понедельник, ...)
-                const firstDayOfWeek = new Date(2025, month, 1).getDay();
-                const offset = firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1;
-                
-                // Добавляем пустые ячейки для смещения
-                for (let i = 0; i < offset; i++) {
-                    const emptyCell = document.createElement('div');
-                    emptyCell.className = 'day-cell empty';
-                    daysGrid.appendChild(emptyCell);
-                }
-                
-                // Добавляем ячейки для каждого дня месяца
-                for (let day = 1; day <= daysInMonth; day++) {
-                    const date = new Date(2025, month, day);
-                    const dateString = formatDate(date);
-                    
-                    const dayCell = document.createElement('div');
-                    dayCell.className = 'day-cell';
-                    dayCell.dataset.date = dateString;
-                    
-                    // Проверяем, является ли день сегодняшним
-                    if (dateString === todayFormatted) {
-                        dayCell.classList.add('today');
+            // Переход к текущему месяцу
+            if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) {
+                setTimeout(() => {
+                    const todayElement = document.querySelector(`.day[data-date="${formatDate(today)}"]`);
+                    if (todayElement) {
+                        todayElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
-                    
-                    const dayNumber = document.createElement('div');
-                    dayNumber.className = 'day-number';
-                    dayNumber.textContent = day;
-                    
-                    // Проверяем, есть ли данные для этого дня
-                    let workingCount = 0;
-                    let offCount = 0;
-                    
-                    if (scheduleData.shifts[dateString]) {
-                        scheduleData.shifts[dateString].forEach(shift => {
-                            const [name, status] = shift.split(':');
-                            if (status === 'off') {
-                                offCount++;
-                            } else if (status !== 'отпуск') {
-                                workingCount++;
-                            }
-                        });
-                    }
-                    
-                    const dayInfo = document.createElement('div');
-                    dayInfo.className = 'day-info';
-                    
-                    if (workingCount > 0 && offCount === 0) {
-                        dayCell.classList.add('working');
-                        dayInfo.classList.add('working');
-                        dayInfo.textContent = `${workingCount} работают`;
-                    } else if (offCount > 0 && workingCount === 0) {
-                        dayCell.classList.add('off');
-                        dayInfo.classList.add('off');
-                        dayInfo.textContent = `${offCount} отдыхают`;
-                    } else if (workingCount > 0 && offCount > 0) {
-                        dayCell.classList.add('working');
-                        dayInfo.textContent = `${workingCount}/${offCount}`;
-                    }
-                    
-                    dayCell.appendChild(dayNumber);
-                    dayCell.appendChild(dayInfo);
-                    dayCell.addEventListener('click', () => showDayDetails(dateString));
-                    daysGrid.appendChild(dayCell);
-                }
-                
-                monthContainer.appendChild(monthHeader);
-                monthContainer.appendChild(daysGrid);
-                container.appendChild(monthContainer);
+                }, 100);
             }
         }
-        
-        // Функция для форматирования даты в YYYY-MM-DD
+
+        // Отрисовка календаря
+        function renderCalendar(month, year) {
+            // Очищаем календарь
+            calendarEl.innerHTML = '';
+            
+            // Устанавливаем заголовок месяца
+            const monthNames = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", 
+                               "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+            monthTitleEl.textContent = `${monthNames[month]} ${year}`;
+            
+            // Добавляем заголовки дней недели
+            const dayNames = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'day-header';
+                dayHeader.textContent = day;
+                calendarEl.appendChild(dayHeader);
+            });
+            
+            // Получаем первый день месяца и количество дней в месяце
+            const firstDay = new Date(year, month, 1);
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Получаем день недели первого дня месяца (0 - воскресенье, 1 - понедельник и т.д.)
+            let firstDayIndex = firstDay.getDay();
+            // Преобразуем в наш формат (0 - понедельник, 6 - воскресенье)
+            firstDayIndex = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+            
+            // Добавляем пустые ячейки для дней предыдущего месяца
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'day other-month';
+                calendarEl.appendChild(emptyDay);
+            }
+            
+            // Добавляем дни месяца
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const dateStr = formatDate(date);
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day';
+                dayElement.setAttribute('data-date', dateStr);
+                
+                // Проверяем, является ли день сегодняшним
+                if (date.toDateString() === today.toDateString()) {
+                    dayElement.classList.add('today');
+                }
+                
+                // Проверяем, является ли день отпуском
+                if (vacations[dateStr]) {
+                    dayElement.classList.add('vacation');
+                }
+                
+                // Добавляем номер дня
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'day-number';
+                dayNumber.textContent = day;
+                dayElement.appendChild(dayNumber);
+                
+                // Добавляем обработчик клика
+                dayElement.addEventListener('click', () => openDayModal(date));
+                
+                calendarEl.appendChild(dayElement);
+            }
+            
+            // Добавляем пустые ячейки для дней следующего месяца, чтобы завершить сетку
+            const totalCells = firstDayIndex + daysInMonth;
+            const remainingCells = 7 - (totalCells % 7);
+            if (remainingCells < 7) {
+                for (let i = 0; i < remainingCells; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'day other-month';
+                    calendarEl.appendChild(emptyDay);
+                }
+            }
+        }
+
+        // Открытие модального окна дня
+        function openDayModal(date) {
+            const dateStr = formatDate(date);
+            modalTitleEl.textContent = formatDateForDisplay(date);
+            
+            // Очищаем список сотрудников
+            employeeListEl.innerHTML = '';
+            
+            // Получаем смену для этой даты
+            const shift = getShiftForDate(date);
+            const employees = shift === 'A' ? shiftA : shiftB;
+            
+            // Добавляем сотрудников в список
+            employees.forEach(employee => {
+                const employeeItem = document.createElement('div');
+                employeeItem.className = 'employee-item';
+                employeeItem.textContent = `${employee.name} (${employee.hours})`;
+                employeeListEl.appendChild(employeeItem);
+            });
+            
+            // Обновляем кнопку отпуска
+            if (vacations[dateStr]) {
+                toggleVacationBtn.textContent = 'Убрать отпуск';
+            } else {
+                toggleVacationBtn.textContent = 'Добавить отпуск';
+            }
+            
+            // Устанавливаем обработчик для кнопки отпуска
+            toggleVacationBtn.onclick = () => toggleVacation(date);
+            
+            // Показываем модальное окно
+            dayModal.style.display = 'flex';
+        }
+
+        // Получение смены для даты
+        function getShiftForDate(date) {
+            // Начальная дата для расчета смены (1 января 2025)
+            const startDate = new Date(2025, 0, 1);
+            const diffInDays = Math.floor((date - startDate) / (1000 * 60 * 60 * 24));
+            
+            // Рассчитываем индекс в шаблоне смены
+            const patternIndex = diffInDays % schedulePattern.length;
+            
+            // Возвращаем смену (A или B)
+            return schedulePattern[patternIndex >= 0 ? patternIndex : schedulePattern.length + patternIndex];
+        }
+
+        // Переключение отпуска
+        function toggleVacation(date) {
+            const dateStr = formatDate(date);
+            
+            if (vacations[dateStr]) {
+                delete vacations[dateStr];
+            } else {
+                vacations[dateStr] = true;
+            }
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('vacations', JSON.stringify(vacations));
+            
+            // Обновляем отображение
+            renderCalendar(currentMonth, currentYear);
+            
+            // Закрываем модальное окно
+            dayModal.style.display = 'none';
+        }
+
+        // Форматирование даты для атрибута data-date
         function formatDate(date) {
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, '0');
             const day = String(date.getDate()).padStart(2, '0');
             return `${year}-${month}-${day}`;
         }
-        
-        // Функция для отображения деталей дня
-        function showDayDetails(dateString) {
-            const modal = document.getElementById('dayModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const shiftList = document.getElementById('shiftList');
-            
-            const date = new Date(dateString);
-            const formattedDate = date.toLocaleDateString('ru-RU', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-            
-            modalTitle.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-            shiftList.innerHTML = '';
-            
-            if (scheduleData.shifts[dateString]) {
-                scheduleData.shifts[dateString].forEach(shift => {
-                    const [name, status] = shift.split(':');
-                    
-                    // Пропускаем сотрудников на выходных
-                    if (status === 'off') return;
-                    
-                    const listItem = document.createElement('li');
-                    listItem.className = 'shift-item';
-                    
-                    // Создаем аватар
-                    const initials = name.split(' ')
-                        .map(word => word.charAt(0))
-                        .join('')
-                        .toUpperCase();
-                    
-                    const avatar = document.createElement('div');
-                    avatar.className = 'employee-avatar';
-                    avatar.textContent = initials;
-                    
-                    const nameElement = document.createElement('div');
-                    nameElement.className = 'employee-name';
-                    nameElement.appendChild(avatar);
-                    nameElement.appendChild(document.createTextNode(name));
-                    
-                    const statusElement = document.createElement('div');
-                    statusElement.className = 'shift-time';
-                    
-                    if (status === 'отпуск') {
-                        statusElement.classList.add('vacation');
-                        statusElement.innerHTML = '<i class="fas fa-sun"></i> Отпуск';
-                    } else {
-                        statusElement.classList.add('working');
-                        statusElement.textContent = `Рабочая смена: ${status} часов`;
-                    }
-                    
-                    listItem.appendChild(nameElement);
-                    listItem.appendChild(statusElement);
-                    shiftList.appendChild(listItem);
-                });
-                
-                // Если все сотрудники на выходных
-                if (shiftList.children.length === 0) {
-                    const listItem = document.createElement('li');
-                    listItem.className = 'shift-item no-data';
-                    listItem.textContent = 'Все сотрудники на выходных';
-                    shiftList.appendChild(listItem);
-                }
-            } else {
-                const listItem = document.createElement('li');
-                listItem.className = 'shift-item no-data';
-                listItem.textContent = 'Нет данных о сменах на этот день';
-                shiftList.appendChild(listItem);
-            }
-            
-            modal.classList.add('show');
+
+        // Форматирование даты для отображения
+        function formatDateForDisplay(date) {
+            const options = { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' };
+            return date.toLocaleDateString('ru-RU', options);
         }
-        
-        // Функция прокрутки к текущему месяцу
-        function scrollToToday() {
-            const today = new Date();
-            const currentMonth = today.getMonth();
-            const monthElement = document.getElementById(`month-${currentMonth}`);
-            
-            if (monthElement) {
-                monthElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                
-                // Подсвечиваем текущий день
-                const todayFormatted = formatDate(today);
-                const todayCell = document.querySelector(`.day-cell[data-date="${todayFormatted}"]`);
-                if (todayCell) {
-                    todayCell.classList.add('today');
-                    
-                    // Анимация мигания
-                    todayCell.animate([
-                        { backgroundColor: 'rgba(241, 196, 15, 0.3)' },
-                        { backgroundColor: 'transparent' },
-                        { backgroundColor: 'rgba(241, 196, 15, 0.3)' }
-                    ], {
-                        duration: 1000,
-                        iterations: 2
-                    });
-                }
-            }
-        }
-        
-        // Инициализация темы
-        function initTheme() {
-            const themeToggle = document.getElementById('themeToggle');
-            const themeIcon = themeToggle.querySelector('i');
-            
-            // Проверяем сохраненную тему или системные настройки
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+
+        // Переключение темы
+        function updateTheme() {
+            if (darkTheme) {
                 document.body.classList.add('dark-theme');
-                themeIcon.className = 'fas fa-sun';
+                themeToggleBtn.textContent = 'Светлая тема';
             } else {
                 document.body.classList.remove('dark-theme');
-                themeIcon.className = 'fas fa-moon';
+                themeToggleBtn.textContent = 'Темная тема';
             }
-            
-            // Обработчик переключения темы
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-theme');
-                
-                if (document.body.classList.contains('dark-theme')) {
-                    themeIcon.className = 'fas fa-sun';
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    themeIcon.className = 'fas fa-moon';
-                    localStorage.setItem('theme', 'light');
-                }
-            });
+            localStorage.setItem('darkTheme', darkTheme);
         }
-        
-        // Закрытие модального окна
-        document.getElementById('closeModal').addEventListener('click', () => {
-            document.getElementById('dayModal').classList.remove('show');
+
+        // Обработчики событий
+        prevMonthBtn.addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar(currentMonth, currentYear);
         });
-        
-        // Закрытие модального окна при клике вне его
-        window.addEventListener('click', (e) => {
-            const modal = document.getElementById('dayModal');
-            if (e.target === modal) {
-                modal.classList.remove('show');
+
+        nextMonthBtn.addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar(currentMonth, currentYear);
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            dayModal.style.display = 'none';
+        });
+
+        dayModal.addEventListener('click', (e) => {
+            if (e.target === dayModal) {
+                dayModal.style.display = 'none';
             }
         });
-        
-        // Кнопка "Сегодня"
-        document.getElementById('todayBtn').addEventListener('click', scrollToToday);
-        
-        // Инициализация при загрузке страницы
-        window.addEventListener('DOMContentLoaded', () => {
-            initTheme();
-            generateCalendar();
-            
-            // Прокручиваем к текущему месяцу с небольшой задержкой
-            setTimeout(scrollToToday, 100);
+
+        themeToggleBtn.addEventListener('click', () => {
+            darkTheme = !darkTheme;
+            updateTheme();
         });
+
+        // Инициализация
+        initCalendar();
     </script>
 </body>
 </html>
