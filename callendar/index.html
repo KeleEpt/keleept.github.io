@@ -36,7 +36,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -49,22 +49,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
         }
 
         h1 {
             margin: 0;
+            font-size: 1.5rem;
         }
 
         .theme-toggle {
             background-color: var(--button-bg);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-size: 0.9rem;
         }
 
         .theme-toggle:hover {
@@ -76,21 +78,27 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
+            flex-wrap: wrap;
         }
 
         .month-title {
-            font-size: 1.5em;
+            font-size: 1.2rem;
             font-weight: bold;
+            margin: 5px 0;
+            text-align: center;
+            flex-grow: 1;
         }
 
         .nav-button {
             background-color: var(--button-bg);
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-size: 0.9rem;
+            margin: 2px;
         }
 
         .nav-button:hover {
@@ -100,25 +108,28 @@
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
+            gap: 8px;
             background-color: var(--calendar-bg);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
         }
 
         .day-header {
             text-align: center;
             font-weight: bold;
-            padding: 10px;
+            padding: 8px 4px;
+            font-size: 0.8rem;
         }
 
         .day {
             background-color: var(--day-bg);
             border-radius: 4px;
-            padding: 10px;
-            min-height: 80px;
+            padding: 8px;
+            min-height: 60px;
             cursor: pointer;
             transition: background-color 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .day:hover {
@@ -127,7 +138,8 @@
 
         .day-number {
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
+            font-size: 0.9rem;
         }
 
         .other-month {
@@ -154,42 +166,44 @@
 
         .modal-content {
             background-color: var(--modal-content);
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
-            width: 80%;
-            max-width: 500px;
+            width: 90%;
+            max-width: 400px;
             max-height: 80vh;
             overflow-y: auto;
+            margin: 10px;
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .modal-title {
-            font-size: 1.2em;
+            font-size: 1.1rem;
             font-weight: bold;
         }
 
         .close-button {
             background: none;
             border: none;
-            font-size: 1.5em;
+            font-size: 1.3rem;
             cursor: pointer;
             color: var(--text-color);
         }
 
         .employee-list {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .employee-item {
-            margin-bottom: 10px;
-            padding: 8px;
+            margin-bottom: 8px;
+            padding: 6px;
             border-bottom: 1px solid #ccc;
+            font-size: 0.9rem;
         }
 
         .vacation-item {
@@ -197,7 +211,7 @@
             font-style: italic;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .calendar {
                 grid-template-columns: repeat(1, 1fr);
             }
@@ -208,6 +222,36 @@
             
             .day {
                 min-height: auto;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 8px 12px;
+            }
+            
+            .day-number {
+                margin-bottom: 0;
+                margin-right: 10px;
+            }
+            
+            .month-title {
+                font-size: 1rem;
+                order: -1;
+                flex: 0 0 100%;
+            }
+            
+            .nav-button {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            h1 {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 900px) {
+            .calendar {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -220,9 +264,9 @@
         </div>
 
         <div class="month-navigation">
-            <button class="nav-button" id="prevMonth">← Предыдущий</button>
+            <button class="nav-button" id="prevMonth">← Пред.</button>
             <div class="month-title" id="monthTitle">Январь 2025</div>
-            <button class="nav-button" id="nextMonth">Следующий →</button>
+            <button class="nav-button" id="nextMonth">След. →</button>
         </div>
 
         <div class="calendar" id="calendar">
@@ -266,14 +310,58 @@
         let currentMonth = today.getMonth();
         let currentYear = today.getFullYear();
 
-        // Предустановленные отпуска для Стариковой Дарьи
-        const starikovaVacations = [
-            '2025-02-24', '2025-02-25', '2025-02-28',
-            '2025-03-01', '2025-03-02',
-            '2025-06-25', '2025-06-26', '2025-06-30',
-            '2025-07-01', '2025-07-04', '2025-07-05', '2025-07-06',
-            '2025-10-06', '2025-10-07', '2025-10-10', '2025-10-11', '2025-10-12'
-        ];
+        // Отпуска сотрудников
+        const vacations = {
+            "Краснова Ольга": [
+                '2025-01-10', '2025-01-11', '2025-01-12',
+                '2025-04-15', '2025-04-16', '2025-04-17',
+                '2025-08-05', '2025-08-06', '2025-08-07',
+                '2025-11-20', '2025-11-21', '2025-11-22'
+            ],
+            "Балашов Кирилл": [
+                '2025-02-10', '2025-02-11', '2025-02-12',
+                '2025-05-20', '2025-05-21', '2025-05-22',
+                '2025-09-01', '2025-09-02', '2025-09-03',
+                '2025-12-15', '2025-12-16', '2025-12-17'
+            ],
+            "Архипова Екатерина": [
+                '2025-03-05', '2025-03-06', '2025-03-07',
+                '2025-06-10', '2025-06-11', '2025-06-12',
+                '2025-10-01', '2025-10-02', '2025-10-03',
+                '2025-12-25', '2025-12-26', '2025-12-27'
+            ],
+            "Морозова Анастасия": [
+                '2025-01-20', '2025-01-21', '2025-01-22',
+                '2025-05-05', '2025-05-06', '2025-05-07',
+                '2025-09-15', '2025-09-16', '2025-09-17',
+                '2025-11-10', '2025-11-11', '2025-11-12'
+            ],
+            "Чехова Фарида": [
+                '2025-02-15', '2025-02-16', '2025-02-17',
+                '2025-06-01', '2025-06-02', '2025-06-03',
+                '2025-08-20', '2025-08-21', '2025-08-22',
+                '2025-12-05', '2025-12-06', '2025-12-07'
+            ],
+            "Захарова Вика": [
+                '2025-03-10', '2025-03-11', '2025-03-12',
+                '2025-07-15', '2025-07-16', '2025-07-17',
+                '2025-10-10', '2025-10-11', '2025-10-12',
+                '2025-12-20', '2025-12-21', '2025-12-22'
+            ],
+            "Емелена Елена": [
+                '2025-01-05', '2025-01-06', '2025-01-07',
+                '2025-04-20', '2025-04-21', '2025-04-22',
+                '2025-08-10', '2025-08-11', '2025-08-12',
+                '2025-11-05', '2025-11-06', '2025-11-07'
+            ],
+            "Старикова Дарья": [
+                '2025-02-24', '2025-02-25', '2025-02-28',
+                '2025-03-01', '2025-03-02',
+                '2025-06-25', '2025-06-26', '2025-06-30',
+                '2025-07-01', '2025-07-04', '2025-07-05', '2025-07-06',
+                '2025-10-06', '2025-10-07', '2025-10-10', '2025-10-11', '2025-10-12'
+            ]
+        };
 
         // DOM элементы
         const calendarEl = document.getElementById('calendar');
@@ -389,14 +477,12 @@
             const shift = getShiftForDate(date);
             const employees = shift === 'A' ? [...shiftA] : [...shiftB];
             
-            // Если это день отпуска Стариковой Дарьи, изменяем ее запись
-            const isStarikovaVacation = starikovaVacations.includes(dateStr);
-            
             // Добавляем сотрудников в список
             employees.forEach(employee => {
                 const employeeItem = document.createElement('div');
                 
-                if (employee.name === "Старикова Дарья" && isStarikovaVacation) {
+                // Проверяем, находится ли сотрудник в отпуске
+                if (vacations[employee.name] && vacations[employee.name].includes(dateStr)) {
                     employeeItem.className = 'employee-item vacation-item';
                     employeeItem.textContent = `${employee.name} (отпуск)`;
                 } else {
