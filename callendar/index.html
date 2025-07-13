@@ -16,7 +16,6 @@
             --modal-content: #ffffff;
             --button-bg: #4CAF50;
             --button-hover: #45a049;
-            --vacation-bg: #ffcccc;
         }
 
         .dark-theme {
@@ -30,7 +29,6 @@
             --modal-content: #2d2d2d;
             --button-bg: #2e7d32;
             --button-hover: #1b5e20;
-            --vacation-bg: #5d1a1a;
         }
 
         body {
@@ -141,10 +139,6 @@
             font-weight: bold;
         }
 
-        .vacation {
-            background-color: var(--vacation-bg);
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -198,22 +192,9 @@
             border-bottom: 1px solid #ccc;
         }
 
-        .vacation-controls {
-            margin-top: 15px;
-        }
-
-        .vacation-button {
-            background-color: var(--button-bg);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .vacation-button:hover {
-            background-color: var(--button-hover);
+        .vacation-item {
+            color: #888;
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
@@ -258,9 +239,6 @@
             <div class="employee-list" id="employeeList">
                 <!-- Список сотрудников будет добавлен JavaScript -->
             </div>
-            <div class="vacation-controls">
-                <button class="vacation-button" id="toggleVacation">Добавить отпуск</button>
-            </div>
         </div>
     </div>
 
@@ -288,8 +266,14 @@
         let currentMonth = today.getMonth();
         let currentYear = today.getFullYear();
 
-        // Состояние отпусков
-        let vacations = JSON.parse(localStorage.getItem('vacations')) || {};
+        // Предустановленные отпуска для Стариковой Дарьи
+        const starikovaVacations = [
+            '2025-02-24', '2025-02-25', '2025-02-28',
+            '2025-03-01', '2025-03-02',
+            '2025-06-25', '2025-06-26', '2025-06-30',
+            '2025-07-01', '2025-07-04', '2025-07-05', '2025-07-06',
+            '2025-10-06', '2025-10-07', '2025-10-10', '2025-10-11', '2025-10-12'
+        ];
 
         // DOM элементы
         const calendarEl = document.getElementById('calendar');
@@ -300,7 +284,6 @@
         const modalTitleEl = document.getElementById('modalTitle');
         const employeeListEl = document.getElementById('employeeList');
         const closeModalBtn = document.getElementById('closeModal');
-        const toggleVacationBtn = document.getElementById('toggleVacation');
         const themeToggleBtn = document.getElementById('themeToggle');
 
         // Тема
@@ -370,11 +353,6 @@
                     dayElement.classList.add('today');
                 }
                 
-                // Проверяем, является ли день отпуском
-                if (vacations[dateStr]) {
-                    dayElement.classList.add('vacation');
-                }
-                
                 // Добавляем номер дня
                 const dayNumber = document.createElement('div');
                 dayNumber.className = 'day-number';
@@ -409,25 +387,25 @@
             
             // Получаем смену для этой даты
             const shift = getShiftForDate(date);
-            const employees = shift === 'A' ? shiftA : shiftB;
+            const employees = shift === 'A' ? [...shiftA] : [...shiftB];
+            
+            // Если это день отпуска Стариковой Дарьи, изменяем ее запись
+            const isStarikovaVacation = starikovaVacations.includes(dateStr);
             
             // Добавляем сотрудников в список
             employees.forEach(employee => {
                 const employeeItem = document.createElement('div');
-                employeeItem.className = 'employee-item';
-                employeeItem.textContent = `${employee.name} (${employee.hours})`;
+                
+                if (employee.name === "Старикова Дарья" && isStarikovaVacation) {
+                    employeeItem.className = 'employee-item vacation-item';
+                    employeeItem.textContent = `${employee.name} (отпуск)`;
+                } else {
+                    employeeItem.className = 'employee-item';
+                    employeeItem.textContent = `${employee.name} (${employee.hours})`;
+                }
+                
                 employeeListEl.appendChild(employeeItem);
             });
-            
-            // Обновляем кнопку отпуска
-            if (vacations[dateStr]) {
-                toggleVacationBtn.textContent = 'Убрать отпуск';
-            } else {
-                toggleVacationBtn.textContent = 'Добавить отпуск';
-            }
-            
-            // Устанавливаем обработчик для кнопки отпуска
-            toggleVacationBtn.onclick = () => toggleVacation(date);
             
             // Показываем модальное окно
             dayModal.style.display = 'flex';
@@ -444,26 +422,6 @@
             
             // Возвращаем смену (A или B)
             return schedulePattern[patternIndex >= 0 ? patternIndex : schedulePattern.length + patternIndex];
-        }
-
-        // Переключение отпуска
-        function toggleVacation(date) {
-            const dateStr = formatDate(date);
-            
-            if (vacations[dateStr]) {
-                delete vacations[dateStr];
-            } else {
-                vacations[dateStr] = true;
-            }
-            
-            // Сохраняем в localStorage
-            localStorage.setItem('vacations', JSON.stringify(vacations));
-            
-            // Обновляем отображение
-            renderCalendar(currentMonth, currentYear);
-            
-            // Закрываем модальное окно
-            dayModal.style.display = 'none';
         }
 
         // Форматирование даты для атрибута data-date
