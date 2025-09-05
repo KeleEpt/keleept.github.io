@@ -35,12 +35,29 @@
             border-radius: 0 0 15px 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px;
+            position: relative;
         }
         
         h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
             font-weight: 700;
+        }
+        
+        .admin-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .admin-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
         
         .search-section {
@@ -223,6 +240,79 @@
             height: 20px;
         }
         
+        /* Стили для админ-панели */
+        .admin-panel {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .admin-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .submit-btn {
+            background: #4ca1af;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #2c3e50;
+        }
+        
+        .admin-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
         @media (max-width: 768px) {
             .interview-list {
                 grid-template-columns: 1fr;
@@ -240,6 +330,10 @@
             #searchButton {
                 border-radius: 10px;
             }
+            
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -247,6 +341,7 @@
     <header>
         <div class="container">
             <h1><i class="fas fa-microphone-alt"></i> Архив интервью</h1>
+            <a href="admin.html" class="admin-btn"><i class="fas fa-cog"></i> Админ</a>
         </div>
     </header>
     
@@ -268,7 +363,7 @@
                 <div class="tag" data-tag="Семья">Семья</div>
                 <div class="tag" data-tag="Если сильно полюбишь">Если сильно полюбишь</div>
                 <div class="tag" data-tag="Основание осман">Основание осман</div>
-                <div class="tag" data-tag="Запретный плод">Запретный плод</div>
+                <div class="tag" data-tag="За запретный плод">Запретный плод</div>
                 <div class="tag" data-tag="Струны Души">Струны Души</div>
                 <div class="tag" data-tag="то что не будут просить 😄">то что не будут просить 😄</div>
             </div>
@@ -283,7 +378,7 @@
 
     <script>
         // Данные интервью
-        const interviews = [
+        let interviews = [
             {
                 title: "Блиц-опрос с Арасом Айдыном и Лейлой Танлар",
                 description: "Актеры рассказывают о своих персонажах в сериале 'Чёрное сердце' и делятся закулисными историями.",
@@ -379,7 +474,7 @@
                 title: "Интервью с Бураком Денизом и Су Бурджу Джошкун",
                 description: "Главные актеры сериала 'Ночная сказка' рассказывают о своих ролях и съемочном процессе. ТОЛЬКО ВК",
                 link1: "https://vk.com/wall-221529593_45426",
-                link2: "https://t.me/ivi_turk/5391",
+                link2: "",
                 keywords: ["Ночная сказка", "Бурак Дениз", "Су Бурджу Джошкун", "Интервью"]
             },
             {
@@ -500,13 +595,16 @@
                     `<div class="interview-tag" data-tag="${keyword}">${keyword}</div>`
                 ).join('');
                 
+                // Проверяем, нужно ли показывать кнопку ТГ
+                const showTg = interview.link2 && !interview.description.includes('ТОЛЬКО ВК');
+                
                 interviewElement.innerHTML = `
                     <div class="interview-title">${interview.title}</div>
                     <div class="interview-description">${interview.description}</div>
                     <div class="interview-tags">${tagsHtml}</div>
                     <div class="interview-links">
                         <a href="${interview.link1}" target="_blank"><i class="fab fa-vk"></i> ВК</a>
-                        <a href="${interview.link2}" target="_blank"><i class="fab fa-telegram"></i> ТГ</a>
+                        ${showTg ? `<a href="${interview.link2}" target="_blank"><i class="fab fa-telegram"></i> ТГ</a>` : ''}
                     </div>
                 `;
                 interviewList.appendChild(interviewElement);
@@ -566,6 +664,12 @@
 
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', () => {
+            // Загружаем интервью из localStorage, если есть
+            const savedInterviews = localStorage.getItem('interviews');
+            if (savedInterviews) {
+                interviews = JSON.parse(savedInterviews);
+            }
+            
             displayInterviews(interviews);
             
             // Добавляем обработчик события для поиска по кнопке

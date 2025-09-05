@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель - Архив интервью</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .admin-panel {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+        }
+        
+        .admin-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .submit-btn {
+            background: #4ca1af;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #2c3e50;
+        }
+        
+        .admin-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .interview-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .interview-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #4ca1af;
+        }
+        
+        .interview-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .interview-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .keyword {
+            background: #f0f7fa;
+            color: #4ca1af;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 11px;
+        }
+        
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .interview-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Назад</a>
+            <h1><i class="fas fa-cog"></i> Админ-панель</h1>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="admin-panel">
+            <h2>Добавить новое интервью</h2>
+            <form id="interviewForm" class="admin-form">
+                <div class="form-group full-width">
+                    <label for="title">Заголовок:</label>
+                    <input type="text" id="title" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="description">Описание:</label>
+                    <textarea id="description" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="link1">Ссылка ВК:</label>
+                    <input type="url" id="link1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="link2">Ссылка ТГ (оставьте пустым, если только ВК):</label>
+                    <input type="url" id="link2">
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="keywords">Ключевые слова (через запятую):</label>
+                    <input type="text" id="keywords" required>
+                    <small>Например: Чёрное сердце, Арас Айдын, Интервью</small>
+                </div>
+                
+                <div class="form-group full-width">
+                    <button type="submit" class="submit-btn">Добавить интервью</button>
+                </div>
+            </form>
+        </section>
+        
+        <section class="admin-panel">
+            <h2>Существующие интервью</h2>
+            <div class="interview-list" id="existingInterviews">
+                <!-- Список интервью будет загружен здесь -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Загружаем интервью из localStorage
+        let interviews = JSON.parse(localStorage.getItem('interviews')) || [];
+        
+        // Функция для отображения существующих интервью
+        function displayExistingInterviews() {
+            const container = document.getElementById('existingInterviews');
+            container.innerHTML = '';
+            
+            if (interviews.length === 0) {
+                container.innerHTML = '<p>Нет добавленных интервью</p>';
+                return;
+            }
+            
+            interviews.forEach((interview, index) => {
+                const item = document.createElement('div');
+                item.className = 'interview-item';
+                
+                item.innerHTML = `
+                    <div class="interview-title">${interview.title}</div>
+                    <div class="interview-keywords">
+                        ${interview.keywords.map(kw => `<span class="keyword">${kw}</span>`).join('')}
+                    </div>
+                    <button class="delete-btn" data-index="${index}">Удалить</button>
+                `;
+                
+                container.appendChild(item);
+            });
+            
+            // Добавляем обработчики для кнопок удаления
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    if (confirm('Вы уверены, что хотите удалить это интервью?')) {
+                        interviews.splice(index, 1);
+                        localStorage.setItem('interviews', JSON.stringify(interviews));
+                        displayExistingInterviews();
+                    }
+                });
+            });
+        }
+        
+        // Обработка отправки формы
+        document.getElementById('interviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newInterview = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                link1: document.getElementById('link1').value,
+                link2: document.getElementById('link2').value || '',
+                keywords: document.getElementById('keywords').value.split(',').map(kw => kw.trim())
+            };
+            
+            interviews.push(newInterview);
+            localStorage.setItem('interviews', JSON.stringify(interviews));
+            
+            // Очищаем форму
+            this.reset();
+            
+            // Обновляем список интервью
+            displayExistingInterviews();
+            
+            alert('Интервью успешно добавлено!');
+        });
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', displayExistingInterviews);
+    </script>
+</body>
+</html>
